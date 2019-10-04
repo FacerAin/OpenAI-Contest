@@ -1,114 +1,161 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
+import React, { Component } from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import { SearchBar  } from 'react-native-elements';
+import Icon from 'react-native-vector-icons/FontAwesome';
+class App extends Component {
+  constructor(props) {
+      super(props);
+      this.state = {
+        search: '',
+      }
+  }
+  updateSearch = search => {
+    this.setState({ search });
+  }
 
-import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+  render() {
+    const { search } = this.state;
+      return (
+          <>
+                <SearchBar
+                placeholder="검색"
+                onChangeText={this.updateSearch}
+                value={search}
+                
+              />
+              <View style={styles.container}>
+              <View style={styles.ratingcontainer}>
+                  <View style={styles.ratingtext}>
+                      <Text>당신의 검색점수는 %d점 입니다.</Text>
+                  </View>
+                  <View style={styles.ratingspec}>
+                      <Text>자세히 보기</Text>
+                  </View>
+                  <View style={styles.ratingcancel}>
+                      <Text>X</Text>
+                  </View>
+              </View>
+              
+           <View style={styles.cardcontainer}>
+               <View style={styles.cardheader}>
+                   <View style={styles.cardlogo}></View>
+                   <View style={styles.cardtitle}>
+                   <Text>위키백과</Text>
+                   </View>
+               </View>
+               <View style={styles.cardbody}>
+                   <Text style={styles.cardbodytext}>
+                   동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세
+                   </Text>
+               </View>
+               <View style={styles.cardfooter}>
+                   <Text style={styles.cardfooterbt}>바로가기</Text>
+               </View>
+           </View>
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
 
-const App: () => React$Node = () => {
-  return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
-};
+           <View style={styles.cardcontainer}>
+               <View style={styles.cardheader}>
+                   <View style={styles.cardlogo}></View>
+                   <View style={styles.cardtitle}>
+                   <Text>위키백과</Text>
+                   </View>
+               </View>
+               <View style={styles.cardbody}>
+                   <Text style={styles.cardbodytext}>
+                       동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세
+                   </Text>
+               </View>
+               <View style={styles.cardfooter}>
+                   <Text style={styles.cardfooterbt}>바로가기</Text>
+               </View>
+           </View>
 
+
+           
+           </View>
+           </>
+      )
+  }
+}
 const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
-  },
-  engine: {
-    position: 'absolute',
-    right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
-  },
-});
+    container:{
+        flex: 1
+    },
+    cardcontainer:{
+        backgroundColor: 'gray',
+        height: 200,
+        marginTop: 10,
+        flexDirection: 'column'
+    },
+    cardheader:{
+        backgroundColor: 'blue',
+        flex : 1.3,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
+    cardbody:{
+        backgroundColor: 'red',
+        flex: 2.5,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    cardbodytext:{
+        padding: 15
+    },
+    cardfooter:{
+        alignItems: 'flex-end',
+        backgroundColor: 'green',
+        flex: 1,
+        justifyContent: 'center'
+    },
+    cardfooterbt:{
+        padding: 10
+    },
+    cardlogo:{
+        backgroundColor: 'yellow',
+        padding: 10,
+        width: 50,
+        height: 50,
+        borderRadius:50/2
+    },
+    cardtitle:{
+        backgroundColor: 'purple',
+        flex: 4,
+        padding: 10,
+        justifyContent: 'center'
+    },
+    cardtext:{
+
+    },
+
+    ratingcontainer:{
+        width: '100%',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between'
+    },
+    ratingtext:{
+        padding: 10,
+        height: 50,
+        flex: 5,
+        justifyContent: 'center',
+        backgroundColor:'red'
+    },
+    ratingspec:{
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: 50,
+        flex: 1.8,
+        backgroundColor:'yellow'
+    },
+    ratingcancel: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 50,
+        flex: 1,
+        backgroundColor:'green'
+    },
+})
 
 export default App;
