@@ -1,8 +1,20 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Button } from 'react-native';
 import { SearchBar  } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
-class App extends Component {
+import { createAppContainer } from 'react-navigation';
+import {createMaterialTopTabNavigator} from 'react-navigation-tabs'
+import { createStackNavigator } from 'react-navigation-stack';
+import SafeAreaView from 'react-native-safe-area-view';
+import Swipeable from 'react-native-gesture-handler/Swipeable';
+import { isTSConstructSignatureDeclaration } from '@babel/types';
+
+class HomeScreen extends Component {
+    static navigationOptions = {
+        title:'Home',
+        tabBarIcon: 
+        <Icon name="home" size={20} color="#000000" />,
+    }
   constructor(props) {
       super(props);
       this.state = {
@@ -78,6 +90,23 @@ class App extends Component {
       )
   }
 }
+
+class RateScreen extends React.Component {
+    static navigationOptions = {
+        title:'Rate',
+        tabBarIcon: 
+        <Icon name="line-chart" size={20} color="#000000" />,
+    }
+    render() {
+      return (
+        <>
+        <Text>Rating Page</Text>
+        </>
+      );
+    }
+  }
+
+
 const styles = StyleSheet.create({
     container:{
         flex: 1
@@ -158,4 +187,38 @@ const styles = StyleSheet.create({
     },
 })
 
-export default App;
+const AppTabNavigator = createMaterialTopTabNavigator({
+    Home: { screen: HomeScreen },
+    Rate:{screen: RateScreen},
+  }, {
+    //swipeEnabled: true,
+    //animationEnabled: true,
+    initialRouteName: 'Home',
+    barStyle: { backgroundColor: '#694fad' },
+    //order: ['Home','Rate']
+    //shifting:true,
+    tabBarOptions:{
+        activeTintColor: 'orange',
+        inactiveTintColor: 'grey',
+        style:{
+            backgroundColor:'#f2f2f2'
+        }
+    },
+
+  });
+
+
+
+const AppContainer = createAppContainer(AppTabNavigator);
+export default class App extends React.Component {
+    render(){
+        return (
+            <SafeAreaView style={{flex: 1}}>
+                <AppContainer />
+            </SafeAreaView>
+        )
+
+
+    }
+}
+
