@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Button } from 'react-native';
-import { SearchBar  } from 'react-native-elements';
+import { SearchBar,Header  } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { createAppContainer } from 'react-navigation';
 import {createMaterialTopTabNavigator} from 'react-navigation-tabs'
@@ -8,6 +8,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import SafeAreaView from 'react-native-safe-area-view';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 import { isTSConstructSignatureDeclaration } from '@babel/types';
+import Speedometer from 'react-native-speedometer-chart';
 
 class HomeScreen extends Component {
     static navigationOptions = {
@@ -100,7 +101,27 @@ class RateScreen extends React.Component {
     render() {
       return (
         <>
-        <Text>Rating Page</Text>
+        <View>
+        <Text>검색 분석 헤더</Text>
+        </View>
+        <View>
+        <Text>점수 원형 그래프</Text>
+        <Speedometer 
+        value={75} totalValue={100}
+        showText
+        text="75점"/>
+        </View>
+        <View>
+            <Text>검색 제안</Text>
+        </View>
+        <View>
+            <Text>추이분석</Text>
+        </View>
+
+
+
+
+        
         </>
       );
     }
@@ -194,6 +215,7 @@ const AppTabNavigator = createMaterialTopTabNavigator({
     //swipeEnabled: true,
     //animationEnabled: true,
     initialRouteName: 'Home',
+    tabBarPosition: 'bottom',
     barStyle: { backgroundColor: '#694fad' },
     //order: ['Home','Rate']
     //shifting:true,
@@ -202,8 +224,11 @@ const AppTabNavigator = createMaterialTopTabNavigator({
         inactiveTintColor: 'grey',
         style:{
             backgroundColor:'#f2f2f2'
-        }
+        },
+        showIcon: true,
     },
+
+    
 
   });
 
