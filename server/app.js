@@ -6,6 +6,7 @@ const morgan=require('morgan');
 
 app.use(morgan('[:date[iso]] :method :status :url :response-time(ms) :user-agent'));    
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 app.use('/api',require('./api'));   
 
