@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Button,Dimensions,Image } from 'react-native';
+import { View, Text, StyleSheet, Button,Dimensions,Image,TextInput,TouchableOpacity } from 'react-native';
 import { SearchBar,Header  } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { createAppContainer } from 'react-navigation';
@@ -56,17 +56,46 @@ export default class App extends React.Component {
     }
     updateSearch = search => {
       this.setState({ search });
+      console.log(this.state.search)
     }
+    sendSearch = search => {
+      console.log('sendSearch')
+      async function getSearchRate() {
+        /*
+        try{
+          let response = await fetch("http://localhost:3001/search");
+          let responseJson = await response.json();
+          return responseJson.movies;
+        } catch(error) {
+          console.error(error);
+        }
+        */
+      }
+      
+    }
+
     render(){
         const { search } = this.state;
         return (
             <>
-            <SearchBar
-            placeholder="검색"
+            <View style={styles.searchContainer}>
+            <View style={styles.searchbar}>
+            <TextInput
+            style = {styles.searchText}
+            autoCorrect= {false}
+            placeholder = '검색'
+            value = {this.state.search}
             onChangeText={this.updateSearch}
-            value={search}
-            
-          />
+            onSubmitEditing = {this.sendSearch}
+            />
+            <TouchableOpacity style={styles.searchMic} onPressOut={this.sendSearch}>
+            <Icon name="microphone" size={20} color="#000000" />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.searchBtn} onPressOut={this.sendSearch}>
+            <Icon name="search" size={20} color="#000000" />
+            </TouchableOpacity>
+            </View>
+            </View>
             <SafeAreaView style={{flex: 1}}>
                 <AppContainer />
             </SafeAreaView>
@@ -77,3 +106,26 @@ export default class App extends React.Component {
     }
 }
 
+const styles = StyleSheet.create({
+  searchContainer:{
+        marginLeft: 20,
+        marginRight: 20,
+  },
+  searchbar:{
+    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    height: 50,
+    paddingLeft: 10,
+    paddingRight: 10,
+  },
+  searchText:{
+    flex: 1,
+  },
+  searchMic:{
+    margin: 5,
+  }
+  searchBtn:{
+    padding: 5,
+  },
+})
