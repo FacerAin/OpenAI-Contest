@@ -6,9 +6,7 @@ import { createAppContainer } from 'react-navigation';
 import {createMaterialTopTabNavigator} from 'react-navigation-tabs'
 import { createStackNavigator } from 'react-navigation-stack';
 import SafeAreaView from 'react-native-safe-area-view';
-import Swipeable from 'react-native-gesture-handler/Swipeable';
 import { isTSConstructSignatureDeclaration } from '@babel/types';
-import Speedometer from 'react-native-speedometer-chart';
 import HomeScreen from './components/home/home';
 import RateScreen from './components/rate/rate'
 import {
