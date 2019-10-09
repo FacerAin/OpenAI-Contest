@@ -5,7 +5,7 @@ import Speedometer from 'react-native-speedometer-chart';
 import {
     LineChart,
   } from 'react-native-chart-kit'
-
+  
 
 
 
@@ -13,7 +13,7 @@ export default class RateScreen extends React.Component {
     static navigationOptions = {
         title:'검색점수',
         tabBarIcon: 
-        <Icon name="line-chart" size={20} color="#000000" />,
+        <Icon name="line-chart" style={{margin : 0, padding : 0,}} size={20} color={this.props.activeTintColor} />,
     }
     render() {
       return (
@@ -27,15 +27,19 @@ export default class RateScreen extends React.Component {
         value={75} totalValue={100}
         showText
         showLabel
-        textStyle= {{fontSize:40}}
+        textStyle= {{fontSize:40, color:"#072964"}}
+        internalColor="#5f86c4"
         text="75점"/>
         </View>
         <View>
             <Text>검색 제안</Text>
         </View>
         <View>
-    <Text>다음에는 이렇게 검색해보면 어떨까요?
-    "경희대학교 학생수" 검색단어는 필요한 단어로만 구성하여 간결할 수록 좋습니다!</Text>
+    <View style={styles.descontainer}>
+      <Text style={styles.destitle}>다음에는 이렇게 검색해보면 어떨까요?</Text>
+      <Text style={styles.deskeyword}>"경희대학교 학생수"</Text>
+      <Text style={styles.destext}>검색단어는 필요한 단어로만 구성하여 간결할수록 좋습니다!</Text>
+    </View>
   <LineChart
     data={{
       labels: ['January', 'February', 'March', 'April', 'May', 'June'],
@@ -54,9 +58,9 @@ export default class RateScreen extends React.Component {
     height={220}
     yAxisLabel={''}
     chartConfig={{
-      backgroundColor: '#e26a00',
-      backgroundGradientFrom: '#fb8c00',
-      backgroundGradientTo: '#ffa726',
+      backgroundColor: '##a4abb6',
+      backgroundGradientFrom: '#babec5',
+      backgroundGradientTo: '#828ea6',
       decimalPlaces: 2, // optional, defaults to 2dp
       color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
       style: {
@@ -84,7 +88,7 @@ export default class RateScreen extends React.Component {
         backgroundColor: '#F7F7F7',
     borderWidth: 1,
     borderRadius: 2,
-    borderColor: '#ddd',
+    borderColor: '#b5cdfc',
     borderBottomWidth: 0,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
@@ -171,5 +175,24 @@ export default class RateScreen extends React.Component {
     },
     ratingpageheader:{
         backgroundColor: 'black'
+    },
+    descontainer:{
+      alignItems: 'center',
+      flexDirection: 'column',
+      justifyContent: 'space-between',
+      margin: 20,      
+    },
+    destitle:{
+      fontWeight: 'bold',
+      fontSize: 15,
+      padding: 20,
+    },
+    deskeyword:{
+      fontWeight: 'bold',
+      fontSize: 30,
+    },
+    destext:{
+      margin: 10,
+      textAlign: 'center',
     },
 })
