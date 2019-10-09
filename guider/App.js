@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
   },
   searchMic:{
     margin: 5,
-  }
+  },
   searchBtn:{
     padding: 5,
   },

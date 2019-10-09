@@ -31,7 +31,9 @@ export default class HomeScreen extends React.Component {
       super(props);
       this.state = {
         search: '',
+        searchdataset: '',
       }
+
   }
   updateSearch = search => {
     this.setState({ search });
