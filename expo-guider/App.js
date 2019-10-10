@@ -11,6 +11,7 @@ import { isTSConstructSignatureDeclaration } from '@babel/types';
 import HomeScreen from './components/home/home';
 import RateScreen from './components/rate/rate';
 import Constants from 'expo-constants';
+import TestDataset from './test.json'
 import {
     LineChart,
     BarChart,
@@ -19,6 +20,8 @@ import {
     ContributionGraph,
     StackedBarChart
   } from 'react-native-chart-kit'
+
+
 
 const AppTabNavigator = createMaterialTopTabNavigator( {
     Home: { screen : HomeScreen },
@@ -65,6 +68,7 @@ export default class App extends React.Component {
         super(props);
         this.state = {
           search: '',
+          dataset: TestDataset,
         }
     }
     updateSearch = search => {
@@ -86,8 +90,10 @@ export default class App extends React.Component {
       }
       
     }
-
+/*App navigator를 통해서 Props를 넘기는 방안은?*/ 
     render(){
+      console.log(this.state.dataset.return_data.searchResults)
+      console.log(this.state.dataset.return_data.searchResults.length)
         const { search } = this.state;
         return (
             <>

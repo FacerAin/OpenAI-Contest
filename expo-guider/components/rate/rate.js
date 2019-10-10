@@ -6,14 +6,16 @@ import {
     LineChart,
   } from 'react-native-chart-kit'
   
+/*
+Rating Page 디자인 개선
+*/
 
-
-
+//<Icon name="line-chart" style={{margin : 0, padding : 0,}} size={20} color={this.props.activeTintColor} />,
 export default class RateScreen extends React.Component {
     static navigationOptions = {
         title:'검색점수',
         tabBarIcon: 
-        <Icon name="line-chart" style={{margin : 0, padding : 0,}} size={20} color={this.props.activeTintColor} />,
+        <Icon name="line-chart" style={{margin : 0, padding : 0,}} size={20}/>,
     }
     render() {
       return (
@@ -30,9 +32,6 @@ export default class RateScreen extends React.Component {
         textStyle= {{fontSize:40, color:"#072964"}}
         internalColor="#5f86c4"
         text="75점"/>
-        </View>
-        <View>
-            <Text>검색 제안</Text>
         </View>
         <View>
     <View style={styles.descontainer}>
