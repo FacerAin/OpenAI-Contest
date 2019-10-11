@@ -7,12 +7,14 @@ keywordSend = (keywordData) => {
             'text': keywordData
         }
     }
-    axios.post('http://localhost:3000/api/cliConnection',{
+    fetch('http://localhost:3000/api/cliConnection',{
         method: 'POST',
         body: JSON.stringify(datajson),
         headers:{
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Headers': '*',
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*'
+
           }
     }).then(res => res.json())
     .then(response => console.log('Success:', JSON.stringify(response)))
@@ -21,4 +23,4 @@ keywordSend = (keywordData) => {
 
 }
 
-module.exports = keywordSend;  
+module.exports = keywordSend;

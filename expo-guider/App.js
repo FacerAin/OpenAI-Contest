@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import keywordSend from './util/datasend'
+//import keywordSend from './util/datasend'
 import { View, Text, StyleSheet, Button,Dimensions,Image,TextInput,TouchableOpacity } from 'react-native';
 import { SearchBar,Header  } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -14,6 +14,7 @@ import AppContainer from './components/AppContainer/AppContainer';
 import Constants from 'expo-constants';
 import TestDataset from './test.json'
 import styles from './AppStyles.js';
+import axios from 'axios';
 
 import {
     LineChart,
@@ -23,6 +24,28 @@ import {
     ContributionGraph,
     StackedBarChart
   } from 'react-native-chart-kit'
+async function SendToApi(searchdata) {
+    try {
+      let response = await axios.post('http://localhost:3000/api/cliConnection',
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+          },
+          data: {
+            data: {
+              text: searchdata
+          }
+          },
+        });
+      let responseJson = await response.json();
+      console.log('dkdkdkdk')
+      console.log(responseJson)
+      return responseJson;
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
 export default class App extends React.Component {
     constructor(props) {
@@ -40,7 +63,7 @@ export default class App extends React.Component {
     로딩 구현하기*/
     sendSearch = () => {
       console.log('search')
-      keywordSend(this.state.search)
+      SendToApi(this.state.search)
       }
     
       
