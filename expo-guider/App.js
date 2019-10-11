@@ -9,6 +9,7 @@ import SafeAreaView from 'react-native-safe-area-view';
 import { isTSConstructSignatureDeclaration } from '@babel/types';
 import HomeScreen from './components/home/home';
 import RateScreen from './components/rate/rate';
+import AppContainer from './components/AppContainer/AppContainer';
 import Constants from 'expo-constants';
 import TestDataset from './test.json'
 import {
@@ -19,48 +20,6 @@ import {
     ContributionGraph,
     StackedBarChart
   } from 'react-native-chart-kit'
-
-
-
-const AppTabNavigator = createMaterialTopTabNavigator( {
-    Home: { screen : HomeScreen },
-    Rate: { screen : RateScreen },
-  }, {
-    //swipeEnabled: true,
-    //animationEnabled: true,
-    initialRouteName: 'Home',
-    tabBarPosition: 'bottom',
-    barStyle: { backgroundColor: '#000000' },
-    //order: ['Home','Rate']
-    //shifting:true,
-    tabBarOptions:{
-        activeTintColor: '#5f86c4',
-        inactiveTintColor: '#000000',
-        indicatorStyle: {
-          backgroundColor: 'black'
-        },
-        style:{
-            backgroundColor:'#f6f8f9',
-            height: '8%',
-            allowFontScaling : 'true'
-        },
-        tabStyle: {
-          hegith: 30,
-        },
-        showIcon: true,
-        labelStyle :{
-          margin : 0, 
-          padding : 0,
-          fontSize: 10,
-        },
-        iconStyle :{
-          margin : 0, 
-          padding : 0,
-        }
-    },
-  });
-
-const AppContainer = createAppContainer(AppTabNavigator);
 
 export default class App extends React.Component {
     constructor(props) {
@@ -114,11 +73,12 @@ export default class App extends React.Component {
             </View>
             </View>
             <SafeAreaView style={{flex: 1}}>
-                <AppContainer screenProps={this.state.dataset} activeTintColor={this.props.activeTintColor}/>
+                <AppContainer screenProps={this.state.dataset} tintColor={this.props.tintColor}/>
             </SafeAreaView>
             </>
         )
-    }
+    
+  }
 }
 
 const styles = StyleSheet.create({

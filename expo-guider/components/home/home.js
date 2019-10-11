@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet,FlatList,TouchableOpacity } from 'react-native';
 import  List  from 'react-native-elements'
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/FontAwesome';  
 import SearchCard from '../searchcard/searchcard'
 //<Icon name="home" style={{margin : 0, padding : 0,}} size={20} color={this.props.activeTintColor} />
 
+
+
 export default class HomeScreen extends React.Component {
-    static navigationOptions = {
-        title:'초기화면',
-        tabBarIcon: 
-        <Icon name="home" style={{margin : 0, padding : 0,}} size={20} />,
-    }
     constructor(props) {
         super(props);
         this.state = {
@@ -19,7 +16,7 @@ export default class HomeScreen extends React.Component {
         }
         console.log(this.state.searchdataset)
     }
-    handleCancel = e =>{
+    handleCancel = () =>{
         console.log('handlecancel')
         this.setState({ratingstatus: false})
     }
@@ -32,10 +29,11 @@ export default class HomeScreen extends React.Component {
                         <View style={styles.ratingtext}>
                             <Text style={{color: '#fdfcfc'}}>당신의 검색점수는 %d점 입니다.</Text>
                         </View>
-                        <TouchableOpacity style={styles.ratingspec}>
+                        <TouchableOpacity style={styles.ratingspec} onPressOut={() => this.props.navigation.navigate('Rate')}>
                             <Text style={{color: '#fdfcfc'}}>자세히 보기</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity onPressOut={this.handleCancel} style={styles.ratingcancel} onPressOut={() => this.props.navigation}>
+                        <TouchableOpacity onPressOut={this.handleCancel} style={styles.ratingcancel} onPressOut={() => {
+                            console.log('Specific'); this.props.navigation}}>
                             <Text style={styles.ratingcancelText}>x</Text>
                         </TouchableOpacity>
                     </View>
@@ -62,6 +60,12 @@ export default class HomeScreen extends React.Component {
             </>
         )
     }
+}
+
+HomeScreen.navigationOptions={
+    title:'초기화면',
+    tabBarIcon:
+    <Icon name="home" style={{margin : 0, padding : 0, }} size={20} />,
 }
 
 const styles = StyleSheet.create({
@@ -108,7 +112,6 @@ const styles = StyleSheet.create({
     },
     ratingcancelText:{
         fontSize: 20,
-        color: 'white',
     },
 
     ratingpageheader: {

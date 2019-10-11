@@ -12,7 +12,7 @@
     "react": "16.8.3",
     "react-dom": "16.8.3",
     "react-native": "https://github.com/expo/react-native/archive/sdk-35.0.0.tar.gz",
-    "react-native-chart-kit": "^3.7.0",
+    "react-native-chart-kit": "^3.9.0",
     "react-native-elements": "^1.2.6",
     "react-native-gesture-handler": "^1.4.1",
     "react-native-paper": "^2.16.0",
