@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import keywordSend from './util/datasend'
+//import keywordSend from './util/datasend'
 import { View, Text, StyleSheet, Button,Dimensions,Image,TextInput,TouchableOpacity } from 'react-native';
 import { SearchBar,Header  } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -40,7 +40,7 @@ export default class App extends React.Component {
     로딩 구현하기*/
     sendSearch = () => {
       console.log('search')
-      keywordSend(this.state.search)
+      //keywordSend(this.state.search)
       }
     
       
@@ -53,19 +53,22 @@ export default class App extends React.Component {
             <View style={styles.statusBar}/>
             <View style={styles.searchContainer}>
             <View style={styles.searchbar}>
+            <TouchableOpacity style={styles.logo}>
+            <Icon name="arrow-right" size={30} color="#dbe2ef" />
+            </TouchableOpacity>       
               <TextInput
               style = {styles.searchText}
               autoCorrect= {false}
-              placeholder = '검색'
+              placeholder = '  검색'
               value = {this.state.search}
               onChangeText={this.updateSearch}
               onSubmitEditing = {this.sendSearch}
               />
             <TouchableOpacity style={styles.searchMic} onPressOut={this.sendSearch}>
-            <Icon name="microphone" size={30} color="#000000" />
+            <Icon name="microphone" size={30} color="#ffffff" />
             </TouchableOpacity>
             <TouchableOpacity style={styles.searchBtn} onPressOut={this.sendSearch}>
-            <Icon name="search" size={30} color="#000000" />
+            <Icon name="search" size={30} color="#ffffff" />
             </TouchableOpacity>
             </View>
             </View>

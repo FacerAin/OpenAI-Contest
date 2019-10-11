@@ -5,26 +5,38 @@ const styles = StyleSheet.create({
       height: Constants.statusBarHeight,
     },
     searchContainer:{
-      marginLeft: 20,
-      marginRight: 10
+      backgroundColor: "#112d4e",
+      margin: 0,
+      padding: 0,
     },
     searchbar:{
       alignItems: "center",
       flexDirection: 'row',
       justifyContent: 'space-between',
-      height: 50,
-      paddingLeft: 10,
+      height: 70,
+      paddingLeft: 0,
       paddingRight: 0,
     },
     searchText:{
+      borderRadius:5,
       backgroundColor:'white',
+      height:45,
+      fontSize:20,
       flex: 1,
+    },
+    logo:{
+      marginRight:10,
+      marginLeft:10,
+      borderWidth: 0,
+      borderRadius: 12,
+      padding:5,
+      borderColor: "#ffffd2",
     },
     searchMic:{
       margin: 10,
     },
     searchBtn:{
-      padding: 0,
+      marginRight: 10,
     },
   })
 

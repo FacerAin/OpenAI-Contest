@@ -39,7 +39,7 @@ export default class SearchCard extends React.Component {
 const styles = StyleSheet.create({
 
     cardcontainer:{
-        backgroundColor: '#F7F7F7',
+        backgroundColor: '#dbe2ef',
         borderWidth: 1,
         borderRadius: 2,
         borderColor: '#ddd',

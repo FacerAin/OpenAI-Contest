@@ -26,8 +26,9 @@ const AppTabNavigator = createMaterialTopTabNavigator(
           backgroundColor: 'black'
         },
         style:{
-            backgroundColor:'#f6f8f9',
+            backgroundColor:'#f8f6f6',
             height: '10%',
+            fontSize: 10,
             allowFontScaling : 'true'
         },
         tabStyle: {
