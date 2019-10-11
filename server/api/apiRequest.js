@@ -1,4 +1,12 @@
 require('dotenv').config();
+try {
+    if( process.env.TEST != "OKAY" ) {
+        throw new Error( "키 오류 키파일을 확인하세요" );
+    }
+}
+catch( err ) {
+    throw new Error(err);
+}
 const rp = require("request-promise");
 
 const URL = {
