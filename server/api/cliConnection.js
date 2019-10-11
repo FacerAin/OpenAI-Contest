@@ -11,7 +11,6 @@ const cliConnection = async ( req, res ) => {
     let clientData = {},
         analyzeData = {},
         searchData = [];
-
     try {
         clientData = JSON.parse( req.body.data );
         if( !clientData.text.replace( /\s/g, '' ).length ) {
@@ -34,7 +33,6 @@ const cliConnection = async ( req, res ) => {
         res.status( 502 );
         return false;
     }
-    
     try {
         searchData = await Promise.all( [ search.naver( analyzeData.keywordText ), search.google( analyzeData.keywordText ) ] );
     }
@@ -45,7 +43,6 @@ const cliConnection = async ( req, res ) => {
         return false;
     }
     searchData = searchData[ 0 ].concat( searchData[ 1 ] );
-
     try {
         searchData = await machineRead( searchData, analyzeData.keywordText );
     }
@@ -56,7 +53,6 @@ const cliConnection = async ( req, res ) => {
         return false;
     }
     analyzeData.searchResults = searchData;
-
     res.send( { "return_code" : 0, "return_data" : analyzeData } );
     res.status( 200 );
 };  

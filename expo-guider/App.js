@@ -36,11 +36,11 @@ export default class App extends React.Component {
       this.setState({ search });
       console.log(this.state.search)
     }
+    /*
+    로딩 구현하기*/
     sendSearch = () => {
       console.log('search')
-      /*
       keywordSend(this.state.search)
-      */
       }
     
       

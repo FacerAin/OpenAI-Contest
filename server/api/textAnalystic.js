@@ -145,10 +145,8 @@ const textAnalystic = async ( clientData ) => {
     catch( err ) {
         throw new Error( err.message );
     }
-
     result.korean = fixedClientData;
     result.fixedText = result.korean.notag_html;
-
     try {
         textAnalystic = await apiRequest.ETRI( "WiseNLU", { "analysis_code" : "ner", "text" : result.fixedText } );
     }
@@ -157,7 +155,6 @@ const textAnalystic = async ( clientData ) => {
     }
 
     await divideMorp( result, textAnalystic.return_object.sentence[ 0 ] );
-    
     return result;
 }
 

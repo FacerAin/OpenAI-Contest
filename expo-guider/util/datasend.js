@@ -1,3 +1,5 @@
+const axios = require('axios')
+
 keywordSend = (keywordData) => {
     console.log('keywordSend')
     let datajson = {
@@ -5,11 +7,12 @@ keywordSend = (keywordData) => {
             'text': keywordData
         }
     }
-    fetch('http://localhost:3000/api/cliConnection',{
+    axios.post('http://localhost:3000/api/cliConnection',{
         method: 'POST',
         body: JSON.stringify(datajson),
         headers:{
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
           }
     }).then(res => res.json())
     .then(response => console.log('Success:', JSON.stringify(response)))
@@ -18,4 +21,4 @@ keywordSend = (keywordData) => {
 
 }
 
-module.exports = keywordSend;
+module.exports = keywordSend;  
