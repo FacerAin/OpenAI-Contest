@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import $ from 'jquery' 
+import keywordSend from './util/datasend'
 import { View, Text, StyleSheet, Button,Dimensions,Image,TextInput,TouchableOpacity } from 'react-native';
 import { SearchBar,Header  } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -12,6 +14,7 @@ import RateScreen from './components/rate/rate';
 import AppContainer from './components/AppContainer/AppContainer';
 import Constants from 'expo-constants';
 import TestDataset from './test.json'
+
 import {
     LineChart,
     BarChart,
@@ -33,22 +36,13 @@ export default class App extends React.Component {
       this.setState({ search });
       console.log(this.state.search)
     }
-    sendSearch = search => {
+    sendSearch = () => {
       console.log('sendSearch')
-      async function getSearchRate() {
-        /*
-        try{
-          let response = await fetch("http://localhost:3001/search");
-          let responseJson = await response.json();
-          return responseJson.movies;
-        } catch(error) {
-          console.error(error);
-        }
-        */
+      keywordSend(this.state.search)
       }
+    
       
-    }
-/*App navigator를 통해서 Props를 넘기는 방안은?*/ 
+    
     render(){
         const { search } = this.state;
         return (
@@ -80,6 +74,7 @@ export default class App extends React.Component {
     
   }
 }
+
 
 const styles = StyleSheet.create({
   statusBar:{ 

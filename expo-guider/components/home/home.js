@@ -14,7 +14,6 @@ export default class HomeScreen extends React.Component {
             ratingstatus: true,
             searchdataset: this.props.screenProps.return_data.searchResults,
         }
-        console.log(this.state.searchdataset)
     }
     handleCancel = () =>{
         console.log('handlecancel')
@@ -32,8 +31,7 @@ export default class HomeScreen extends React.Component {
                         <TouchableOpacity style={styles.ratingspec} onPressOut={() => this.props.navigation.navigate('Rate')}>
                             <Text style={{color: '#fdfcfc'}}>자세히 보기</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity onPressOut={this.handleCancel} style={styles.ratingcancel} onPressOut={() => {
-                            console.log('Specific'); this.props.navigation}}>
+                        <TouchableOpacity onPressOut={this.handleCancel} style={styles.ratingcancel}>
                             <Text style={styles.ratingcancelText}>x</Text>
                         </TouchableOpacity>
                     </View>
@@ -112,9 +110,11 @@ const styles = StyleSheet.create({
     },
     ratingcancelText:{
         fontSize: 20,
+        color: 'white',
     },
 
     ratingpageheader: {
-        backgroundColor: 'black'
+        backgroundColor: 'black',
+
     },
 })

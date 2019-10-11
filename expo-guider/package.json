@@ -8,7 +8,10 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "crypto": "^1.0.1",
     "expo": "^35.0.0",
+    "jquery": "^3.4.1",
+    "os": "^0.1.1",
     "react": "16.8.3",
     "react-dom": "16.8.3",
     "react-native": "https://github.com/expo/react-native/archive/sdk-35.0.0.tar.gz",
@@ -23,7 +26,10 @@
     "react-native-web": "^0.11.7",
     "react-navigation": "^4.0.10",
     "react-navigation-stack": "^1.9.4",
-    "react-navigation-tabs": "^2.5.6"
+    "react-navigation-tabs": "^2.5.6",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4",
+    "request-promise-native": "^1.0.7"
   },
   "devDependencies": {
     "babel-preset-expo": "^7.0.0"
