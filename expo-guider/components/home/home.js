@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Button,Dimensions,Image,FlatList } from 'react-native';
+import { View, Text, StyleSheet,FlatList,TouchableOpacity } from 'react-native';
 import  List  from 'react-native-elements'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import SearchCard from '../searchcard/searchcard'
@@ -16,45 +16,53 @@ export default class HomeScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            ratingstatus: true,
             searchdataset: this.props.screenProps.return_data.searchResults,
         }
 
         console.log(this.state.searchdataset)
     }
+    handleCancel = e =>{
+        console.log('handlecancel')
+        this.setState({ratingstatus: false})
+    }
 
     render() {
         return (
             <> 
-                <View style={styles.container}>
-                    <View style={styles.ratingcontainer}>
+<View style={styles.container}>
+            {this.state.ratingstatus ? 
+            <View style={styles.ratingcontainer}>
                         <View style={styles.ratingtext}>
                             <Text style={{color: '#fdfcfc'}}>당신의 검색점수는 %d점 입니다.</Text>
                         </View>
                         <View style={styles.ratingspec}>
                             <Text style={{color: '#fdfcfc'}}>자세히 보기</Text>
                         </View>
-                        <View style={styles.ratingcancel}>
-                            <Text style={{color: '#fdfcfc'}}>X</Text>
-                        </View>
+                        <TouchableOpacity onPressOut={this.handleCancel} style={styles.ratingcancel}>
+                            <Text style={styles.ratingcancelText}>x</Text>
+                        </TouchableOpacity>
                     </View>
-                    {/*FlatList로 SearchCard Rendering Item Data를 Component Props로 넘기기*/}
-
+                    
+                    : null
+            }
                     <FlatList
                     data={this.state.searchdataset}
-                    initialNumToRender={20}
+                    initialNumToRender={5}
                     onEndReachedThreshold={1}
                     renderItem={({ item }) => {
                         return (
                             <>
                           <SearchCard
                           title={item.title}
-                          description={item.passage}/>
+                          description={item.passage}
+                          url={item.url}/>
                           </>
                         );
                       }}
                     
                     />
-                </View>
+                    </View>
             </>
         )
     }
@@ -101,6 +109,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         height: 50,
         flex: 1,
+    },
+    ratingcancelText:{
+        fontSize: 30,
+        color: 'white',
     },
 
     ratingpageheader: {

@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Button,Dimensions,Image } from 'react-native';
+import { View, Text, StyleSheet, Button,Dimensions,Image, Linking } from 'react-native';
 export default class SearchCard extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             title: this.props.title,
             description: this.props.description,
+            url: this.props.url,
         }
-
-        console.log(this.state.description)
     }
     render(){
         return (
@@ -29,7 +28,7 @@ export default class SearchCard extends React.Component {
                             </Text>
                         </View>
                         <View style={styles.cardfooter}>
-                            <Text style={styles.cardfooterbt}>바로가기</Text>
+                            <Text style={styles.cardfooterbt} onPress={() => Linking.openURL(this.state.url)}>바로가기</Text>
                         </View>
                     </View>
                     </>

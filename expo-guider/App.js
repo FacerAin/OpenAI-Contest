@@ -91,8 +91,6 @@ export default class App extends React.Component {
     }
 /*App navigator를 통해서 Props를 넘기는 방안은?*/ 
     render(){
-      {/*console.log(this.state.dataset.return_data.searchResults)
-      console.log(this.state.dataset.return_data.searchResults.length)*/}
         const { search } = this.state;
         return (
             <>
