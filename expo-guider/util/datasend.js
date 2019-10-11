@@ -5,12 +5,7 @@ keywordSend = (keywordData) => {
             'text': keywordData
         }
     }
-    let options = {
-        method: "POST",
-        uri: "http://localhost:3000/api/cliConnection",
-        body: datajson,
-        json: true
-    }
+
     fetch('http://localhost:3000/api/cliConnection',{
         method: 'POST',
         body: JSON.stringify(datajson),
