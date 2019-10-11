@@ -1,11 +1,10 @@
-
 keywordSend = (keywordData) => {
+    console.log('keywordSend')
     let datajson = {
         'data': {
             'text': keywordData
         }
     }
-
     fetch('http://localhost:3000/api/cliConnection',{
         method: 'POST',
         body: JSON.stringify(datajson),

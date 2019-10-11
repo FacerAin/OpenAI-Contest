@@ -3,6 +3,7 @@ import { View, Text, StyleSheet,FlatList,TouchableOpacity } from 'react-native';
 import  List  from 'react-native-elements'
 import Icon from 'react-native-vector-icons/FontAwesome';  
 import SearchCard from '../searchcard/searchcard'
+import styles from './homeStyles';
 //<Icon name="home" style={{margin : 0, padding : 0,}} size={20} color={this.props.activeTintColor} />
 
 
@@ -22,7 +23,7 @@ export default class HomeScreen extends React.Component {
     render() {
         return (
             <> 
-<View style={styles.container}>
+            <View style={styles.container}>
             {this.state.ratingstatus ? 
             <View style={styles.ratingcontainer}>
                         <View style={styles.ratingtext}>
@@ -66,55 +67,3 @@ HomeScreen.navigationOptions={
     <Icon name="home" style={{margin : 0, padding : 0, }} size={20} />,
 }
 
-const styles = StyleSheet.create({
-    container:{
-        flex: 1,
-    },
-
-    ratingcontainer:{
-        width: '100%',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        backgroundColor: '#5f86c4',
-        borderWidth: 1,
-        borderRadius: 2,
-        borderColor: '#ddd',
-        borderBottomWidth: 0,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.8,
-        shadowRadius: 2,
-        elevation: 1,
-    },
-
-    ratingtext:{
-        padding: 10,
-        height: 50,
-        flex: 5,
-        justifyContent: 'center',
-    },
-
-    ratingspec:{
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: 50,
-        flex: 1.8,
-    },
-
-    ratingcancel: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: 50,
-        flex: 1,
-    },
-    ratingcancelText:{
-        fontSize: 20,
-        color: 'white',
-    },
-
-    ratingpageheader: {
-        backgroundColor: 'black',
-
-    },
-})

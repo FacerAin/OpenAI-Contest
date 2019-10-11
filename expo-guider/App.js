@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import $ from 'jquery' 
 import keywordSend from './util/datasend'
 import { View, Text, StyleSheet, Button,Dimensions,Image,TextInput,TouchableOpacity } from 'react-native';
 import { SearchBar,Header  } from 'react-native-elements';
@@ -14,6 +13,7 @@ import RateScreen from './components/rate/rate';
 import AppContainer from './components/AppContainer/AppContainer';
 import Constants from 'expo-constants';
 import TestDataset from './test.json'
+import styles from './AppStyles.js';
 
 import {
     LineChart,
@@ -37,14 +37,17 @@ export default class App extends React.Component {
       console.log(this.state.search)
     }
     sendSearch = () => {
-      console.log('sendSearch')
+      console.log('search')
+      /*
       keywordSend(this.state.search)
+      */
       }
     
       
     
     render(){
         const { search } = this.state;
+
         return (
             <>
             <View style={styles.statusBar}/>
@@ -76,30 +79,4 @@ export default class App extends React.Component {
 }
 
 
-const styles = StyleSheet.create({
-  statusBar:{ 
-    height: Constants.statusBarHeight,
-  },
-  searchContainer:{
-    marginLeft: 20,
-    marginRight: 10
-  },
-  searchbar:{
-    alignItems: "center",
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    height: 50,
-    paddingLeft: 10,
-    paddingRight: 0,
-  },
-  searchText:{
-    backgroundColor:'white',
-    flex: 1,
-  },
-  searchMic:{
-    margin: 10,
-  },
-  searchBtn:{
-    padding: 0,
-  },
-})
+
