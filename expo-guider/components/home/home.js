@@ -3,9 +3,7 @@ import { View, Text, StyleSheet,FlatList,TouchableOpacity } from 'react-native';
 import  List  from 'react-native-elements'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import SearchCard from '../searchcard/searchcard'
-
 //<Icon name="home" style={{margin : 0, padding : 0,}} size={20} color={this.props.activeTintColor} />
-
 
 export default class HomeScreen extends React.Component {
     static navigationOptions = {
@@ -19,14 +17,12 @@ export default class HomeScreen extends React.Component {
             ratingstatus: true,
             searchdataset: this.props.screenProps.return_data.searchResults,
         }
-
         console.log(this.state.searchdataset)
     }
     handleCancel = e =>{
         console.log('handlecancel')
         this.setState({ratingstatus: false})
     }
-
     render() {
         return (
             <> 
@@ -36,10 +32,10 @@ export default class HomeScreen extends React.Component {
                         <View style={styles.ratingtext}>
                             <Text style={{color: '#fdfcfc'}}>당신의 검색점수는 %d점 입니다.</Text>
                         </View>
-                        <View style={styles.ratingspec}>
+                        <TouchableOpacity style={styles.ratingspec}>
                             <Text style={{color: '#fdfcfc'}}>자세히 보기</Text>
-                        </View>
-                        <TouchableOpacity onPressOut={this.handleCancel} style={styles.ratingcancel}>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPressOut={this.handleCancel} style={styles.ratingcancel} onPressOut={() => this.props.navigation}>
                             <Text style={styles.ratingcancelText}>x</Text>
                         </TouchableOpacity>
                     </View>
@@ -111,7 +107,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     ratingcancelText:{
-        fontSize: 30,
+        fontSize: 20,
         color: 'white',
     },
 
