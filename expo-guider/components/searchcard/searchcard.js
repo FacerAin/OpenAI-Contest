@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Button,Dimensions,Image } from 'react-native';
 export default class SearchCard extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            title: this.props.title,
+            description: this.props.description,
+        }
+
+        console.log(this.state.description)
+    }
     render(){
         return (
             <>
@@ -11,12 +20,12 @@ export default class SearchCard extends React.Component {
                             />
                             <View style={styles.cardtitle}>
                                 <Text>위키백과</Text>
-                                <Text>애국가</Text>
+                                <Text>{this.state.title}</Text>
                             </View>
                         </View>
                         <View style={styles.cardbody}>
                             <Text style={styles.cardbodytext}>
-                            동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세
+                            {this.state.description}
                             </Text>
                         </View>
                         <View style={styles.cardfooter}>

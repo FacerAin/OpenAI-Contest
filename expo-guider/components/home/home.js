@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Button,Dimensions,Image,FlatList } from 'react-native';
+import  List  from 'react-native-elements'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import SearchCard from '../searchcard/searchcard'
 
@@ -15,17 +16,13 @@ export default class HomeScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            search: '',
-            searchdataset: '',
+            searchdataset: this.props.screenProps.return_data.searchResults,
         }
 
-    }
-    updateSearch = search => {
-        this.setState({ search });
+        console.log(this.state.searchdataset)
     }
 
     render() {
-        const { search } = this.state;
         return (
             <> 
                 <View style={styles.container}>
@@ -41,13 +38,22 @@ export default class HomeScreen extends React.Component {
                         </View>
                     </View>
                     {/*FlatList로 SearchCard Rendering Item Data를 Component Props로 넘기기*/}
-                    <SearchCard />
-                    <SearchCard />
-                    <SearchCard />
-                    <SearchCard />
-                    <SearchCard />
-                    <SearchCard />
-           
+
+                    <FlatList
+                    data={this.state.searchdataset}
+                    initialNumToRender={20}
+                    onEndReachedThreshold={1}
+                    renderItem={({ item }) => {
+                        return (
+                            <>
+                          <SearchCard
+                          title={item.title}
+                          description={item.passage}/>
+                          </>
+                        );
+                      }}
+                    
+                    />
                 </View>
             </>
         )

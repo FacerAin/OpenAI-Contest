@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, Button,Dimensions,Image,TextInput,TouchableOpacity } from 'react-native';
 import { SearchBar,Header  } from 'react-native-elements';
@@ -92,8 +91,8 @@ export default class App extends React.Component {
     }
 /*App navigator를 통해서 Props를 넘기는 방안은?*/ 
     render(){
-      console.log(this.state.dataset.return_data.searchResults)
-      console.log(this.state.dataset.return_data.searchResults.length)
+      {/*console.log(this.state.dataset.return_data.searchResults)
+      console.log(this.state.dataset.return_data.searchResults.length)*/}
         const { search } = this.state;
         return (
             <>
@@ -117,7 +116,7 @@ export default class App extends React.Component {
             </View>
             </View>
             <SafeAreaView style={{flex: 1}}>
-                <AppContainer activeTintColor={this.props.activeTintColor}/>
+                <AppContainer screenProps={this.state.dataset} activeTintColor={this.props.activeTintColor}/>
             </SafeAreaView>
             </>
         )

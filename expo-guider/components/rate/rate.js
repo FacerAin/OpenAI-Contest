@@ -34,6 +34,7 @@ export default class RateScreen extends React.Component {
         text="75점"/>
         </View>
         <View>
+        {/*App에서 props를 받아 js로 처리*/}
     <View style={styles.descontainer}>
       <Text style={styles.destitle}>다음에는 이렇게 검색해보면 어떨까요?</Text>
       <Text style={styles.deskeyword}>"경희대학교 학생수"</Text>
