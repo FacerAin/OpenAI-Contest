@@ -64,6 +64,6 @@ export default class HomeScreen extends React.Component {
 HomeScreen.navigationOptions={
     title:'초기화면',
     tabBarIcon:
-    <Icon name="home" style={{margin : 0, padding : 0, }} size={20} />,
+    <Icon name="home" style={{margin : 0, padding : 0,color:"#112d4e" }} size={20} />,
 }
 
