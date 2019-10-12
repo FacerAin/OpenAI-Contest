@@ -12,7 +12,8 @@ const cliConnection = async ( req, res ) => {
         analyzeData = {},
         searchData = [];
     try {
-        clientData = JSON.parse( req.body.data );
+        //clientData = JSON.parse( req.body.data);
+        clientData = req.body.data;
         if( !clientData.text.replace( /\s/g, '' ).length ) {
             throw new Error( "client text empty" );
         }

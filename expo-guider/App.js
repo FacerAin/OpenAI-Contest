@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 //import keywordSend from './util/datasend'
+
 import { View, Text, StyleSheet, Button,Dimensions,Image,TextInput,TouchableOpacity } from 'react-native';
 import { SearchBar,Header  } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -15,6 +16,7 @@ import Constants from 'expo-constants';
 import TestDataset from './test.json'
 import styles from './AppStyles.js';
 import axios from 'axios';
+import $ from 'jquery' 
 
 import {
     LineChart,
@@ -25,26 +27,55 @@ import {
     StackedBarChart
   } from 'react-native-chart-kit'
 async function SendToApi(searchdata) {
-    try {
-      let response = await axios.post('http://localhost:3000/api/cliConnection',
-        {
-          headers: {
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
-          },
-          data: {
-            data: {
-              text: searchdata
-          }
-          },
-        });
-      let responseJson = await response.json();
-      console.log('dkdkdkdk')
-      console.log(responseJson)
-      return responseJson;
-    } catch (error) {
-      console.error(error);
+  fetch(
+    "http://192.168.0.2:3000/api/cliConnection",
+    {
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        data:{
+          text: searchdata
+        }
+      }),
+      method: "POST", // *GET, POST, PUT, DELETE, etc.
     }
+  )
+    .then(response => {
+      console.log("got json" + response);
+      response.json();
+    })
+    .then(responseJson => {
+      console.log("Hey = "+responseJson);
+    })
+    .catch(error => {
+      console.error(error);
+    });
+  /*
+    $.ajax({
+        url: 'http://localhost:3000/api/cliConnection',
+        type: 'POST',
+        header:{
+          'Access-Control-Allow-Origin': '*'
+        },
+        data: {
+          'todos': JSON.stringify({
+            'data': {
+                'text': searchdata
+            }
+        })},
+        dataType: 'json',
+        traditional: true,
+        processData: true,})
+        .done(function(response) {
+          console.log('response')
+          console.log(response)
+        })
+        .fail( function(error) {
+          console.log('error')
+        })
+        */
   }
 
 export default class App extends React.Component {
