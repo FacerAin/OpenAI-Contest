@@ -58,7 +58,7 @@ export default class App extends React.Component {
     /*
     로딩 구현하기*/
     sendSearch = () => {
-<<<<<<< HEAD
+
       sendProcess = async function(){ 
         console.log('search')
         let searchResult = await SendToApi(this.state.search)
@@ -68,14 +68,9 @@ export default class App extends React.Component {
         }))
         */
         console.log(searchResult)
-=======
+
       console.log('search')
-<<<<<<< HEAD
-      //keywordSend(this.state.search)
-=======
       SendToApi(this.state.search)
->>>>>>> 768477ae9eff0654a387e5d1f9507603091c59e3
->>>>>>> dceeb206c5623fe8ba3945606f6982eee02ddc24
       }
     }
     render(){
