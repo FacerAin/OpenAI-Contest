@@ -16,66 +16,31 @@ import Constants from 'expo-constants';
 import TestDataset from './test.json'
 import styles from './AppStyles.js';
 import axios from 'axios';
-import $ from 'jquery' 
 
-import {
-    LineChart,
-    BarChart,
-    PieChart,
-    ProgressChart,
-    ContributionGraph,
-    StackedBarChart
-  } from 'react-native-chart-kit'
-async function SendToApi(searchdata) {
-  fetch(
-    "http://192.168.0.2:3000/api/cliConnection",
+import { func } from 'prop-types';
+SendToApi = async(searchdata) => {
+  const res = await axios(
     {
       headers: {
         "Accept": "application/json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
+      url: 'http://192.168.0.2:3000/api/cliConnection',
+      data: {
         data:{
           text: searchdata
         }
-      }),
-      method: "POST", // *GET, POST, PUT, DELETE, etc.
+      },
+      method: "POST",
     }
   )
     .then(response => {
-      console.log("got json" + response);
-      response.json();
-    })
-    .then(responseJson => {
-      console.log("Hey = "+responseJson);
+      console.log("Success response");
+      return JSON.stringify(response.data)
     })
     .catch(error => {
       console.error(error);
     });
-  /*
-    $.ajax({
-        url: 'http://localhost:3000/api/cliConnection',
-        type: 'POST',
-        header:{
-          'Access-Control-Allow-Origin': '*'
-        },
-        data: {
-          'todos': JSON.stringify({
-            'data': {
-                'text': searchdata
-            }
-        })},
-        dataType: 'json',
-        traditional: true,
-        processData: true,})
-        .done(function(response) {
-          console.log('response')
-          console.log(response)
-        })
-        .fail( function(error) {
-          console.log('error')
-        })
-        */
   }
 
 export default class App extends React.Component {
@@ -84,6 +49,7 @@ export default class App extends React.Component {
         this.state = {
           search: '',
           dataset: TestDataset,
+          fetching: false,
         }
     }
     updateSearch = search => {
@@ -93,12 +59,17 @@ export default class App extends React.Component {
     /*
     로딩 구현하기*/
     sendSearch = () => {
-      console.log('search')
-      SendToApi(this.state.search)
+      sendProcess = async function(){ 
+        console.log('search')
+        let searchResult = await SendToApi(this.state.search)
+        /*
+        this.setState(state = ({
+          dataset: state.dataset
+        }))
+        */
+        console.log(searchResult)
       }
-    
-      
-    
+    }
     render(){
         const { search } = this.state;
 
