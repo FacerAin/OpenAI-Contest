@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, Button,Dimensions,Image,TextInput,TouchableOpacity } from 'react-native';
 import { SearchBar,Header  } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { createAppContainer } from 'react-navigation';
+import { createAppContainer,NavigationEvents  } from 'react-navigation';
 import {createMaterialTopTabNavigator} from 'react-navigation-tabs'
 import { createStackNavigator } from 'react-navigation-stack';
 import SafeAreaView from 'react-native-safe-area-view';
@@ -17,22 +17,30 @@ import styles from './AppStyles.js';
 import axios from 'axios';
 
 import { func } from 'prop-types';
+
 SendToApi = async(searchdata) => {
-  const res = await axios(
-    {
-      headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json",
-      },
-      url: 'http://192.168.0.2:3000/api/cliConnection',
-      data: {
-        data:{
-          text: searchdata
-        }
-      },
-      method: "POST",
-    }
-  )
+  return new Promise((resolve,reject) => {
+    axios(
+      {
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+        },
+        url: 'http://192.168.0.40:3000/api/cliConnection',
+        data: {
+          data:{
+            text: searchdata
+          }
+        },
+        method: "POST",
+      }
+    )
+    .then((response)=>{
+      resolve(JSON.stringify(response.data))
+    })
+  })
+
+  /*
     .then(response => {
       console.log("Success response");
       return JSON.stringify(response.data)
@@ -40,6 +48,8 @@ SendToApi = async(searchdata) => {
     .catch(error => {
       console.error(error);
     });
+    */
+
   }
 
 export default class App extends React.Component {
@@ -55,28 +65,29 @@ export default class App extends React.Component {
       this.setState({ search });
       console.log(this.state.search)
     }
+    asyncstate = (state) => {
+      return new Promise((resolve,reject) => {
+        this.setState({dataset:state},resolve)
+      }).then(()=>{
+        console.log(this.state)
+        console.log('done')
+      })
+    }
     /*
     로딩 구현하기*/
-    sendSearch = () => {
-
-      sendProcess = async function(){ 
-        console.log('search')
-        let searchResult = await SendToApi(this.state.search)
-        /*
-        this.setState(state = ({
-          dataset: state.dataset
-        }))
-        */
-        console.log(searchResult)
-
-      console.log('search')
-      SendToApi(this.state.search)
-      }
+    sendSearch = async() => {
+      let resdata = await SendToApi(this.state.search)
+      await this.asyncstate(resdata)
+    }
+    sendVoice = () =>{
+      console.log(this.state)
     }
     render(){
         const { search } = this.state;
+        const stateClone = Object.assign({},this.state.dataset)
 
         return (
+    
             <>
             <View style={styles.statusBar}/>
             <View style={styles.searchContainer}>
@@ -92,7 +103,7 @@ export default class App extends React.Component {
               onChangeText={this.updateSearch}
               onSubmitEditing = {this.sendSearch}
               />
-            <TouchableOpacity style={styles.searchMic} onPressOut={this.sendSearch}>
+            <TouchableOpacity style={styles.searchMic} onPressOut={this.sendVoice}>
             <Icon name="microphone" size={30} color="#ffffff" />
             </TouchableOpacity>
             <TouchableOpacity style={styles.searchBtn} onPressOut={this.sendSearch}>
@@ -101,7 +112,7 @@ export default class App extends React.Component {
             </View>
             </View>
             <SafeAreaView style={{flex: 1}}>
-                <AppContainer screenProps={this.state.dataset} tintColor={this.props.tintColor}/>
+                <AppContainer screenProps={stateClone} tintColor={this.props.tintColor}/>
             </SafeAreaView>
             </>
         )

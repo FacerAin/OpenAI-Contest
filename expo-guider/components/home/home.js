@@ -15,6 +15,7 @@ export default class HomeScreen extends React.Component {
             ratingstatus: true,
             searchdataset: this.props.screenProps.return_data.searchResults,
         }
+        console.log('render App')
     }
     handleCancel = () =>{
         console.log('handlecancel')
