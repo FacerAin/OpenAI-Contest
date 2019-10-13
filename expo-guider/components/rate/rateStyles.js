@@ -1,9 +1,11 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
+    scrollView: {
+        backgroundColor: 'f8f6f6',
+    },
     container:{
         flex: 1,
-        backgroundColor: "#f8f6f6",
     },
     cardcontainer:{
         backgroundColor: '#F7F7F7',

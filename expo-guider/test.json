@@ -35,58 +35,40 @@
         },
         "searchResults": [
             {
-                "title": "서울캠퍼스  ...",
-                "passage": "서울캠퍼스   캠퍼스 목록  서울캠퍼스 국제캠퍼스    경희대학교  http://www.khu.ac.kr/ 공식",
+                "title": "서울캠퍼스 캠퍼스 목록...",
+                "passage": "서울캠퍼스 캠퍼스 목록 서울캠퍼스 국제캠퍼스 경희대학교 / 공식",
                 "url": "https://search.naver.com/search.naver?query=%EA%B2%BD%ED%9D%AC%EB%8C%80%ED%95%99%EA%B5%90",
-                "confidence": "0.367296"
+                "confidence": "0.607079"
             },
             {
-                "title": "경희대학교  ...",
-                "passage": "경희대학교      https://www.khu.ac.kr/  열기  사이트 내 검색 저장된 페이지       웹메일 대학 입학/편입학 대학 입학처 캠퍼스안내 교내전화번호   서울특별시 동대문구 회기동 위치, 사립종합대학교, 학과정보, 입학정보, 교통안내 등 제공.",
+                "title": "경희대학교 / 열기...",
+                "passage": "경희대학교 / 열기 사이트 내 검색 저장된 페이지 웹메일 대학 입학/편입학 대학 입학처 캠퍼스안내 교내전화번호 서울특별시 동대문구 회기동 위치, 사립종합대학교, 학과정보, 입학정보, 교통안내 등 제공.",
                 "url": "https://www.khu.ac.kr/",
-                "confidence": "0.132980"
+                "confidence": "0.240005"
             },
             {
                 "title": "경희대학교 - 나무위키...",
-                "passage": "경희대학교 - 나무위키      https://namu.wiki/w/경희대학교  열기  사이트 내 검색 저장된 페이지     학교법인 경희학원 고등교육기관 경희대학교 경희사이버대학교 중등교육기관 경희고등학교 경희여자고등학교 경희중학교 경희여자중학교 초등교육기관 유아교육기관 산하기관 경희초등학교 경희유치원 경희의료원 강동경희대병원 사실 재단...   나무위키",
+                "passage": "경희대학교 - 나무위키 /w/경희대학교 열기 사이트 내 검색 저장된 페이지 학교법인 경희학원 고등교육기관 경희대학교 경희사이버대학교 중등교육기관 경희고등학교 경희여자고등학교 경희중학교 경희여자중학교 초등교육기관 유아교육기관 산하기관 경희초등학교 경희유치원 경희의료원 강동경희대병원 사실 재단... 나무위키",
                 "url": "https://namu.wiki/w/%EA%B2%BD%ED%9D%AC%EB%8C%80%ED%95%99%EA%B5%90",
-                "confidence": "0.198013"
+                "confidence": "0.278372"
             },
             {
-                "title": "https://namu.wiki/w/경희대학교  열기...",
-                "passage": "https://namu.wiki/w/경희대학교  열기  사이트 내 검색 저장된 페이지",
+                "title": "/w/경희대학교 열기 사이트...",
+                "passage": "/w/경희대학교 열기 사이트 내 검색 저장된 페이지",
                 "url": "https://namu.wiki/w/%EA%B2%BD%ED%9D%AC%EB%8C%80%ED%95%99%EA%B5%90",
-                "confidence": "0.247908"
+                "confidence": "0.235229"
             },
             {
                 "title": "경희대학교 - 나무위키...",
-                "passage": "경희대학교 - 나무위키      https://namu.wiki/w/경희대학교  열기  사이트 내 검색 저장된 페이지     학교법인 경희학원 고등교육기관 경희대학교 경희사이버대학교 중등교육기관 경희고등학교 경희여자고등학교 경희중학교 경희여자중학교 초등교육기관 유아교육기관 산하기관 경희초등학교 경희유치원 경희의료원 강동경희대병원 사실 재단...   나무위키",
+                "passage": "경희대학교 - 나무위키 /w/경희대학교 열기 사이트 내 검색 저장된 페이지 학교법인 경희학원 고등교육기관 경희대학교 경희사이버대학교 중등교육기관 경희고등학교 경희여자고등학교 경희중학교 경희여자중학교 초등교육기관 유아교육기관 산하기관 경희초등학교 경희유치원 경희의료원 강동경희대병원 사실 재단... 나무위키",
                 "url": "https://search.naver.com/search.naver?query=%EA%B2%BD%ED%9D%AC%EB%8C%80%ED%95%99%EA%B5%90",
-                "confidence": "0.198013"
+                "confidence": "0.278372"
             },
             {
-                "title": "경희대학교  ...",
-                "passage": "경희대학교      http://kyunghee.edu/  열기  사이트 내 검색 저장된 페이지     2021 대입전형 계획(안) 2020 수시모집요강 2020 학생부종합전형가이드북 2020 논술가이드북 2020 재외국민특별전형모집요강 2020 정시모집요강 2019 편입학모집요강 2020 의치대편입학모집요강 2020 약학대학편입학모집요강 KHU 전형결과 전년도",
-                "url": "http://kyunghee.edu/",
-                "confidence": "0.264266"
-            },
-            {
-                "title": "학생부종합전형  전년도 대비...",
-                "passage": "학생부종합전형, 전년도 대비 교과성적 비중 줄여 - 경희대학교 2019.08.30. [2020 대학 가는 길] 경희대학교 경희대 제공 경희대학교는 2020학년도 수시모집에서 전체 모집인원 5200명 중 71.9%인 3741명을 선발한다. 수시모집 중 학생부종합전...   라이프앤러닝   2020 대학 가는 길     명이 추천했습니다.  0",
-                "url": "https://m.post.naver.com/viewer/postView.nhn?volumeNo=24257792&memberNo=45415395&vType=VERTICAL",
-                "confidence": "0.168430"
-            },
-            {
-                "title": "[DUGOUT Universe]경희대학교 박태산...",
-                "passage": "[DUGOUT Universe]경희대학교 박태산 2019.05.27. Photographer 손승필Editor 이혜정 Location 경희대학교 야구장박태산출생 1998년 7월 23일 신체조건 183cm 87kg출신 학교 신풍초-자양중-경기고-경희대...   더그아웃매거진  공식  #Baseball Player     명이 추천했습니다.  1",
-                "url": "https://m.post.naver.com/viewer/postView.nhn?volumeNo=20489506&memberNo=7809682&vType=VERTICAL",
-                "confidence": "0.449053"
-            },
-            {
-                "title": "대학의 모든 것...",
-                "passage": "대학의 모든 것 : 경희대학교 영어영문학과 2018.09.20. 경희대학교 사진을 보신 적이 있거나 직접 방문해 보신 적이 있다면 다 아실 만한 화창한 봄에 벚꽃이 만개한 경희대학교 본관의 모습입니다. ...   애드캠퍼스   애드캠퍼스 칼럼멘토단     명이 추천했습니다.  6",
-                "url": "https://m.post.naver.com/viewer/postView.nhn?volumeNo=16741574&memberNo=33633636&vType=VERTICAL",
-                "confidence": "0.814015"
+                "title": "경희대학교 의과대학·의학전문대학원 /...",
+                "passage": "경희대학교 의과대학·의학전문대학원 / 열기 사이트 내 검색 저장된 페이지 교수소개 의과대학 대학 공지사항 대학소개 편입학 의과대학, 국내 정상 향해 진일보 '2019 THE 세계대학평가 임상, 전임상 및 보건' 부문 국내 5위 차지 Towards Global Eminence 경희... 강동경희대학교병원 인산… 폐암 치료 위한 새로운 단백질 분석 방법 개발 의과대학 이승현 교수(사진)와 응용과학대학",
+                "url": "https://khusm.khu.ac.kr/",
+                "confidence": "0.161266"
             },
             {
                 "title": "경희대학교 서울시 동대문구와...",
@@ -96,135 +78,225 @@
             },
             {
                 "title": "경희대학교 [Kyung Hee...",
-                "passage": "경희대학교 [Kyung Hee University, 慶熙大學校]    서울과 경기도 용인시에 각각 캠퍼스를 두고 있는 사립대학교. 1949년 가인가를 받아 설립된 2년제 신흥초급대학에서 출발했다. 당시 신흥초급대학은 배영대학관과...  네이버 기관단체사전 : 학교기관/단체 > 교육 /도서관   개교시기1949년 유형사립 종합대학교훈학원의 민주화, 사상의 민주화, 생활의 민주화교화목련마스코트웃는 ...",
+                "passage": "경희대학교 [Kyung Hee University, 慶熙大學校] 서울과 경기도 용인시에 각각 캠퍼스를 두고 있는 사립대학교. 1949년 가인가를 받아 설립된 2년제 신흥초급대학에서 출발했다. 당시 신흥초급대학은 배영대학관과... 네이버 기관단체사전 : 학교기관/단체 > 교육 /도서관 개교시기1949년 유형사립 종합대학교훈학원의 민주화, 사상의 민주화, 생활의 민주화교화목련마스코트웃는 ...",
                 "url": "https://terms.naver.com/entry.nhn?docId=870939&cid=43142&categoryId=43142",
                 "confidence": "0.427992"
             },
             {
                 "title": "경희대학교 [Kyunghee University ...",
-                "passage": "경희대학교 [Kyunghee University, 慶熙大學校]    서울시 동대문구와 경기도 용인시에 각각 캠퍼스를 두고 있는 사립대학교. 1949년 배영대학관(培英大學館)과 신흥(新興)전문학교를 합병하여 신흥초급대학으로...  두산백과한국 > 대학교   구분사립 특성종합대학 개교일1949년소재지서울 동대문구 경희대로 26(서울캠퍼스), 경기 용인시 기흥구 덕영대로 1732(국...",
+                "passage": "경희대학교 [Kyunghee University, 慶熙大學校] 서울시 동대문구와 경기도 용인시에 각각 캠퍼스를 두고 있는 사립대학교. 1949년 배영대학관(培英大學館)과 신흥(新興)전문학교를 합병하여 신흥초급대학으로... 두산백과한국 > 대학교 구분사립 특성종합대학 개교일1949년소재지서울 동대문구 경희대로 26(서울캠퍼스), 경기 용인시 기흥구 덕영대로 1732(국...",
                 "url": "https://terms.naver.com/entry.nhn?docId=1060681&cid=40942&categoryId=34669",
                 "confidence": "0.642121"
             },
             {
                 "title": "경희대학교 [Kyunghee University ...",
-                "passage": "경희대학교 [Kyunghee University, 慶熙大學校]    서울특별시 동대문구 경희대로에 있는 사립 종합대학교. [연원 및 변천] 1946년에 설립된 배영대학관(培英大學館)과 1947년에 설립된 신흥전문학관(新興專門學館)이...  한국민족문화대백과한국민족문화대백과 > 교육   이칭별칭 경희대 유형단체 시대현대 성격고등교육기관설립일시1949년 5월설립자조영식(趙永植)",
+                "passage": "경희대학교 [Kyunghee University, 慶熙大學校] 서울특별시 동대문구 경희대로에 있는 사립 종합대학교. [연원 및 변천] 1946년에 설립된 배영대학관(培英大學館)과 1947년에 설립된 신흥전문학관(新興專門學館)이... 한국민족문화대백과한국민족문화대백과 > 교육 이칭별칭 경희대 유형단체 시대현대 성격고등교육기관설립일시1949년 5월설립자조영식(趙永植)",
                 "url": "https://terms.naver.com/entry.nhn?docId=658327&cid=46615&categoryId=46615",
                 "confidence": "0.456494"
             },
             {
-                "title": "庆熙大学  발음듣기...",
-                "passage": "庆熙大学  발음듣기  TTS  경희대학교.",
+                "title": "庆熙大学 발음듣기 TTS...",
+                "passage": "庆熙大学 발음듣기 TTS 경희대학교.",
                 "url": "https://search.naver.com/search.naver?query=%EA%B2%BD%ED%9D%AC%EB%8C%80%ED%95%99%EA%B5%90",
                 "confidence": "0.327027"
             },
             {
+                "title": "학생부종합전형  전년도 대비...",
+                "passage": "학생부종합전형, 전년도 대비 교과성적 비중 줄여 - 경희대학교 2019.08.30. [2020 대학 가는 길] 경희대학교 경희대 제공 경희대학교는 2020학년도 수시모집에서 전체 모집인원 5200명 중 71.9%인 3741명을 선발한다. 수시모집 중 학생부종합전... 라이프앤러닝 2020 대학 가는 길 명이 추천했습니다. 0",
+                "url": "https://m.post.naver.com/viewer/postView.nhn?volumeNo=24257792&memberNo=45415395&vType=VERTICAL",
+                "confidence": "0.168430"
+            },
+            {
+                "title": "[DUGOUT Universe]경희대학교 박태산...",
+                "passage": "[DUGOUT Universe]경희대학교 박태산 2019.05.27. Photographer 손승필Editor 이혜정 Location 경희대학교 야구장박태산출생 1998년 7월 23일 신체조건 183cm 87kg출신 학교 신풍초-자양중-경기고-경희대... 더그아웃매거진 공식 #Baseball Player 명이 추천했습니다. 1",
+                "url": "https://m.post.naver.com/viewer/postView.nhn?volumeNo=20489506&memberNo=7809682&vType=VERTICAL",
+                "confidence": "0.449053"
+            },
+            {
+                "title": "대학의 모든 것...",
+                "passage": "대학의 모든 것 : 경희대학교 영어영문학과 2018.09.20. 경희대학교 사진을 보신 적이 있거나 직접 방문해 보신 적이 있다면 다 아실 만한 화창한 봄에 벚꽃이 만개한 경희대학교 본관의 모습입니다. ... 애드캠퍼스 애드캠퍼스 칼럼멘토단 명이 추천했습니다. 6",
+                "url": "https://m.post.naver.com/viewer/postView.nhn?volumeNo=16741574&memberNo=33633636&vType=VERTICAL",
+                "confidence": "0.814015"
+            },
+            {
                 "title": "경희대학교의 5월을 빛낸 축제",
-                "passage": "경희대학교의 5월을 빛낸 축제  2019.06.04.  특히 올해에는 경희대학교에서 어마어마한 연예인 분들의 축제 공연을 볼 수 있었는데요, 볼빨간 사춘기의 노래를 현장에서 듣는 매력은 정말 축제의 열기를 실감하게...   경희대학교 희아띠랑 공식 blog.naver.com/khubl... 블로그 내 검색",
+                "passage": " 2019.06.04. 특히 올해에는 경희대학교에서 어마어마한 연예인 분들의 축제 공연을 볼 수 있었는데요, 볼빨간 사춘기의 노래를 현장에서 듣는 매력은 정말 축제의 열기를 실감하게... 경희대학교 희아띠랑 공식 blog.naver.com/khubl... 블로그 내 검색",
                 "url": "https://blog.naver.com/khublog?Redirect=Log&logNo=221554128923",
+                "confidence": "0.595592"
+            },
+            {
+                "title": "경희대학교의 5월을 빛낸...",
+                "passage": "경희대학교의 5월을 빛낸 축제 2019.06.04. 특히 올해에는 경희대학교에서 어마어마한 연예인 분들의 축제 공연을 볼 수 있었는데요, 볼빨간 사춘기의 노래를 현장에서 듣는 매력은 정말 축제의 열기를 실감하게... 경희대학교 희아띠랑 공식 blog.naver.com/khubl... 블로그 내 검색",
+                "url": "https://search.naver.com/search.naver?query=%EA%B2%BD%ED%9D%AC%EB%8C%80%ED%95%99%EA%B5%90",
                 "confidence": "0.625846"
             },
             {
-                "title": "[이렇게 해서 대학 갔다!]19학번 선배의 합격 수기 - 경희대학교 한의예과",
-                "passage": "해서 대학 갔다!]19학번 선배의 합격 수기 - 경희대학교 한의예과  2019.04.05.  보고 경희대학교 한의과만의 특별한 커리큘럼이나 학과를 알게 되었습니다. 또한 제 친구들 얘기를 들어보면, 서울대학교 아로리 사이트는 합격 자소서 사례나 합격한...   메가스터디 입시리포... blog.naver.com/ertiowp/221505561566 블로그 내 검색",
-                "url": "https://blog.naver.com/ertiowp?Redirect=Log&logNo=221505561566",
-                "confidence": "0.558397"
+                "title": "경희대학교 교육대학원 체육선생님 할 수 있다고 ?",
+                "passage": " 3일 전 께서 경희대학교 교육대학원 진학 하는데 성공을 할 수 있었던 썰을 확인해보도록... 저는 대학교까지만 졸업을 했기 때문에 대학원에 대해서는 아예 모르기 때문에 저도... EDUSSUM 공식블로그 blog.naver.com/ysmhee/221673633245 블로그 내 검색",
+                "url": "https://blog.naver.com/ysmhee?Redirect=Log&logNo=221673633245",
+                "confidence": "0.751091"
+            },
+            {
+                "title": "경희대학교 교육대학원 체육선생님...",
+                "passage": "경희대학교 교육대학원 체육선생님 할 수 있다고 ? 3일 전 께서 경희대학교 교육대학원 진학 하는데 성공을 할 수 있었던 썰을 확인해보도록... 저는 대학교까지만 졸업을 했기 때문에 대학원에 대해서는 아예 모르기 때문에 저도... EDUSSUM 공식블로그 blog.naver.com/ysmhee/221673633245 블로그 내 검색",
+                "url": "https://search.naver.com/search.naver?query=%EA%B2%BD%ED%9D%AC%EB%8C%80%ED%95%99%EA%B5%90",
+                "confidence": "0.276157"
             },
             {
                 "title": "고졸 일반편입 학사편입 어떤걸 준비해야 효율적일까? [경희대학교 모집요강]",
-                "passage": "학사편입 어떤걸 준비해야 효율적일까? [경희대학교 모집요강]  2019.08.25.  간단한 예시만 봐도 명지대학교의 경우 인문계열학과는 일반편입보다... 유명한 경희대학교 모집요강을 보여드리고 글을 마무리하려고 하니 관심있는 분은 조금만...   Gaon The Second blog.naver.com/msbaeko/221627020734 블로그 내 검색",
+                "passage": "학사편입 어떤걸 준비해야 효율적일까? [경희대학교 모집요강] 2019.08.25. 간단한 예시만 봐도 명지대학교의 경우 인문계열학과는 일반편입보다... 유명한 경희대학교 모집요강을 보여드리고 글을 마무리하려고 하니 관심있는 분은 조금만... Gaon The Second blog.naver.com/msbaeko/221627020734 블로그 내 검색",
                 "url": "https://blog.naver.com/msbaeko?Redirect=Log&logNo=221627020734",
                 "confidence": "0.138135"
             },
             {
-                "title": "경희대학교 학사편입 실제 합격후기! [경희대]",
-                "passage": "경희대학교 학사편입 실제 합격후기! [경희대]  2019.06.28.  바로 경희대학교입니다! 경의대학교는 서울 동대문구에 위치한 4년제 대학교인데요~ 경희대 자체에 네임벨류가 굉장히 강한 편이라 나름 좋은 성적을 유지했던...   Study in 교육테라스 blog.naver.com/wjaehftm/221572885608 블로그 내 검색",
-                "url": "https://blog.naver.com/wjaehftm?Redirect=Log&logNo=221572885608",
-                "confidence": "0.179553"
+                "title": "경희대학교 편입, 공대편입 이렇게 준비했다!!",
+                "passage": " 2019.07.22. 이 방법은 4년제 대학교를 졸업한 경우에는 불가합니다. 여기까지 해서 후기와 준비방법까지 모두 알아봤는데 경희대학교로 편입, 경희대학교 공대편입을 준비하는데... 교육플랫폼 에듀in blog.naver.com/helen4234/221592388878 블로그 내 검색",
+                "url": "https://blog.naver.com/helen4234?Redirect=Log&logNo=221592388878",
+                "confidence": "0.295389"
             },
             {
-                "title": "경희대학교 편입, 공대편입 이렇게 준비했다!!",
-                "passage": "경희대학교 편입, 공대편입 이렇게 준비했다!!  2019.07.22.  이 방법은 4년제 대학교를 졸업한 경우에는 불가합니다. 여기까지 해서 후기와 준비방법까지 모두 알아봤는데 경희대학교로 편입, 경희대학교 공대편입을 준비하는데...   교육플랫폼 에듀in blog.naver.com/helen4234/221592388878 블로그 내 검색",
-                "url": "https://blog.naver.com/helen4234?Redirect=Log&logNo=221592388878",
+                "title": "경희대학교 편입  공대편입...",
+                "passage": "경희대학교 편입, 공대편입 이렇게 준비했다!! 2019.07.22. 이 방법은 4년제 대학교를 졸업한 경우에는 불가합니다. 여기까지 해서 후기와 준비방법까지 모두 알아봤는데 경희대학교로 편입, 경희대학교 공대편입을 준비하는데... 교육플랫폼 에듀in blog.naver.com/helen4234/221592388878 블로그 내 검색",
+                "url": "https://search.naver.com/search.naver?query=%EA%B2%BD%ED%9D%AC%EB%8C%80%ED%95%99%EA%B5%90",
                 "confidence": "0.116720"
             },
             {
+                "title": "[약대편입] 경희대학교 약대 '이것' 반영비율 40%! 2020학년도 모집요강 살펴보기",
+                "passage": "[약대편입] 경희대학교 약대 '이것' 반영비율 40%! 2020학년도... 2019.08.12. 오늘은 경희대학교 약학대학 2020학년도 모집요강을 살펴보았는데요, 경희대는 서류평가의 비중이 매우 높은 학교로 자기소개서 및 서류의 철저한 준비가 필요한... 1등의 책임감, 메가엠디 공... 공식 blog.naver.com/megam... 블로그 내 검색",
+                "url": "https://blog.naver.com/megamdl?Redirect=Log&logNo=221613932057",
+                "confidence": "0.376889"
+            },
+            {
+                "title": "파워링크 ‘경희대학교’ 관련...",
+                "passage": "파워링크 ‘경희대학교’ 관련 광고입니다. 이 광고가 표시된 이유 광고 노출기준은 검색어에 대한 연관성과 광고주의 입찰가이며, 이미지 등 추가 링크는 등록한 경우에만 기준에 따라 노출됩니다. 도움말 안내 레이어 닫기 등록 안내",
+                "url": "https://search.naver.com/search.naver?query=%EA%B2%BD%ED%9D%AC%EB%8C%80%ED%95%99%EA%B5%90",
+                "confidence": "0.297463"
+            },
+            {
+                "title": "경희대학교 감사합니다!",
+                "passage": " V LIVE 잔나비 JANNABI 재생수34,731 2019.10.03.",
+                "url": "http://www.vlive.tv/video/153223",
+                "confidence": "0.356030"
+            },
+            {
+                "title": "경희대학교 감사합니다!",
+                "passage": " V LIVE 잔나비 JANNABI 재생수14,373 2019.10.03.",
+                "url": "http://www.vlive.tv/video/153222",
+                "confidence": "0.472184"
+            },
+            {
+                "title": "2019 경희대학교 서울캠퍼스 축제",
+                "passage": " V LIVE 잔나비 JANNABI 재생수18,973 2019.10.02.",
+                "url": "http://www.vlive.tv/video/153213",
+                "confidence": "0.490006"
+            },
+            {
                 "title": "경희대학교 수강신청 앱",
-                "passage": "경희대학교 수강신청 앱    구글플레이교육경희대학교",
+                "passage": " 구글플레이교육경희대학교",
                 "url": "https://play.google.com/store/apps/details?id=kr.co.swit.khuniv&hl=ko",
-                "confidence": "0.417023"
+                "confidence": "0.314240"
             },
             {
-                "title": "질문  2020...",
-                "passage": "질문  2020 경희대학교 서울캠퍼스 말고   2019.02.25.   2020 경희대학교 서울캠퍼스 말고 수원캠퍼스는 수시로 갈때 수능 최저 등급 있는 전형이 있나요?   답변 경희대학교 국제캠퍼스 2020 대입에서 수능최저학력기준이 있는 전형에 대해 궁금하군요. 경희대학교... 2020학년도 경희대학교 대학입학전형 시행계획(안)(첨부파일)을...    지식파트너 답변 닉네임교육부 진로 상담",
-                "url": "https://kin.naver.com/qna/detail.nhn?d1id=11&dirId=110408&docId=321979518&qb=6rK97Z2s64yA7ZWZ6rWQ&enc=utf8&section=kin&rank=1&search_sort=0&spq=0",
-                "confidence": "0.685552"
-            },
-            {
-                "title": "질문  경희대학교교육대학원...",
-                "passage": "질문  경희대학교교육대학원 가면 유치원정교사2급 자격증 취득할 수 있나요?   4일 전   경희대학교교육대학원 유아교육학과 졸업하면... 경희대학교교육대학원 졸업하신 분이나 아니면 잘 알고 있으신 분 있을까요? 그리고 경희대학교교육대학원...   답변 질문자님께서 경희대학교교육대학원 진학에 대해 답변요청을 주셔서 도움을 드리겠습니다. 경희대학교교육대학... 다만 경희대학교교육대학원에 진학하기 전에...    지식파트너 답변 닉네임국제영어대학원대학교",
-                "url": "https://kin.naver.com/qna/detail.nhn?d1id=11&dirId=1121&docId=337355175&qb=6rK97Z2s64yA7ZWZ6rWQ&enc=utf8&section=kin&rank=2&search_sort=0&spq=0",
-                "confidence": "0.327034"
-            },
-            {
-                "title": "질문  경희대학교...",
-                "passage": "질문  경희대학교 우주과학과 질문이요!   2019.04.28.   저 물리 안하고 지구과학이랑 화학하는데 경희대학교 우주과학과 갈 수 있나요?   답변 안녕하세요 한국라이센스개발원입니다 가능하며, 우주과학과는 전공으로 배우는 것으로 고등학교 과탐은 전공에 아무런 영향을 미치지 못합니다 국어교육과를 들어가는데...    지식파트너 답변 닉네임한국라이센스개발원",
-                "url": "https://kin.naver.com/qna/detail.nhn?d1id=11&dirId=11050403&docId=326125424&qb=6rK97Z2s64yA7ZWZ6rWQ&enc=utf8&section=kin&rank=3&search_sort=0&spq=0",
-                "confidence": "0.712420"
-            },
-            {
-                "passage": "경희대학교https://www.khu.ac.kr2020-1 외국인 신�편입학 원서접수 � 경희대학교 팩트북 � 후마니타스칼리지 가이드북 � 미래대학리포트 � 취업 ... 구독을 신청해 주시면 경희 소식을 전해 드립니다.대학 입학/편입학경희대학교 인포21대학국제캠퍼스인포 21시스템캠퍼스안내",
-                "url": "https://www.khu.ac.kr/&sa=U&ved=2ahUKEwjxgZrfyo7lAhWAy4sBHf5-A8gQFjAAegQIBxAB&usg=AOvVaw3IBiLblypIc6gkQxWoimgB",
-                "title": "경희대학교https://www.khu.ac.kr",
-                "confidence": "0.204973"
+                "passage": " 경희대학교 ... 경희 70주년 맞이 평화의 섬 순례'가 8월 24일부터 29일까지 제주도에서 진행됐다. 재학생과 ... 구독을 신청해 주시면 경희 소식을 전해 드립니다.대학 입학/편입학경희대학교 인포21대학국제캠퍼스캠퍼스안내학사",
+                "url": "https://www.khu.ac.kr/&sa=U&ved=2ahUKEwiD1-K8wJjlAhXrQxUIHZVVB6UQFjAAegQIBxAB&usg=AOvVaw0yynDH_GZSY9ZYiW8KINU8",
+                "title": "경희대학교",
+                "confidence": "0.133866"
             },
             {
                 "passage": "경희대학교 인포21",
-                "url": "https://khuis.khu.ac.kr/&sa=U&ved=2ahUKEwjxgZrfyo7lAhWAy4sBHf5-A8gQjBAwAnoECAcQBQ&usg=AOvVaw26uyqX6PePMzXzX1Xr5bg5",
+                "url": "https://khuis.khu.ac.kr/&sa=U&ved=2ahUKEwiD1-K8wJjlAhXrQxUIHZVVB6UQjBAwAnoECAcQBQ&usg=AOvVaw1H2W6rUBAe8fGdkIkonuv7",
                 "title": "경희대학교 인포21...",
                 "confidence": "0.597700"
             },
             {
-                "passage": "경희대학교 - 나무위키https://namu.wiki › 경희대학교3일 전 � 25,197명[1]. 대학원생. 7,657명[2]. 교원. 1,452명[3]. 직원. 439명[4]. 대학기본역량진단. 자율개선대학(2018). 홈페이지. 경희대학교 공식 홈페이지�...",
-                "url": "https://namu.wiki/w/%EA%B2%BD%ED%9D%AC%EB%8C%80%ED%95%99%EA%B5%90&sa=U&ved=2ahUKEwjxgZrfyo7lAhWAy4sBHf5-A8gQFjAVegQIBBAB&usg=AOvVaw1boxb5Rq34wfe1yJ8_YcVo",
-                "title": "경희대학교 - 나무위키https://namu.wiki › 경희대학교",
-                "confidence": "0.433865"
+                "passage": "7일 전 � 25,197명[1]. 대학원생. 7,657명[2]. 교원. 1,452명[3]. 직원. 439명[4]. 대학기본역량진단. 자율개선대학(2018). 홈페이지. 경희대학교 공식 홈페이지�...",
+                "url": "https://namu.wiki/w/%EA%B2%BD%ED%9D%AC%EB%8C%80%ED%95%99%EA%B5%90&sa=U&ved=2ahUKEwiD1-K8wJjlAhXrQxUIHZVVB6UQFjAVegQIBhAB&usg=AOvVaw0u6-tMfcBHzM5IV3xYIb6h",
+                "title": "경희대학교 - 나무위키 › 경희대학교",
+                "confidence": "0.306908"
             },
             {
-                "passage": "경희대학교 - 위키백과, 우리 모두의 백과사전https://ko.wikipedia.org › wiki › 경희대학교경희대학교(慶熙大學校, Kyung Hee University)는 1911년에 개교한 신흥무관학교( 新興武官學校)의 후신으로 대한민국의 4년제 사립 종합대학이다. 신흥무관학교(�...\n\n설립자: 조영식\n학부생 수: 26,063명 (2018년)\n대학원생 수: 7,424명 (2018년)\n교직원 수: 1,442명 (2018년)",
-                "url": "https://ko.wikipedia.org/wiki/%EA%B2%BD%ED%9D%AC%EB%8C%80%ED%95%99%EA%B5%90&sa=U&ved=2ahUKEwjxgZrfyo7lAhWAy4sBHf5-A8gQFjAWegQIAxAB&usg=AOvVaw3npwi1CZSwb-NCfY02e53I",
-                "title": "경희대학교 - 위키백과, 우리 모두의 백과사전https://ko.wikipedia.org › wiki › 경희대학교",
-                "confidence": "0.319310"
+                "passage": "경희대학교(慶熙大學校, Kyung Hee University)는 1911년에 개교한 신흥무관학교( 新興武官學校)의 후신으로 대한민국의 4년제 사립 종합대학이다. 신흥무관학교(�... 설립자: 조영식 학부생 수: 26,063명 (2018년) 대학원생 수: 7,424명 (2018년) 교직원 수: 1,442명 (2018년)",
+                "url": "https://ko.wikipedia.org/wiki/%EA%B2%BD%ED%9D%AC%EB%8C%80%ED%95%99%EA%B5%90&sa=U&ved=2ahUKEwiD1-K8wJjlAhXrQxUIHZVVB6UQFjAWegQIBBAB&usg=AOvVaw39JWD3N9sixgAcGXwqXTMj",
+                "title": "경희대학교 - 위키백과, 우리 모두의 백과사전 › wiki › 경희대학교",
+                "confidence": "0.317280"
             },
             {
-                "passage": "경희대학교 경/쟁/률/서/비/스ratio.uwayapply.com › susi2 › khu구분, 총모집인원, 지원인원, 경쟁률. 학생부종합(네오르네상스전형), 1180, 17291, 14.65 : 1. 학생부종합(고교연계전형), 800, 4160, 5.20 : 1. 학생부종합[고른기회�...",
-                "url": "http://ratio.uwayapply.com/2020/susi2/khu/1/&sa=U&ved=2ahUKEwjxgZrfyo7lAhWAy4sBHf5-A8gQFjAXegQIABAB&usg=AOvVaw1XxT8vNDZjDO4SNidoYSb1",
+                "passage": "구분, 총모집인원, 지원인원, 경쟁률. 학생부종합(네오르네상스전형), 1180, 17291, 14.65 : 1. 학생부종합(고교연계전형), 800, 4160, 5.20 : 1. 학생부종합[고른기회�...",
+                "url": "http://ratio.uwayapply.com/2020/susi2/khu/1/&sa=U&ved=2ahUKEwiD1-K8wJjlAhXrQxUIHZVVB6UQFjAXegQIARAB&usg=AOvVaw1HqdlNRB-HPBzN0vHnFoQj",
                 "title": "경희대학교 경/쟁/률/서/비/스ratio.uwayapply.com › susi2 › khu",
-                "confidence": "0.206787"
+                "confidence": "0.194752"
             },
             {
-                "passage": "경희대학교 미술대학 – KYUNGHEE UNIVERSITY,COLLEGE OF ...khuart.com... of Fine Arts, Kyung Hee University. 서울특별시 동대문구 경희대로 26 경희대 학교 미술대학. Tel. 02-961-0636 | Fax. 02-961-0632. E-Mail. khsc0400@khu.ac. kr.",
-                "url": "http://khuart.com/&sa=U&ved=2ahUKEwjxgZrfyo7lAhWAy4sBHf5-A8gQFjAYegQIBRAB&usg=AOvVaw3eZLjpxfNx__dd8PPaDsJC",
+                "passage": "... of Fine Arts, Kyung Hee University. 서울특별시 동대문구 경희대로 26 경희대 학교 미술대학. Tel. 02-961-0636 | Fax. 02-961-0632. E-Mail. khsc0400@khu.ac. kr.",
+                "url": "http://khuart.com/&sa=U&ved=2ahUKEwiD1-K8wJjlAhXrQxUIHZVVB6UQFjAYegQIAxAB&usg=AOvVaw12jFmPPL_pQIN6ixV9BzPA",
                 "title": "경희대학교 미술대학 – KYUNGHEE UNIVERSITY,COLLEGE OF ...khuart.com",
-                "confidence": "0.556298"
+                "confidence": "0.482131"
             },
             {
-                "passage": "경희대학교 총학생회 - Home | Facebookhttps://www.facebook.com › ... › College & University › Community College경희대학교 총학생회, 서울. 15K likes. 경희대학교 서울캠퍼스 51대 총학생회 경희대로입니다.",
-                "url": "https://www.facebook.com/jajukhu/&sa=U&ved=2ahUKEwjxgZrfyo7lAhWAy4sBHf5-A8gQFjAZegQIARAB&usg=AOvVaw0Uz7V0yC-iMol0qN4GCb2X",
-                "title": "경희대학교 총학생회 - Home | Facebookhttps://www.facebook.com › ... › College & University › Community College",
-                "confidence": "0.308482"
+                "passage": "과정, 기간, 반배치 OT, 접수 마감. 봄 정규, 4.2(화) ~ 6.12(수), 4.1(월), 비자협정국: 2.22(금) 비자비협정국: 1.18(금). 여름 정규, 6.20(목) ~ 8.29(목), 6.19(수), 비자�...",
+                "url": "http://www.iie.ac.kr/?url=/ko_edu/course_formal.php&sa=U&ved=2ahUKEwiD1-K8wJjlAhXrQxUIHZVVB6UQFjAZegQIAhAB&usg=AOvVaw0TZF83zJONFDJlwxeWS32-",
+                "title": "정규과정-경희대학교 국제교육원www.iie.ac.kr › ko_edu › course_formal",
+                "confidence": "0.168277"
             },
             {
-                "passage": "경희대학교 총학생회 - Home | Facebookhttps://www.facebook.com › ... › College & University › Community College경희대학교 총학생회, 용인시. 15K likes. Community College.",
-                "url": "https://www.facebook.com/khu512019/&sa=U&ved=2ahUKEwjxgZrfyo7lAhWAy4sBHf5-A8gQFjAaegQIBhAB&usg=AOvVaw2g0X2q1-XLYBFpYyloaO_n",
-                "title": "경희대학교 총학생회 - Home | Facebookhttps://www.facebook.com › ... › College & University › Community College",
-                "confidence": "0.215881"
+                "passage": " 년 개원 동대문구 회기동 위치, 보건복지부 의료질평가 최상위등급 획득. 문의 02-958-8114. 경희의료원은 의대병원-치과병원-한방병원-후마니타스암병원으로�...",
+                "url": "https://www.khuh.or.kr/&sa=U&ved=2ahUKEwiD1-K8wJjlAhXrQxUIHZVVB6UQFjAaegQIBRAB&usg=AOvVaw3jwVbaz99HaQcVQYscyzZw",
+                "title": "경희대학교병원",
+                "confidence": "0.165275"
             },
             {
-                "passage": "관련 검색어경희대학교 종합정보시스템>경희대학교 학과>경희대학교 주요 동문>경희대학교 인포21>경희대학교 로고>경희대학교 입학처>경희대학교 평화의전당>경희대학교 정보>경희대 국제캠퍼스 인식>경희대학교 대학원>",
-                "url": "https://google.com/search?ie=UTF-8&q=경희대학교+종합정보시스템&sa=X&ved=2ahUKEwjxgZrfyo7lAhWAy4sBHf5-A8gQ1QJ6BAgCEAE",
+                "passage": "관련 검색어>경희대학교 학과>경희대학교 주요 동문>경희대학교 인포21>경희대학교 입학처>경희대학교 로고>경희대학교 평화의전당>경희대학교 정보>경희대 국제캠퍼스 인식>경희대학교 경영대학>",
+                "url": "https://google.com/search?ie=UTF-8&q=경희대학교+종합정보시스템&sa=X&ved=2ahUKEwiD1-K8wJjlAhXrQxUIHZVVB6UQ1QJ6BAgAEAE",
                 "title": "경희대학교 종합정보시스템",
-                "confidence": "0.184376"
+                "confidence": "0.195777"
+            },
+            {
+                "passage": "관련 검색어경희대학교 종합정보시스템>>경희대학교 주요 동문>경희대학교 인포21>경희대학교 입학처>경희대학교 로고>경희대학교 평화의전당>경희대학교 정보>경희대 국제캠퍼스 인식>경희대학교 경영대학>",
+                "url": "https://google.com/search?ie=UTF-8&q=경희대학교+학과&sa=X&ved=2ahUKEwiD1-K8wJjlAhXrQxUIHZVVB6UQ1QJ6BAgAEAI",
+                "title": "경희대학교 학과",
+                "confidence": "0.171724"
+            },
+            {
+                "passage": "관련 검색어경희대학교 종합정보시스템>경희대학교 학과>>경희대학교 인포21>경희대학교 입학처>경희대학교 로고>경희대학교 평화의전당>경희대학교 정보>경희대 국제캠퍼스 인식>경희대학교 경영대학>",
+                "url": "https://google.com/search?ie=UTF-8&q=경희대학교+주요+동문&sa=X&ved=2ahUKEwiD1-K8wJjlAhXrQxUIHZVVB6UQ1QJ6BAgAEAM",
+                "title": "경희대학교 주요 동문",
+                "confidence": "0.254889"
+            },
+            {
+                "passage": "관련 검색어경희대학교 종합정보시스템>경희대학교 학과>경희대학교 주요 동문>>경희대학교 입학처>경희대학교 로고>경희대학교 평화의전당>경희대학교 정보>경희대 국제캠퍼스 인식>경희대학교 경영대학>",
+                "url": "https://google.com/search?ie=UTF-8&q=경희대학교+인포21&sa=X&ved=2ahUKEwiD1-K8wJjlAhXrQxUIHZVVB6UQ1QJ6BAgAEAQ",
+                "title": "경희대학교 인포21",
+                "confidence": "0.219550"
+            },
+            {
+                "passage": "관련 검색어경희대학교 종합정보시스템>경희대학교 학과>경희대학교 주요 동문>경희대학교 인포21>>경희대학교 로고>경희대학교 평화의전당>경희대학교 정보>경희대 국제캠퍼스 인식>경희대학교 경영대학>",
+                "url": "https://google.com/search?ie=UTF-8&q=경희대학교+입학처&sa=X&ved=2ahUKEwiD1-K8wJjlAhXrQxUIHZVVB6UQ1QJ6BAgAEAU",
+                "title": "경희대학교 입학처",
+                "confidence": "0.187706"
+            },
+            {
+                "passage": "관련 검색어경희대학교 종합정보시스템>경희대학교 학과>경희대학교 주요 동문>경희대학교 인포21>경희대학교 입학처>>경희대학교 평화의전당>경희대학교 정보>경희대 국제캠퍼스 인식>경희대학교 경영대학>",
+                "url": "https://google.com/search?ie=UTF-8&q=경희대학교+로고&sa=X&ved=2ahUKEwiD1-K8wJjlAhXrQxUIHZVVB6UQ1QJ6BAgAEAY",
+                "title": "경희대학교 로고",
+                "confidence": "0.121359"
+            },
+            {
+                "passage": "관련 검색어경희대학교 종합정보시스템>경희대학교 학과>경희대학교 주요 동문>경희대학교 인포21>경희대학교 입학처>경희대학교 로고>>경희대학교 정보>경희대 국제캠퍼스 인식>경희대학교 경영대학>",
+                "url": "https://google.com/search?ie=UTF-8&q=경희대학교+평화의전당&sa=X&ved=2ahUKEwiD1-K8wJjlAhXrQxUIHZVVB6UQ1QJ6BAgAEAc",
+                "title": "경희대학교 평화의전당",
+                "confidence": "0.170284"
+            },
+            {
+                "passage": "관련 검색어경희대학교 종합정보시스템>경희대학교 학과>경희대학교 주요 동문>경희대학교 인포21>경희대학교 입학처>경희대학교 로고>경희대학교 평화의전당>>경희대 국제캠퍼스 인식>경희대학교 경영대학>",
+                "url": "https://google.com/search?ie=UTF-8&q=경희대학교+정보&sa=X&ved=2ahUKEwiD1-K8wJjlAhXrQxUIHZVVB6UQ1QJ6BAgAEAg",
+                "title": "경희대학교 정보",
+                "confidence": "0.179837"
+            },
+            {
+                "passage": "관련 검색어경희대학교 종합정보시스템>경희대학교 학과>경희대학교 주요 동문>경희대학교 인포21>경희대학교 입학처>경희대학교 로고>경희대학교 평화의전당>경희대학교 정보>경희대 국제캠퍼스 인식>>",
+                "url": "https://google.com/search?ie=UTF-8&q=경희대학교+경영대학&sa=X&ved=2ahUKEwiD1-K8wJjlAhXrQxUIHZVVB6UQ1QJ6BAgAEAo",
+                "title": "경희대학교 경영대학",
+                "confidence": "0.212136"
             }
         ]
     }

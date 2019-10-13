@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Button,Dimensions,Image, Linking } from 'react-native';
+import { View, Text, Button, Dimensions, Image, Linking } from 'react-native';
+import styles from './searchcardStyles';
+// #dcefdf 네이버
+// #f3f3f2 구글
+// #e3e7e8 위키피디아
+// #dbe2ef 페이스북
+// #e9f1f0 짱무갓키
+
 export default class SearchCard extends React.Component {
     constructor(props) {
         super(props);
@@ -36,66 +43,3 @@ export default class SearchCard extends React.Component {
 }
 }
 
-const styles = StyleSheet.create({
-
-    cardcontainer:{
-        backgroundColor: '#dbe2ef',
-        borderWidth: 1,
-        borderRadius: 2,
-        borderColor: '#ddd',
-        borderBottomWidth: 0,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.8,
-        shadowRadius: 2,
-        elevation: 1,
-
-        height: 200,
-        margin: 10,
-        flexDirection: 'column'
-    },
-
-    cardheader:{
-        flex : 1.3,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-    },
-
-    cardbody:{
-        flex: 2.5,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-
-    cardbodytext:{
-        padding: 15
-    },
-
-    cardfooter:{
-        alignItems: 'flex-end',
-        flex: 1,
-        justifyContent: 'center'
-    },
-
-    cardfooterbt:{
-        padding: 10
-    },
-
-    cardlogo:{
-        margin: 5,
-        padding: 10,
-        width: 50,
-        height: 50,
-        borderRadius:50/2
-    },
-
-    cardtitle:{
-        flex: 4,
-        padding: 10,
-        justifyContent: 'center'
-    },
-
-    cardtext:{
-
-    },
-})
