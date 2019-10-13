@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 //import keywordSend from './util/datasend'
-<<<<<<< HEAD
-=======
 
->>>>>>> 768477ae9eff0654a387e5d1f9507603091c59e3
 import { View, Text, StyleSheet, Button,Dimensions,Image,TextInput,TouchableOpacity } from 'react-native';
 import { SearchBar,Header  } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -97,11 +94,7 @@ export default class App extends React.Component {
     로딩 구현하기*/
     sendSearch = () => {
       console.log('search')
-<<<<<<< HEAD
-      //keywordSend(this.state.search)
-=======
       SendToApi(this.state.search)
->>>>>>> 768477ae9eff0654a387e5d1f9507603091c59e3
       }
     
       
