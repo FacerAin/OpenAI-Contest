@@ -34,6 +34,7 @@ const cliConnection = async ( req, res ) => {
         res.status( 502 );
         return false;
     }
+
     try {
         searchData = await Promise.all( [ search.naver( analyzeData.keywordText ), search.google( analyzeData.keywordText ) ] );
     }
@@ -43,6 +44,7 @@ const cliConnection = async ( req, res ) => {
         res.status( 503 );
         return false;
     }
+    
     searchData = searchData[ 0 ].concat( searchData[ 1 ] );
     try {
         searchData = await machineRead( searchData, analyzeData.keywordText );
