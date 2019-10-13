@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 //import keywordSend from './util/datasend'
-<<<<<<< HEAD
-
-=======
->>>>>>> 699ea8a8b8f2ace5b118711ef72233cbce1d8076
 import { View, Text, StyleSheet, Button,Dimensions,Image,TextInput,TouchableOpacity } from 'react-native';
 import { SearchBar,Header  } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
