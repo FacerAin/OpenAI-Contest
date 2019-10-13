@@ -4,6 +4,7 @@ import styles from './rateStyles';
 import Icon from 'react-native-vector-icons/FontAwesome';  
 import Speedometer from 'react-native-speedometer-chart';
 import { LineChart, PieChart } from 'react-native-chart-kit'
+const scoring = require('../../util/scoring');
   
 /*
 Rating Page 디자인 개선
@@ -19,40 +20,46 @@ const chartConfig={
     borderRadius: 16
   }
 }
-
-const scoreData = [
-  {
-    name: "맞춤법 점수",
-    score: 10,
-    color: "#03A9F4",
-    legendFontColor: "#7F7F7F",
-    legendFontSize: 15
-  },
-  {
-    name: "키워드 점수",
-    score: 10,
-    color: "#AB47BC",
-    legendFontColor: "#7F7F7F",
-    legendFontSize: 15
-  },
-  { 
-    name: "",
-    score: 80,
-    color: "#BDBDBD",
-    legendFontSize: 0
-  }
-]
-
+//score: scoring(this.props.screenProps.return_data)
 
 //<Icon name="line-chart" style={{margin : 0, padding : 0,}} size={20} color={this.props.activeTintColor} />,
 export default class RateScreen extends React.Component {
+    constructor(props) {
+      console.log('Render SearchCard')
+      super(props);
+      this.state = {
+        //score: this.props.screenProps.return_data
+      }
+      console.log(this.state)
+    }
     render() {
       return (
         <SafeAreaView style={styles.container}>
         <ScrollView style={styles.scrollView} >
         <View>
         <PieChart
-          data={scoreData}
+          data={[
+            {
+              name: "맞춤법 점수",
+              score: 20, //this.state.score.fixScore
+              color: "#03A9F4",
+              legendFontColor: "#7F7F7F",
+              legendFontSize: 15
+            },
+            {
+              name: "키워드 점수",
+              score: 30, //this.state.score.keywordScore,
+              color: "#AB47BC",
+              legendFontColor: "#7F7F7F",
+              legendFontSize: 15
+            },
+            { 
+              name: "",
+              score: 70, //100-(this.state.score.fixScore+this.state.score.keywordScore),
+              color: "#BDBDBD",
+              legendFontSize: 0
+            }
+          ]}
           width={Dimensions.get('window').width}
           height={200}
           chartConfig={chartConfig}
@@ -103,10 +110,9 @@ export default class RateScreen extends React.Component {
           </View>
           </ScrollView>
         </SafeAreaView>
-      );
-    }
+    );
   }
-
+}
 RateScreen.navigationOptions = {
   title:'검색점수',
   tabBarIcon: 

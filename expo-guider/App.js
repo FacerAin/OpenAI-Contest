@@ -15,6 +15,12 @@ import Constants from 'expo-constants';
 import TestDataset from './test.json'
 import styles from './AppStyles.js';
 import axios from 'axios';
+import { createStore } from 'redux';
+//import reducers from './reducers';
+//import { Provider } from 'react-redux';
+
+//const store = createStore(reducers);
+
 
 import { func } from 'prop-types';
 
@@ -119,6 +125,17 @@ export default class App extends React.Component {
     
   }
 }
+/*
+const mapStateProps = (state) => {
+  return {
+    data : state.processdata.data
+  }
+}
 
+const mapDispatchProps = (dispatch) => {
+  return {
+    handleSetDataset: (data) => {dispatch(actions.setDataset(data))}
+  }
+}
 
-
+*/
