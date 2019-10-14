@@ -1,5 +1,3 @@
-//response.return_data.originalText
-//response.return_data.keywordText
 
 const assistance = [ 
     ["완벽해요!","키워드가 완벽해요!","맞춤법을 신경써주세요.","세종대왕님이 울고 계십니다."],
@@ -50,7 +48,7 @@ const scoring = ( return_data ) => {
 
     let comment = getComment(fixScore,keywordScore);
 
-    return { "score" : { "fix" : fixScore, "key" : keywordScore, "full" : fullScore } , "msg" : comment };
+    return { "score" : { "fix" : fixScore, "key" : keywordScore, "full" : fullScore, "msg" : comment} };
 }
 
-exports.module = scoring; 
+module.exports = scoring; 

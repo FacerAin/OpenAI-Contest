@@ -4,18 +4,14 @@ import styles from './rateStyles';
 import Icon from 'react-native-vector-icons/FontAwesome';  
 import Speedometer from 'react-native-speedometer-chart';
 import { LineChart, PieChart } from 'react-native-chart-kit'
-const scoring = require('../../util/scoring');
-  
+import scoring from '../../util/scoring';
 /*
 Rating Page 디자인 개선
 */
 const chartConfig={
-  backgroundColor: "#e26a00",
-  backgroundGradientFrom: "#fb8c00",
-  backgroundGradientTo: "#ffa726",
   decimalPlaces: 2, // optional, defaults to 2dp
-  color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-  labelColor: (opacity = 1) => `rgba(255, 255, 255 ${opacity})`,
+  color: (opacity = 1) => `rgba(78, 183, 172, ${opacity})`,
+  labelColor: (opacity = 1) => `rgba(0, 176, 255, ${opacity})`,
   style: {
     borderRadius: 16
   }
@@ -28,36 +24,35 @@ export default class RateScreen extends React.Component {
       console.log('Render SearchCard')
       super(props);
       this.state = {
-        //score: this.props.screenProps.return_data
+        score: scoring(this.props.screenProps.return_data).score
       }
-      console.log(this.state)
     }
     render() {
       return (
         <SafeAreaView style={styles.container}>
         <ScrollView style={styles.scrollView} >
-        <View>
+        <View style={styles.pieChart}>
         <PieChart
           data={[
             {
               name: "맞춤법 점수",
-              score: 20, //this.state.score.fixScore
-              color: "#03A9F4",
-              legendFontColor: "#7F7F7F",
-              legendFontSize: 15
+              score: this.state.score.fix,
+              color: "#f4a462",
+              legendFontColor: "#000000",
+              legendFontSize: 17
             },
             {
               name: "키워드 점수",
-              score: 30, //this.state.score.keywordScore,
-              color: "#AB47BC",
-              legendFontColor: "#7F7F7F",
-              legendFontSize: 15
+              score: this.state.score.key,
+              color: "#a7dadc",
+              legendFontColor: "#000000",
+              legendFontSize: 17
             },
             { 
               name: "",
-              score: 70, //100-(this.state.score.fixScore+this.state.score.keywordScore),
+              score: 100-(this.state.score.fix+this.state.score.key),
               color: "#BDBDBD",
-              legendFontSize: 0
+              legendFontSize: 0 
             }
           ]}
           width={Dimensions.get('window').width}
@@ -67,46 +62,53 @@ export default class RateScreen extends React.Component {
           backgroundColor="transparent"
           absolute
         />
+          <Text style={styles.desScoreText}>당신의 점수는 <Text style={styles.desScore}>{this.state.score.full}</Text> 점입니다!</Text>
+          <Text style={styles.desText}>{this.state.score.msg}</Text>
         </View>
         <View>
-          <View style={styles.descontainer}>
-            <Text style={styles.destitle}>다음에는 이렇게 검색해보면 어떨까요?</Text>
-            <Text style={styles.deskeyword}>"경희대학 학생수"</Text>
-            <Text style={styles.destext}>검색단어는 필요한 단어로만 구성하여 간결할수록 좋습니다!</Text>
+          <View style={styles.desContainer}>
+            <Text style={styles.desTitle}>다음에는 이렇게 검색해보면 어떨까요?</Text>
+            <Text style={styles.desKeyword}>"{this.props.screenProps.return_data.keywordText}"</Text>           
           </View>
+        <View style={styles.lineChart}>
+        <Text style={styles.lineText}>점수 기록</Text>
         <LineChart
           data={{
-            labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+            labels: [""],
             datasets: [{
               data: [
+                10,
                 Math.random() * 100,
                 Math.random() * 100,
                 Math.random() * 100,
                 Math.random() * 100,
-                Math.random() * 100,
-                Math.random() * 100
+                95
               ]
             }]
           }}
-          width={Dimensions.get('window').width} // from react-native
+          legend={{
+            enabled: true,
+            textSize: 50,
+          }}
+          width={Dimensions.get('window').width * 0.90} // from react-native
           height={220}
-          yAxisLabel={''}
           chartConfig={{
-            backgroundColor: '##a4abb6',
-            backgroundGradientFrom: '#babec5',
-            backgroundGradientTo: '#828ea6',
+            backgroundColor: '#ffccd5',
+            backgroundGradientFrom: '#ffccd5',
+            backgroundGradientTo: '#ffccd5',
             decimalPlaces: 2, // optional, defaults to 2dp
-            color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+            color: (opacity = 0) => `rgba(0, 0, 0, ${opacity})`,
+            labelColor: (opacity = 0) => `rgba(0, 0, 0, ${opacity})`,
             style: {
               borderRadius: 16
             }
           }}
-          bezier
           style={{
             marginVertical: 8,
             borderRadius: 16
           }}
         />
+        </View>
           </View>
           </ScrollView>
         </SafeAreaView>

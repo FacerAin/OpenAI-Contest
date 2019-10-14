@@ -1,120 +1,69 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet,Dimensions } from 'react-native';
 
 const styles = StyleSheet.create({
     scrollView: {
-        backgroundColor: 'f8f6f6',
+        backgroundColor: '#f8f6f6',
     },
     container:{
         flex: 1,
     },
-    cardcontainer:{
-        backgroundColor: '#F7F7F7',
-        borderWidth: 1,
-        borderRadius: 2,
-        borderColor: '#b5cdfc',
-        borderBottomWidth: 0,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.8,
-        shadowRadius: 2,
-        elevation: 1,
-  
-        height: 200,
+    pieChart:{
+        padding:10,
         margin: 10,
-        flexDirection: 'column'
+        borderRadius:10,
+        alignItems: "center",
+        backgroundColor : "#f4f2bd"
     },
-    cardheader:{
-        flex : 1.3,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
+    lineChart: {
+        backgroundColor: "#ffccd5",
+        borderRadius:10,
+        alignItems: "center",
+        margin :10,
     },
-    cardbody:{
-        flex: 2.5,
-        justifyContent: 'center',
-        alignItems: 'center'
+    lineText: {
+        color: "#4b5b68",
+        fontSize: 25,
+        fontWeight: "bold",
+        padding:10
     },
-    cardbodytext:{
-        padding: 15
-    },
-    cardfooter:{
-        alignItems: 'flex-end',
-        flex: 1,
-        justifyContent: 'center'
-    },
-    cardfooterbt:{
-        padding: 10
-    },
-    cardlogo:{
-        margin: 5,
-        padding: 10,
-        width: 50,
-        height: 50,
-        borderRadius:50/2
-    },
-    cardtitle:{
-        flex: 4,
-        padding: 10,
-        justifyContent: 'center'
-    },
-    cardtext:{
-  
-    },
-  
-    ratingcontainer:{
-        width: '100%',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        backgroundColor: '#b2f2bb',
-        borderWidth: 1,
-        borderRadius: 2,
-        borderColor: '#ddd',
-        borderBottomWidth: 0,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.8,
-        shadowRadius: 2,
-        elevation: 1,
-    },
-    ratingtext:{
-        padding: 10,
-        height: 50,
-        flex: 5,
-        justifyContent: 'center',
-    },
-    ratingspec:{
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: 50,
-        flex: 1.8,
-    },
-    ratingcancel: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: 50,
-        flex: 1,
-    },
-    ratingpageheader:{
-        backgroundColor: 'black'
-    },
-    descontainer:{
+    desContainer:{
+        margin: 10,
         alignItems: 'center',
         flexDirection: 'column',
         justifyContent: 'space-between',
-        margin: 20,      
+        backgroundColor: "#dbe2ef",
+        paddingTop :10,
+        paddingBottom :5,
+        borderRadius :10,
     },
-    destitle:{
+    desScoreText:{
+        textAlign: 'center',
+        color: "#4b5b68",
+        paddingTop: 10,
+        fontSize: 23,
+    },
+    desScore:{
+        fontSize: 35,
+        fontWeight: "bold",
+        color: '#5f86c4',
+    },
+    desText:{
+        textAlign: 'center',
+        padding: 5,
+        lineHeight: 30,
+        fontSize: 25,
         fontWeight: 'bold',
-        fontSize: 15,
-        padding: 20,
     },
-    deskeyword:{
+    desTitle:{
+        color: "#4b5b68",
+        fontSize: 20,
+    },
+    desKeyword:{
+        textAlign: 'center',
+        lineHeight: 35,
         fontWeight: 'bold',
         fontSize: 30,
-    },
-    destext:{
-        margin: 10,
-        textAlign: 'center',
+        padding: 10,
     },
 })
   

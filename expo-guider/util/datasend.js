@@ -1,26 +1,26 @@
 const axios = require('axios')
 
-keywordSend = (keywordData) => {
-    console.log('keywordSend')
-    let datajson = {
-        'data': {
-            'text': keywordData
+
+SendToApi = async(searchdata) => {
+    return new Promise((resolve,reject) => {
+      axios(
+        {
+          headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+          },
+          url: 'http://192.168.0.40:3000/api/cliConnection',
+          data: {
+            data:{
+              text: searchdata
+            }
+          },
+          method: "POST",
         }
-    }
-    fetch('http://localhost:3000/api/cliConnection',{
-        method: 'POST',
-        body: JSON.stringify(datajson),
-        headers:{
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Headers': '*',
-            'Content-Type': 'application/json',
-
-          }
-    }).then(res => res.json())
-    .then(response => console.log('Success:', JSON.stringify(response)))
-    .catch(error => console.error('Error:', error));
-    
-
+      )
+      .then((response)=>{
+        resolve(JSON.stringify(response.data))
+      })
+    })
 }
-
-module.exports = keywordSend;
+module.exports = SendToApi;
