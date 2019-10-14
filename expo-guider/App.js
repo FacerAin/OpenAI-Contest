@@ -46,6 +46,7 @@ export default class App extends React.Component {
           dataset: TestDataset,
           fetching: false,
         }
+        console.log('Render App')
     }
 
     render(){

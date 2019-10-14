@@ -12,7 +12,7 @@ const initialState = {
 const processdata = (state = initialState, action) => {
     switch(action.type){
         case types.SET_DATA:
-            return {...state, data:action.data}
+            return {...state, data:JSON.parse(action.data)}
         default:
             return state;
     }
