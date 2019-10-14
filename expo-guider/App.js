@@ -23,7 +23,9 @@ import { Provider } from 'react-redux';
 
 const store = createStore(processApp);
 
-
+store.subscribe( () => {
+  console.log("State has changed"  + store.getState());
+})
 
   /*
     .then(response => {
