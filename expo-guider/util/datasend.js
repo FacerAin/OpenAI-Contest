@@ -1,5 +1,5 @@
 const axios = require('axios')
-
+const filter = require('./filter')
 
 SendToApi = async(searchdata) => {
     return new Promise((resolve,reject) => {
@@ -19,8 +19,12 @@ SendToApi = async(searchdata) => {
         }
       )
       .then((response)=>{
-        resolve(JSON.stringify(response.data))
+        console.log('Success Response')
+        resolve(JSON.stringify(filter(response.data)))
       })
+      .catch(error => {
+        console.error(error);
+      });
     })
 }
 module.exports = SendToApi;
