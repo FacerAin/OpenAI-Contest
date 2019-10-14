@@ -15,7 +15,7 @@ import Constants from 'expo-constants';
 import TestDataset from './test.json'
 import styles from './AppStyles.js';
 import axios from 'axios';
-import { createStore } from 'redux';
+//import { createStore } from 'redux';
 //import reducers from './reducers';
 //import { Provider } from 'react-redux';
 
