@@ -13,8 +13,8 @@ class HomeScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            ratingstatus: true,
-            dataset: this.props.screenProps.return_data,
+            ratingstatus: false,
+            dataset: '',
         }
         
     }
@@ -27,8 +27,7 @@ class HomeScreen extends React.Component {
     static getDerivedStateFromProps(nextProps, prevState) {
         if(nextProps.value !== prevState.dataset){
             console.log('getDerivedStateFromProps')
-            return {dataset: nextProps.value,
-                ratingstatus: true}
+            return {dataset: nextProps.value}
             
         }
         return null

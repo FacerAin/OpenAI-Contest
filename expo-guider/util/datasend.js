@@ -9,7 +9,7 @@ SendToApi = async(searchdata) => {
             "Accept": "application/json",
             "Content-Type": "application/json",
           },
-          url: 'http://172.16.31.15:3000/api/cliConnection',
+          url: 'http://192.168.0.40:3000/api/cliConnection',
           data: {
             data:{
               text: searchdata

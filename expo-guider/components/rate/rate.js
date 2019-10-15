@@ -33,8 +33,10 @@ class RateScreen extends React.Component {
       if(Object.keys(nextProps.value).length){
           console.log('getDerivedStateFromPropsRATE')
           console.log(scoring(nextProps.value.return_data).score.fix)
-          return {score: scoring(nextProps.value.return_data).score}
+          return {score: scoring(nextProps.value.return_data).score, 
+            dataset: nextProps.value
       }
+    }
       return null
   }
 
