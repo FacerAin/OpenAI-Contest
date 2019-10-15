@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Speedometer from 'react-native-speedometer-chart';
 import { LineChart, PieChart } from 'react-native-chart-kit'
 import scoring from '../../util/scoring';
+import { connect } from'react-redux';
 /*
 Rating Page 디자인 개선
 */
@@ -27,6 +28,16 @@ export default class RateScreen extends React.Component {
         score: scoring(this.props.screenProps.return_data).score
       }
     }
+
+    static getDerivedStateFromProps(nextProps, prevState) {
+      if(nextProps.value !== prevState.dataset){
+          console.log('getDerivedStateFromProps')
+          return {score: scoring(nextProps.value.return_data)}
+          
+      }
+      return null
+  }
+
     render() {
       return (
         <SafeAreaView style={styles.container}>
@@ -120,3 +131,11 @@ RateScreen.navigationOptions = {
   tabBarIcon: 
   <Icon name="line-chart" style={{margin : 0, padding : 0,color:"#112d4e"}} size={20}/>,
 }
+
+let mapStateToProps = (state) => {
+  return {
+      value : state.processdata.data
+  }
+}
+
+export default connect(mapStateToProps)(HomeScreen)
