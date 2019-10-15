@@ -7,7 +7,7 @@ import TestDataset from './test.json'
 import { createStore } from 'redux';
 import processApp from './reducer';
 import { Provider } from 'react-redux';
-import { Permissions } from "expo";
+import * as Permissions from 'expo-permissions'
 
 const store = createStore(processApp);
 
