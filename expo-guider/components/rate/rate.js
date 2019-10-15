@@ -20,27 +20,28 @@ const chartConfig={
 //score: scoring(this.props.screenProps.return_data)
 
 //<Icon name="line-chart" style={{margin : 0, padding : 0,}} size={20} color={this.props.activeTintColor} />,
-export default class RateScreen extends React.Component {
+class RateScreen extends React.Component {
     constructor(props) {
       console.log('Render SearchCard')
       super(props);
       this.state = {
-        score: scoring(this.props.screenProps.return_data).score
+        score: {},
       }
     }
 
     static getDerivedStateFromProps(nextProps, prevState) {
-      if(nextProps.value !== prevState.dataset){
-          console.log('getDerivedStateFromProps')
-          return {score: scoring(nextProps.value.return_data)}
-          
+      if(Object.keys(nextProps.value).length){
+          console.log('getDerivedStateFromPropsRATE')
+          console.log(scoring(nextProps.value.return_data).score.fix)
+          return {score: scoring(nextProps.value.return_data).score}
       }
       return null
   }
 
     render() {
       return (
-        <SafeAreaView style={styles.container}>
+        <>
+        {Object.keys(this.state.score).length ? <SafeAreaView style={styles.container}>
         <ScrollView style={styles.scrollView} >
         <View style={styles.pieChart}>
         <PieChart
@@ -122,7 +123,8 @@ export default class RateScreen extends React.Component {
         </View>
           </View>
           </ScrollView>
-        </SafeAreaView>
+        </SafeAreaView> : null}
+        </>
     );
   }
 }
@@ -138,4 +140,4 @@ let mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(HomeScreen)
+export default connect(mapStateToProps)(RateScreen)
