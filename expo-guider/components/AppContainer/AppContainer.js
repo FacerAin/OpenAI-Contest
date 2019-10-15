@@ -47,4 +47,4 @@ const AppTabNavigator = createMaterialTopTabNavigator(
     },
 });
 const AppContainer = createAppContainer(AppTabNavigator);
-export default AppContainer;  
+export default AppContainer;

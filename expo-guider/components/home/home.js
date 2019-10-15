@@ -4,24 +4,41 @@ import  List  from 'react-native-elements'
 import Icon from 'react-native-vector-icons/FontAwesome';  
 import SearchCard from '../searchcard/searchcard'
 import styles from './homeStyles';
+import { connect } from'react-redux';
 //<Icon name="home" style={{margin : 0, padding : 0,}} size={20} color={this.props.activeTintColor} />
 
 
 
-export default class HomeScreen extends React.Component {
+class HomeScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             ratingstatus: true,
             searchdataset: this.props.screenProps.return_data.searchResults,
+            dataset: this.props.screenProps.return_data,
         }
-        console.log('render App')
+        
     }
     handleCancel = () =>{
         console.log('handlecancel')
+        console.log(this.state)
         this.setState({ratingstatus: false})
     }
+    
+    static getDerivedStateFromProps(nextProps, prevState) {
+        if(nextProps.value !== prevState.dataset){
+            console.log('getDerivedStateFromProps')
+            return Object.assign({},prevState,{
+                dataset: nextProps.value
+            })
+        }
+        return null
+    }
+    
     render() {
+        console.log('Render Home')
+        console.log(this.state)
+
         return (
             <> 
             <View style={styles.container}>
@@ -40,8 +57,9 @@ export default class HomeScreen extends React.Component {
                     
                     : null
             }
-                    <FlatList
-                    data={this.state.searchdataset}
+            {Object.keys(this.state.dataset).length !== 0 ?
+             <FlatList
+                    data={this.state.dataset.return_data.searchResults}
                     initialNumToRender={5}
                     onEndReachedThreshold={1}
                     renderItem={({ item }) => {
@@ -55,7 +73,9 @@ export default class HomeScreen extends React.Component {
                         );
                       }}
                     
-                    />
+                    />: null
+                    }
+                    
                     </View>
             </>
         )
@@ -67,4 +87,10 @@ HomeScreen.navigationOptions={
     tabBarIcon:
     <Icon name="home" style={{margin : 0, padding : 0,color:"#112d4e" }} size={20} />,
 }
+let mapStateToProps = (state) => {
+    return {
+        value : state.processdata.data
+    }
+}
 
+export default connect(mapStateToProps)(HomeScreen)

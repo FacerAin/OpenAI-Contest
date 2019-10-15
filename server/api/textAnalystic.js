@@ -13,7 +13,7 @@ const checkMorp = ( word, needMorp, noNeedMorp ) => {
     let needMorpTemp = [],
     noNeedMorpTemp = [];
     word.forEach( ( morp ) => {
-        if( allowMorpChecklist.indexOf( morp.type ) != -1 ) { 
+        if( allowMorpChecklist.indexOf( morp.type ) !== -1 ) { 
             needMorpTemp.push( morp );
         } else {
             noNeedMorpTemp.push( morp );
@@ -38,22 +38,22 @@ const divideMorpbyMean = ( tempMorps ) => {
         
     tempMorps.forEach( ( word, j ) => {
                 
-        if( word[ 0 ].type == "VV" ||  word[ 0 ].type == "VA" ||  word[ 0 ].type == "MAG") { // 동사, 형용사, 부사
+        if( word[ 0 ].type === "VV" ||  word[ 0 ].type === "VA" ||  word[ 0 ].type === "MAG") { // 동사, 형용사, 부사
             let checkV = true,
             checkM = true;
             word.find( ( Morp ) => {
-                if( Morp.type == "EF" ) { // 종결어미
+                if( Morp.type === "EF" ) { // 종결어미
                     checkV = false; 
-                } else if( Morp.type == "EC" ) { // 연결어미
+                } else if( Morp.type === "EC" ) { // 연결어미
                     if( tempMorps.length > j + 1 ) {
                         tempMorps[ j + 1 ].forEach( ( morp ) => {
-                            if( allowMorpChecklist.indexOf( morp.type ) == -1 ) {
+                            if( allowMorpChecklist.indexOf( morp.type ) === -1 ) {
                                 checkV = false;
                             }
                         });
                     }
-                } else if( word[ 0 ].type == "MAG") { 
-                    if( Morp.type == "XSV" ) { // 동사파생 접미사
+                } else if( word[ 0 ].type === "MAG") { 
+                    if( Morp.type === "XSV" ) { // 동사파생 접미사
                         check = false; 
                     } 
                 }
@@ -83,7 +83,7 @@ const makeKeyword = ( result, words, needMorp ) => {
 
     needMorp.forEach( ( morps ) => {
         words.forEach( ( word ) => {
-            if( word.begin == morps[ 0 ].id ){
+            if( word.begin === morps[ 0 ].id ){
                 let tempByte = morps[ morps.length - 1 ].position - morps[0].position + Buffer.byteLength( morps[ morps.length - 1 ].lemma );
                 for( let ch of word.text ) {
                     if( tempByte > 0 ) {

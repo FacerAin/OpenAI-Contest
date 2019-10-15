@@ -7,7 +7,7 @@ const apiRequest = require('./apiRequest');
  * @description 기계독해를 사용하는 함수
  */
 const machineRead = async ( searchResults, keywordText ) => {
-    let keyNum =  5,
+    let keyNum =  6,
         ResultArray = [],
         divideSearchResults = [];
 

@@ -11,9 +11,10 @@ const cliConnection = async ( req, res ) => {
     let clientData = {},
         analyzeData = {},
         searchData = [];
+
     try {
-        //clientData = JSON.parse( req.body.data);
-        clientData = req.body.data;
+        clientData = JSON.parse( req.body.data);
+        //clientData = req.body.data;
         if( !clientData.text.replace( /\s/g, '' ).length ) {
             throw new Error( "client text empty" );
         }
@@ -24,7 +25,7 @@ const cliConnection = async ( req, res ) => {
         res.status( 403 );
         return false;
     }
-
+    
     try {
         analyzeData = await textAnalytic( clientData );
     }
@@ -44,7 +45,7 @@ const cliConnection = async ( req, res ) => {
         res.status( 503 );
         return false;
     }
-    
+
     searchData = searchData[ 0 ].concat( searchData[ 1 ] );
     try {
         searchData = await machineRead( searchData, analyzeData.keywordText );
@@ -55,6 +56,7 @@ const cliConnection = async ( req, res ) => {
         res.status( 502 );
         return false;
     }
+
     analyzeData.searchResults = searchData;
     res.send( { "return_code" : 0, "return_data" : analyzeData } );
     res.status( 200 );

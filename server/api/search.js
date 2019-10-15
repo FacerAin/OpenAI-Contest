@@ -20,7 +20,7 @@ const searchURL = {
 const keywordChecking = ( keywordText, $, elem ) => {
     let tempCheck = false;
     keywordText.split( ' ' ).forEach( ( Word ) => {
-        if( $( elem ).text().indexOf( Word ) != -1 ) {
+        if( $( elem ).text().indexOf( Word ) !== -1 ) {
             tempCheck = true;
         } 
     });
@@ -43,9 +43,9 @@ const google = ( searchResult, $, elem , defaultURL ) => {
     searchResult.url = decodeURIComponent( $( elem ).attr( "href" ) );
     searchResult.title = entities.decode( $( elem ).children("div").text() ); // title 캐오기 수정 가능
 
-    if( searchResult.url.indexOf( "/url?q=" ) == 0 ) {
+    if( searchResult.url.indexOf( "/url?q=" ) === 0 ) {
         searchResult.url = searchResult.url.replace( "/url?q=", "" );
-    } else if( searchResult.url.indexOf( "/search?" ) == 0 ) {
+    } else if( searchResult.url.indexOf( "/search?" ) === 0 ) {
         searchResult.url = "https://google.com" + searchResult.url;
     } else { 
         searchResult.url = defaultURL;
@@ -64,7 +64,7 @@ const naver = ( searchResult, $, elem , defaultURL ) => {
     searchResult.passage = entities.decode( $( elem ).parent().parent().parent().text()).trim(),
     searchResult.url = $( elem ).parent().attr( "href" ); 
     
-    if( searchResult.url == undefined ) {
+    if( searchResult.url === undefined ) {
         searchResult.url = defaultURL;
     }
 }
@@ -76,13 +76,13 @@ const naver = ( searchResult, $, elem , defaultURL ) => {
  * @description 타이틀이 없을 경우 달아주거나 중복된 것들 제거하는 등의 역활을 해 최종적으로 결과에 담아주는 함수
  */
 const searchToResult = (searchResult, result, keywordCheck) => {
-    searchResult.passage.replace( /(http(s)?:\/\/)([a-z0-9\w]+\.*)+[a-z0-9]{2,4}/gi, ' ' );
-    searchResult.passage.replace( /\s{1,}/g, ' ' );
-
-    if( searchResult.title == undefined || !searchResult.title.length ) {
+    searchResult.passage = searchResult.passage.replace( /(http(s)?:\/\/)([a-z0-9\w]+\.*)+[a-z0-9]{2,4}/gi, ' ' ).replace( /\s{1,}/g, ' ' ).trim();
+    
+    if( searchResult.title === undefined || !searchResult.title.length ) {
         searchResult.title = searchResult.passage.split(' ').slice( 0, 3 ).toString().replace(/,/g,' ') + "...";
     } else {
-        searchResult.passage.replace( searchResult.title, '' );
+        searchResult.title = searchResult.title.replace( /(http(s)?:\/\/)([a-z0-9\w]+\.*)+[a-z0-9]{2,4}/gi, ' ' ).replace( /\s{1,}/g, ' ' ).trim();
+        searchResult.passage = searchResult.passage.replace( searchResult.title, '' );
     }
     
     if( !result.length ) {
@@ -91,7 +91,7 @@ const searchToResult = (searchResult, result, keywordCheck) => {
         }     
     } else if( keywordCheck ) {
         // 공백 제거하고 비교
-        if( result[ result.length - 1 ].passage.replace( /\s/g, '' ) != searchResult.passage.replace( /\s/g, '' ) ) {
+        if( result[ result.length - 1 ].passage.replace( /\s/g, '' ) !== searchResult.passage.replace( /\s/g, '' ) ) {
             result.push( searchResult );
         }
     }
