@@ -1,6 +1,3 @@
-import React from 'react';  
-import {StyleSheet, Text, View,Button} from 'react-native';  
-import { createStackNavigator } from 'react-navigation-stack';
 import {createAppContainer} from 'react-navigation';  
 import {createMaterialTopTabNavigator} from 'react-navigation-tabs';
 import HomeScreen from '../home/home';

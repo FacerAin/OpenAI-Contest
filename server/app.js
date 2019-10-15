@@ -15,6 +15,6 @@ app.use(function(req, res, next) {
   });
 app.use('/api',require('./api'));   
 
-app.listen(3000,()=>{
+app.listen(3002,()=>{
     console.log('Server On!');
 });

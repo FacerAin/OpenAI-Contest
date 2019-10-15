@@ -2,8 +2,12 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
 
+    cardheader:{
+        flex : 1.3,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
     cardcontainer:{
-        backgroundColor: '#e9f1f0',
         borderWidth: 1,
         borderRadius: 2,
         borderColor: '#ddd',
@@ -13,26 +17,45 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.8,
         shadowRadius: 2,
         elevation: 1,
-
-        height: 200,
+    
+        height: 250,
         margin: 10,
         flexDirection: 'column'
     },
-
-    cardheader:{
-        flex : 1.3,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-    },
-
     cardbody:{
         flex: 2.5,
         justifyContent: 'center',
         alignItems: 'center'
     },
-
+    cardtitlebox:{
+        margin:10,
+        borderBottomWidth:1,
+        borderBottomColor:"#84899a"
+    },
+    cardtitle:{
+        flex: 4,
+        margin: 10,
+        justifyContent: 'center'
+    },
+    cardtitleconfidence: {
+        margin: 10,
+    },
+    cardtitlesite:{
+        lineHeight: 25,
+        fontSize: 23
+    },
+    cardtitletext:{
+        lineHeight: 27,
+        fontSize: 23,
+        fontWeight: 'bold',
+        paddingLeft: 10,
+        marginBottom: 10,
+    },
     cardbodytext:{
-        padding: 15
+        lineHeight: 20,
+        fontSize: 15,
+        paddingLeft: 20,
+        paddingRight: 10,
     },
 
     cardfooter:{
@@ -42,7 +65,12 @@ const styles = StyleSheet.create({
     },
 
     cardfooterbt:{
-        padding: 10
+        margin: 3,
+        marginRight : 6,
+        padding: 3,
+        fontWeight : 'bold',
+        fontSize: 15,
+        backgroundColor: 'rgba(217, 227, 221, 0.5)',
     },
 
     cardlogo:{
@@ -53,15 +81,6 @@ const styles = StyleSheet.create({
         borderRadius:50/2
     },
 
-    cardtitle:{
-        flex: 4,
-        padding: 10,
-        justifyContent: 'center'
-    },
-
-    cardtext:{
-
-    },
 })
 
 export default styles;

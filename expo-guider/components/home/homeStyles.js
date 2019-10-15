@@ -49,6 +49,26 @@ const styles = StyleSheet.create({
         backgroundColor: 'black',
 
     },
+
+    emptyContainer: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        flex: 1
+    },
+
+    empty: {
+        fontSize: 30,
+        fontWeight: 'bold',
+    },
+    loadingAnimation: {
+        width: 100,
+        height: 100
+    },
+    loadingContainer:{
+        justifyContent: 'center',
+        alignItems: 'center',
+        flex: 1
+    }
 })
 
 export default styles;

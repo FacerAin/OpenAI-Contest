@@ -27,7 +27,7 @@ const getComment = ( fixScore, keywordScore ) => {
     } else {
         morpPos = 3;
     }
-    return assistance[fixPos][morpPos];
+    return assistance[morpPos][fixPos];
 }
 
 const scoring = ( return_data ) => {
@@ -42,9 +42,9 @@ const scoring = ( return_data ) => {
         fixedText = "";
     }
 
-    let fixScore = ( ( Text.length - fixedText.length ) / Text.length ) * 30, 
-        keywordScore = lenNeed / ( lenNoNeed + lenNeed ) * 70;
-        fullScore = Math.round( fixScore + keywordScore )
+    let fixScore = Math.round( ( ( Text.length - fixedText.length ) / Text.length ) * 30 ), 
+        keywordScore = Math.round( lenNeed / ( lenNoNeed + lenNeed ) * 70 ),
+        fullScore = fixScore + keywordScore;
 
     let comment = getComment(fixScore,keywordScore);
 

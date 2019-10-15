@@ -13,10 +13,10 @@ const cliConnection = async ( req, res ) => {
         searchData = [];
 
     try {
-        clientData = JSON.parse( req.body.data);
+        clientData = req.body.data;
         //clientData = req.body.data;
         if( !clientData.text.replace( /\s/g, '' ).length ) {
-            throw new Error( "client text empty" );
+            throw new Error( "client text empty" );q
         }
     }
     catch ( err ) {

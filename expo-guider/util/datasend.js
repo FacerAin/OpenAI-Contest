@@ -9,10 +9,10 @@ SendToApi = async(searchdata) => {
             "Accept": "application/json",
             "Content-Type": "application/json",
           },
-          url: 'http://192.168.0.40:3000/api/cliConnection',
+          url: 'http://192.168.0.44:3002/api/cliConnection',
           data: {
             data:{
-              text: searchdata
+              text: searchdata.replace(/\s{1,}/g,' ')
             }
           },
           method: "POST",

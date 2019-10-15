@@ -76,12 +76,12 @@ const naver = ( searchResult, $, elem , defaultURL ) => {
  * @description 타이틀이 없을 경우 달아주거나 중복된 것들 제거하는 등의 역활을 해 최종적으로 결과에 담아주는 함수
  */
 const searchToResult = (searchResult, result, keywordCheck) => {
-    searchResult.passage = searchResult.passage.replace( /(http(s)?:\/\/)([a-z0-9\w]+\.*)+[a-z0-9]{2,4}/gi, ' ' ).replace( /\s{1,}/g, ' ' ).trim();
+    searchResult.passage = searchResult.passage.replace( /(http(s)?:\/\/)([a-z0-9\w]+\.*)+[a-z0-9]{2,4}/gi, ' ' ).replace( /\s{1,}|\s{1,}|\r\n|\r|\n/g, ' ' ).trim();
     
     if( searchResult.title === undefined || !searchResult.title.length ) {
-        searchResult.title = searchResult.passage.split(' ').slice( 0, 3 ).toString().replace(/,/g,' ') + "...";
+        searchResult.title = searchResult.passage.split(' ').slice( 0, 3 ).toString().replace(/,/g,' ') + "..";
     } else {
-        searchResult.title = searchResult.title.replace( /(http(s)?:\/\/)([a-z0-9\w]+\.*)+[a-z0-9]{2,4}/gi, ' ' ).replace( /\s{1,}/g, ' ' ).trim();
+        searchResult.title = searchResult.title.replace( /(http(s)?:\/\/)([a-z0-9\w]+\.*)+[a-z0-9]{2,4}/gi, ' ' ).replace( /\s{1,}|\s{1,}|\r\n|\r|\n/g, ' ' ).trim();
         searchResult.passage = searchResult.passage.replace( searchResult.title, '' );
     }
     

@@ -6,3 +6,10 @@ export function setData(data){
         data: data,
     }
 }
+
+export function setLoading(data){
+    return {
+        type: types.SET_LOADING,
+        isLoading: data,
+    }
+}

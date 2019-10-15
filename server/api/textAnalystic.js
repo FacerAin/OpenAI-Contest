@@ -1,8 +1,8 @@
 const apiRequest = require('./apiRequest');
 
 const allowMorpChecklist = [ "NNG","NNP","NNB","VA","MM","MAG","SL","SH","SN","XPN","XSN","XSA","ETM","NOG" ];
-const vvMorpChecklist = ["ETM","ETN"]; // 명사형 전성어미(ex) '-(으)ㅁ', '-기'), 관형사형 전성어미(ex) '-ㄴ', '-', '-던', '-ㄹ')
-
+const vvMorpChecklist = ["ETM","ETN"]; // 명사형 전성어미(ex) '-(으)ㅁ', '-기'), 관형사형 전성어미(ex) '-ㄴ', '-', '-던', '-ㄹ'), 지정자(VCP,VCN, ex) '-이다', '-아니다')
+const npMorpCecklist = ['어디','언제']; // 필요한 의문사 리스트
 /**
  * @param {{lemma:string, position:number, type:string}[]} word - 한 단어의 형태소 ex) [{걸리},{었},{을}]
  * @param {{lemma:string, position:number, type:string}[][]} needMorp - 공백 단위로 묶어둠 ex) [[{감기}],[{걸리},{었},{을}],[{때}]
@@ -15,9 +15,12 @@ const checkMorp = ( word, needMorp, noNeedMorp ) => {
     word.forEach( ( morp ) => {
         if( allowMorpChecklist.indexOf( morp.type ) !== -1 ) { 
             needMorpTemp.push( morp );
-        } else {
-            noNeedMorpTemp.push( morp );
+        } else if(npMorpCecklist.indexOf( morp.lemma ) !== -1 ) {
+            needMorpTemp.push( morp );
         }
+        else {
+            noNeedMorpTemp.push( morp );
+        } 
     });
     if( noNeedMorpTemp.length > 0) {
         noNeedMorp.push( noNeedMorpTemp );
@@ -53,8 +56,8 @@ const divideMorpbyMean = ( tempMorps ) => {
                         });
                     }
                 } else if( word[ 0 ].type === "MAG") { 
-                    if( Morp.type === "XSV" ) { // 동사파생 접미사
-                        check = false; 
+                    if( Morp.type === "XSV" ) { // 동사파생 접미사 ex) -하다
+                        checkM = false; 
                     } 
                 }
             });
@@ -70,6 +73,8 @@ const divideMorpbyMean = ( tempMorps ) => {
     });
     return [ needMorp, noNeedMorp ];
 }
+
+// 어디인가요? 00이 컴퓨터인가요?
 
 /**
  * @param {String} result - 결과 담던거
@@ -137,14 +142,14 @@ const textAnalystic = async ( clientData ) => {
         textAnalystic;
 
     fixedClientData = await apiRequest.Korean( result.originalText );
-    try {
+/*     try {
         if( !fixedClientData.origin_html.replace( /<\w+[^>]*>(.*?)<\/\w+>/g, '' ).replace( /\s/g, '' ).length ) {
             throw new Error( "wrong keyword" );
         }
     }
     catch( err ) {
         throw new Error( err.message );
-    }
+    } */
     result.korean = fixedClientData;
     result.fixedText = result.korean.notag_html;
     try {

@@ -1,25 +1,13 @@
 import React, { Component } from 'react';
 //import keywordSend from './util/datasend'
-import { View, Text, StyleSheet, Button,Dimensions,Image,TextInput,TouchableOpacity } from 'react-native';
-import {Header} from 'react-native-elements';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import { createAppContainer,NavigationEvents  } from 'react-navigation';
-import {createMaterialTopTabNavigator} from 'react-navigation-tabs'
-import { createStackNavigator } from 'react-navigation-stack';
 import SafeAreaView from 'react-native-safe-area-view';
-import { isTSConstructSignatureDeclaration } from '@babel/types';
-import HomeScreen from './components/home/home';
-import RateScreen from './components/rate/rate';
 import Searchbar from './components/Searchbar/Searchbar';
 import AppContainer from './components/AppContainer/AppContainer';
-import Constants from 'expo-constants';
 import TestDataset from './test.json'
-import styles from './AppStyles.js';
-import axios from 'axios';
 import { createStore } from 'redux';
 import processApp from './reducer';
 import { Provider } from 'react-redux';
-
+import { Permissions } from "expo";
 
 const store = createStore(processApp);
 
@@ -33,6 +21,18 @@ store.subscribe( () => {
 
 
 export default class App extends React.Component {
+  async componentDidMount() {
+    const { status, expires, permissions } = await Permissions.askAsync(
+      Permissions.AUDIO_RECORDING
+    );
+    if (status !== "granted") {
+      this.setState({showRecordButton: false});
+    } else {
+      this.setState({showRecordButton: true});
+    }
+    //showRecordButton state Connection 해둘것!
+  }
+
     constructor(props) {
         super(props);
         this.state = {

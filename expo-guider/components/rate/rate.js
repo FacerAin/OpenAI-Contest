@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView, SafeAreaView, Button, Dimensions, Image } from 'react-native';
+import {createAppContainer} from 'react-navigation';  
+import { View, Text, ScrollView, SafeAreaView, Dimensions} from 'react-native';
 import styles from './rateStyles';
 import Icon from 'react-native-vector-icons/FontAwesome';  
-import Speedometer from 'react-native-speedometer-chart';
 import { LineChart, PieChart } from 'react-native-chart-kit'
 import scoring from '../../util/scoring';
 import { connect } from'react-redux';
+
+import Styled from 'styled-components/native';
+import SQLite from 'react-native-sqlite-storage';
+
 /*
 Rating Page 디자인 개선
 */
+
+
 const chartConfig={
   decimalPlaces: 2, // optional, defaults to 2dp
   color: (opacity = 1) => `rgba(78, 183, 172, ${opacity})`,
@@ -22,17 +28,31 @@ const chartConfig={
 //<Icon name="line-chart" style={{margin : 0, padding : 0,}} size={20} color={this.props.activeTintColor} />,
 class RateScreen extends React.Component {
     constructor(props) {
-      console.log('Render SearchCard')
+      console.log('Render rate')
       super(props);
+      
+      const db = SQLite.openDatabase(
+        {
+          name: 'score.db',
+        },
+        () => {},
+        error => {
+          console.log(error);
+        }
+      );
+
       this.state = {
         score: {},
+        dataset: {},
+        db
       }
+      this.props.navigation.setParams({
+        done: this.componentDidMount,
+      })
     }
 
     static getDerivedStateFromProps(nextProps, prevState) {
       if(Object.keys(nextProps.value).length){
-          console.log('getDerivedStateFromPropsRATE')
-          console.log(scoring(nextProps.value.return_data).score.fix)
           return {score: scoring(nextProps.value.return_data).score, 
             dataset: nextProps.value
       }
@@ -65,7 +85,7 @@ class RateScreen extends React.Component {
             { 
               name: "",
               score: 100-(this.state.score.fix+this.state.score.key),
-              color: "#BDBDBD",
+              color: "#f4f2bd",
               legendFontSize: 0 
             }
           ]}
@@ -82,7 +102,7 @@ class RateScreen extends React.Component {
         <View>
           <View style={styles.desContainer}>
             <Text style={styles.desTitle}>다음에는 이렇게 검색해보면 어떨까요?</Text>
-            <Text style={styles.desKeyword}>"{this.props.screenProps.return_data.keywordText}"</Text>           
+            <Text style={styles.desKeyword}>"{this.state.dataset.return_data.keywordText}"</Text>           
           </View>
         <View style={styles.lineChart}>
         <Text style={styles.lineText}>점수 기록</Text>
@@ -129,6 +149,26 @@ class RateScreen extends React.Component {
         </>
     );
   }
+
+  componentDidMount() {
+    const { db } = this.state;
+
+    db.transaction(tx => {
+      tx.executeSql('SELECT * FROM test;', [], (tx, results) => {
+        const rows = results.rows;
+        let users = [];
+
+        for (let i = 0; i < rows.length; i++) {
+          users.push({
+            ...rows.item(i),
+          });
+        }
+
+        this.setState({ users });
+      });
+    });
+  }
+
 }
 RateScreen.navigationOptions = {
   title:'검색점수',
