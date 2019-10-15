@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Speedometer from 'react-native-speedometer-chart';
 import { LineChart, PieChart } from 'react-native-chart-kit'
 import scoring from '../../util/scoring';
+import { connect } from'react-redux';
 /*
 Rating Page 디자인 개선
 */
@@ -19,17 +20,30 @@ const chartConfig={
 //score: scoring(this.props.screenProps.return_data)
 
 //<Icon name="line-chart" style={{margin : 0, padding : 0,}} size={20} color={this.props.activeTintColor} />,
-export default class RateScreen extends React.Component {
+class RateScreen extends React.Component {
     constructor(props) {
       console.log('Render SearchCard')
       super(props);
       this.state = {
-        score: scoring(this.props.screenProps.return_data).score
+        score: {},
       }
     }
+
+    static getDerivedStateFromProps(nextProps, prevState) {
+      if(Object.keys(nextProps.value).length){
+          console.log('getDerivedStateFromPropsRATE')
+          console.log(scoring(nextProps.value.return_data).score.fix)
+          return {score: scoring(nextProps.value.return_data).score, 
+            dataset: nextProps.value
+      }
+    }
+      return null
+  }
+
     render() {
       return (
-        <SafeAreaView style={styles.container}>
+        <>
+        {Object.keys(this.state.score).length ? <SafeAreaView style={styles.container}>
         <ScrollView style={styles.scrollView} >
         <View style={styles.pieChart}>
         <PieChart
@@ -111,7 +125,8 @@ export default class RateScreen extends React.Component {
         </View>
           </View>
           </ScrollView>
-        </SafeAreaView>
+        </SafeAreaView> : null}
+        </>
     );
   }
 }
@@ -120,3 +135,11 @@ RateScreen.navigationOptions = {
   tabBarIcon: 
   <Icon name="line-chart" style={{margin : 0, padding : 0,color:"#112d4e"}} size={20}/>,
 }
+
+let mapStateToProps = (state) => {
+  return {
+      value : state.processdata.data
+  }
+}
+
+export default connect(mapStateToProps)(RateScreen)

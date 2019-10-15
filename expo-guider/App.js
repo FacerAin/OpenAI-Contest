@@ -28,13 +28,7 @@ store.subscribe( () => {
 })
 
   /*
-    .then(response => {
-      console.log("Success response");
-      return JSON.stringify(response.data)
-    })
-    .catch(error => {
-      console.error(error);
-    });
+
     */
 
 

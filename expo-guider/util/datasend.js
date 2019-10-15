@@ -1,5 +1,5 @@
 const axios = require('axios')
-
+const filter = require('./filter')
 
 SendToApi = async(searchdata) => {
     return new Promise((resolve,reject) => {
@@ -9,7 +9,7 @@ SendToApi = async(searchdata) => {
             "Accept": "application/json",
             "Content-Type": "application/json",
           },
-          url: 'http://192.168.0.2:3000/api/cliConnection',
+          url: 'http://192.168.0.40:3000/api/cliConnection',
           data: {
             data:{
               text: searchdata
@@ -19,8 +19,12 @@ SendToApi = async(searchdata) => {
         }
       )
       .then((response)=>{
-        resolve(JSON.stringify(response.data))
+        console.log('Success Response')
+        resolve(JSON.stringify(filter(response.data)))
       })
+      .catch(error => {
+        console.error(error);
+      });
     })
 }
 module.exports = SendToApi;

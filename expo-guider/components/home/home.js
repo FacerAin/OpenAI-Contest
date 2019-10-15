@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet,FlatList,TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet,FlatList,TouchableOpacity,SectionList } from 'react-native';
 import  List  from 'react-native-elements'
 import Icon from 'react-native-vector-icons/FontAwesome';  
 import SearchCard from '../searchcard/searchcard'
@@ -13,9 +13,8 @@ class HomeScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            ratingstatus: true,
-            searchdataset: this.props.screenProps.return_data.searchResults,
-            dataset: this.props.screenProps.return_data,
+            ratingstatus: false,
+            dataset: '',
         }
         
     }
@@ -28,9 +27,8 @@ class HomeScreen extends React.Component {
     static getDerivedStateFromProps(nextProps, prevState) {
         if(nextProps.value !== prevState.dataset){
             console.log('getDerivedStateFromProps')
-            return Object.assign({},prevState,{
-                dataset: nextProps.value
-            })
+            return {dataset: nextProps.value}
+            
         }
         return null
     }
@@ -60,8 +58,7 @@ class HomeScreen extends React.Component {
             {Object.keys(this.state.dataset).length !== 0 ?
              <FlatList
                     data={this.state.dataset.return_data.searchResults}
-                    initialNumToRender={5}
-                    onEndReachedThreshold={1}
+                    extraData={this.state}
                     renderItem={({ item }) => {
                         return (
                             <>
