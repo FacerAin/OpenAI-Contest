@@ -19,7 +19,6 @@ SendToApi = async(searchdata) => {
         }
       )
       .then((response)=>{
-        console.log('Success Response')
         resolve(JSON.stringify(filter(response.data)))
       })
       .catch(error => {

@@ -5,8 +5,10 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { LineChart, PieChart } from 'react-native-chart-kit'
 import scoring from '../../util/scoring';
 import { connect } from'react-redux';
-const Database = require('../../util/db');
+const db = require("../../util/db");
+//const Database = require('../../util/db');
 
+let pastScore = [];
 const chartConfig={
   decimalPlaces: 2, // optional, defaults to 2dp
   color: (opacity = 1) => `rgba(78, 183, 172, ${opacity})`,
@@ -23,16 +25,19 @@ class RateScreen extends React.Component {
       this.state = {
         score: {},
         dataset: {},
-        pastScore: [],
       }
     }
-    componentDidMount = () => {
-      pastScore = Database.readDB();
+    componentDidMount = async () => {
+      console.log("ASd")
+      pastScore = await db.List();
+      console.log("db",pastScore);
     }
-    static getDerivedStateFromProps(nextProps, prevState) {
+    static getDerivedStateFromProps= async (nextProps, prevState) =>{
       if(Object.keys(nextProps.value).length){
           let tempScore = scoring(nextProps.value.return_data).score;
-          Database.writeDB(tempScore.full);
+          await db.Add(tempScore.full);
+          pastScore = await db.List();
+          console.log("db2",pastScore);
           return { score: tempScore, dataset: nextProps.value }
     }
       return null
@@ -88,7 +93,7 @@ class RateScreen extends React.Component {
             data={{
               labels: [""],
               datasets: [{
-                data: pastscore
+                data: pastScore
               }]
             }}
             legend={{
