@@ -12,6 +12,10 @@
     "buffer": "^5.4.3",
     "crypto": "^1.0.1",
     "expo": "^35.0.0",
+    "expo-asset": "~7.0.0",
+    "expo-av": "~7.0.0",
+    "expo-file-system": "~7.0.0",
+    "expo-font": "~7.0.0",
     "expo-module-scripts": "^1.1.1",
     "expo-permissions": "~7.0.0",
     "expo-sqlite": "~7.0.0",
@@ -38,11 +42,7 @@
     "react-navigation-stack": "^1.9.4",
     "react-navigation-tabs": "^2.5.6",
     "react-redux": "^7.1.1",
-    "redux": "^4.0.4",
-    "expo-asset": "~7.0.0",
-    "expo-av": "~7.0.0",
-    "expo-file-system": "~7.0.0",
-    "expo-font": "~7.0.0"
+    "redux": "^4.0.4"
   },
   "devDependencies": {
     "@expo/webpack-config": "^0.7.12",

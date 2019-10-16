@@ -20,14 +20,14 @@ class Searchbar extends React.Component{
               test: "TEST",
             },
             isRecording: false,
-            recordingDuration: null,
+            recordingDuration: null, 
             volume: 1.0,
             rate: 1.0,
         }
         this.recordingSettings = JSON.parse(JSON.stringify(Audio.RECORDING_OPTIONS_PRESET_LOW_QUALITY))
     }
     componentDidMount() {
-      this._askForPermissions();
+      this._askForPermissions()
     }    
     _askForPermissions = async () => {
       const response = await Permissions.askAsync(Permissions.AUDIO_RECORDING);
@@ -48,7 +48,7 @@ class Searchbar extends React.Component{
           recordingDuration: status.durationMillis,
         });
         if (!this.state.isLoading) {
-          this._stopRecordingAndEnablePlayback();
+          this._stopRecordingAndEnablePlayback()
         }
       }
     };
@@ -68,16 +68,16 @@ class Searchbar extends React.Component{
         staysActiveInBackground: true,
       });
       if (this.recording !== null) {
-        this.recording.setOnRecordingStatusUpdate(null);
-        this.recording = null;
+        this.recording.setOnRecordingStatusUpdate(null)
+        this.recording = null
       }
   
-      const recording = new Audio.Recording();
-      await recording.prepareToRecordAsync(this.recordingSettings);
-      recording.setOnRecordingStatusUpdate(this._updateScreenForRecordingStatus);
+      const recording = new Audio.Recording()
+      await recording.prepareToRecordAsync(this.recordingSettings)
+      recording.setOnRecordingStatusUpdate(this._updateScreenForRecordingStatus)
   
       this.recording = recording;
-      await this.recording.startAsync();
+      await this.recording.startAsync()
       this.setState({
         isLoading: false,
       });
@@ -87,12 +87,12 @@ class Searchbar extends React.Component{
         isLoading: true,
       });
       try {
-        await this.recording.stopAndUnloadAsync();
+        await this.recording.stopAndUnloadAsync()
       } catch (error) {
         // Do nothing -- we are already unloaded.
       }
       const info = await FileSystem.getInfoAsync(this.recording.getURI());
-      console.log(`FILE INFO: ${JSON.stringify(info)}`);
+      console.log(`FILE INFO: ${JSON.stringify(info)}`)
       await Audio.setAudioModeAsync({
         allowsRecordingIOS: false,
         interruptionModeIOS: Audio.INTERRUPTION_MODE_IOS_DO_NOT_MIX,
@@ -102,7 +102,8 @@ class Searchbar extends React.Component{
         interruptionModeAndroid: Audio.INTERRUPTION_MODE_ANDROID_DO_NOT_MIX,
         playThroughEarpieceAndroid: false,
         staysActiveInBackground: true,
-      });
+      })
+
       const { sound, status } = await this.recording.createNewLoadedSoundAsync(
         {
           isLooping: true,
@@ -118,6 +119,7 @@ class Searchbar extends React.Component{
         isLoading: false,
       });
     }
+
     _onRecordPressed = () => {
       if (this.state.isRecording) {
         this._stopRecordingAndEnablePlayback();
@@ -140,6 +142,7 @@ class Searchbar extends React.Component{
       };
       return padWithZero(minutes) + ':' + padWithZero(seconds);
     }
+
     _getRecordingTimestamp() {
       if (this.state.recordingDuration != null) {
         return `${this._getMMSSFromMillis(this.state.recordingDuration)}`;
@@ -147,21 +150,29 @@ class Searchbar extends React.Component{
       return `${this._getMMSSFromMillis(0)}`;
     }
 
-
-
+    updateSearch = search => {
+      this.setState({ search });
+    }
+    asyncstate = (res) => {
+      return new Promise((resolve,reject)=>{
+        this.setState({
+          dataset: res
+        })
+        resolve();
+      })
+    }
       sendSearch = async() => {
         console.log('sendSearch')
         Keyboard.dismiss()
         this.props.dispatch(setLoading(true))
         let resdata = await SendToApi(this.state.search)
         await this.asyncstate(resdata)
-        await this.props.dispatch(setLoading(false))
+        this.props.dispatch(setLoading(false))
         await this.props.dispatch(setData(this.state.dataset))
       }
       sendVoice = () =>{
         console.log(this.props.value)
       }
-
       render(){
           return(
           <>

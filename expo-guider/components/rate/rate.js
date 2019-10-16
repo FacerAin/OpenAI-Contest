@@ -1,61 +1,39 @@
-import React, { Component } from 'react';
-import {createAppContainer} from 'react-navigation';  
+import React, { Component } from 'react'; 
 import { View, Text, ScrollView, SafeAreaView, Dimensions} from 'react-native';
 import styles from './rateStyles';
 import Icon from 'react-native-vector-icons/FontAwesome';  
 import { LineChart, PieChart } from 'react-native-chart-kit'
 import scoring from '../../util/scoring';
 import { connect } from'react-redux';
-
-import Styled from 'styled-components/native';
-import SQLite from 'react-native-sqlite-storage';
-
-/*
-Rating Page 디자인 개선
-*/
-
+const Database = require('../../util/db');
 
 const chartConfig={
   decimalPlaces: 2, // optional, defaults to 2dp
   color: (opacity = 1) => `rgba(78, 183, 172, ${opacity})`,
   labelColor: (opacity = 1) => `rgba(0, 176, 255, ${opacity})`,
-  style: {
+  style: { 
     borderRadius: 16
   }
-}
-//score: scoring(this.props.screenProps.return_data)
+} 
 
-//<Icon name="line-chart" style={{margin : 0, padding : 0,}} size={20} color={this.props.activeTintColor} />,
 class RateScreen extends React.Component {
     constructor(props) {
       console.log('Render rate')
       super(props);
-      
-      const db = SQLite.openDatabase(
-        {
-          name: 'score.db',
-        },
-        () => {},
-        error => {
-          console.log(error);
-        }
-      );
-
       this.state = {
         score: {},
         dataset: {},
-        db
+        pastScore: [],
       }
-      this.props.navigation.setParams({
-        done: this.componentDidMount,
-      })
     }
-
+    componentDidMount = () => {
+      pastScore = Database.readDB();
+    }
     static getDerivedStateFromProps(nextProps, prevState) {
       if(Object.keys(nextProps.value).length){
-          return {score: scoring(nextProps.value.return_data).score, 
-            dataset: nextProps.value
-      }
+          let tempScore = scoring(nextProps.value.return_data).score;
+          Database.writeDB(tempScore.full);
+          return { score: tempScore, dataset: nextProps.value }
     }
       return null
   }
@@ -105,68 +83,42 @@ class RateScreen extends React.Component {
             <Text style={styles.desKeyword}>"{this.state.dataset.return_data.keywordText}"</Text>           
           </View>
         <View style={styles.lineChart}>
-        <Text style={styles.lineText}>점수 기록</Text>
-        <LineChart
-          data={{
-            labels: [""],
-            datasets: [{
-              data: [
-                10,
-                Math.random() * 100,
-                Math.random() * 100,
-                Math.random() * 100,
-                Math.random() * 100,
-                95
-              ]
-            }]
-          }}
-          legend={{
-            enabled: true,
-            textSize: 50,
-          }}
-          width={Dimensions.get('window').width * 0.90} // from react-native
-          height={220}
-          chartConfig={{
-            backgroundColor: '#ffccd5',
-            backgroundGradientFrom: '#ffccd5',
-            backgroundGradientTo: '#ffccd5',
-            decimalPlaces: 2, // optional, defaults to 2dp
-            color: (opacity = 0) => `rgba(0, 0, 0, ${opacity})`,
-            labelColor: (opacity = 0) => `rgba(0, 0, 0, ${opacity})`,
-            style: {
+          <Text style={styles.lineText}>점수 기록</Text>
+          <LineChart
+            data={{
+              labels: [""],
+              datasets: [{
+                data: pastscore
+              }]
+            }}
+            legend={{
+              enabled: true,
+              textSize: 50,
+            }}
+            width={Dimensions.get('window').width * 0.90} // from react-native
+            height={220}
+            chartConfig={{
+              backgroundColor: '#ffccd5',
+              backgroundGradientFrom: '#ffccd5',
+              backgroundGradientTo: '#ffccd5',
+              decimalPlaces: 2, // optional, defaults to 2dp
+              color: (opacity = 0) => `rgba(0, 0, 0, ${opacity})`,
+              labelColor: (opacity = 0) => `rgba(0, 0, 0, ${opacity})`,
+              style: {
+                borderRadius: 16
+              }
+            }}
+            style={{
+              marginVertical: 8,
               borderRadius: 16
-            }
-          }}
-          style={{
-            marginVertical: 8,
-            borderRadius: 16
-          }}
-        />
-        </View>
+            }}
+          />
+          </View>
           </View>
           </ScrollView>
         </SafeAreaView> : null}
         </>
     );
-  }
-
-  componentDidMount() {
-    const { db } = this.state;
-
-    db.transaction(tx => {
-      tx.executeSql('SELECT * FROM test;', [], (tx, results) => {
-        const rows = results.rows;
-        let users = [];
-
-        for (let i = 0; i < rows.length; i++) {
-          users.push({
-            ...rows.item(i),
-          });
-        }
-
-        this.setState({ users });
-      });
-    });
   }
 
 }
