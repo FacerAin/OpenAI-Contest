@@ -39,6 +39,34 @@ const styles = StyleSheet.create({
     searchBtn:{
       marginRight: 10,
     },
+
+
+    
+    controls: {
+      justifyContent: 'center',
+      alignItems: 'center',
+      flex: 1,
+    },
+    progressText: {
+      paddingTop: 50,
+      fontSize: 50,
+      color: "#fff"
+    },
+    button: {
+      padding: 20
+    },
+    disabledButtonText: {
+      color: '#eee'
+    },
+    buttonText: {
+      fontSize: 20,
+      color: "#fff"
+    },
+    activeButtonText: {
+      fontSize: 20,
+      color: "#B81F00"
+    }
+
   })
 
   export default styles;

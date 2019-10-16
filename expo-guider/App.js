@@ -15,23 +15,8 @@ store.subscribe( () => {
   console.log("State has changed"  + store.getState());
 })
 
-  /*
-
-    */
-
-
 export default class App extends React.Component {
-  async componentDidMount() {
-    const { status, expires, permissions } = await Permissions.askAsync(
-      Permissions.AUDIO_RECORDING
-    );
-    if (status !== "granted") {
-      this.setState({showRecordButton: false});
-    } else {
-      this.setState({showRecordButton: true});
-    }
-    //showRecordButton state Connection 해둘것!
-  }
+
 
     constructor(props) {
         super(props);
