@@ -16,6 +16,7 @@ class Searchbar extends React.Component{
         this.recording = null;
         this.state = {
             search: '',
+            voicesearch: '',
             dataset: {
               test: "TEST",
             },
@@ -103,6 +104,10 @@ class Searchbar extends React.Component{
         playThroughEarpieceAndroid: false,
         staysActiveInBackground: true,
       })
+      const b64data = await FileSystem.readAsStringAsync(this.recording.getURI(),{
+        encoding: FileSystem.EncodingType.Base64,
+      })
+      console.log(b64data)
 
       const { sound, status } = await this.recording.createNewLoadedSoundAsync(
         {
@@ -118,6 +123,7 @@ class Searchbar extends React.Component{
       this.setState({
         isLoading: false,
       });
+      await this.sendVoiceSearch(b64data)
     }
 
     _onRecordPressed = () => {
@@ -170,9 +176,18 @@ class Searchbar extends React.Component{
         this.props.dispatch(setLoading(false))
         await this.props.dispatch(setData(this.state.dataset))
       }
-      sendVoice = () =>{
-        console.log(this.props.value)
+      sendVoiceSearch = async(voicesearch) => {
+        console.log('sendVoice')
+        this.props.dispatch(setLoading(true))
+        let resdata = await SendToVoiceApi(voicesearch)
+        console.log(resdata)
+        this.props.dispatch(setLoading(false))
+        /*
+        await this.asyncstate(resdata)
+        await this.props.dispatch(setData(this.state.dataset))
+        */
       }
+
       render(){
           return(
           <>
@@ -198,7 +213,6 @@ class Searchbar extends React.Component{
             </TouchableOpacity>
             </View>
             </View>
-
             <TouchableHighlight
               onPress={this._onRecordPressed}
               disabled={this.state.isLoading}>

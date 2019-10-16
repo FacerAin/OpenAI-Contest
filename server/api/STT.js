@@ -29,11 +29,12 @@ const STT = async ( req, res ) => {
         voiceTemp;
 
     try {
-        clientData = JSON.parse( req.body.data )
+        clientData = req.body.data
+        console.log(req.body.data)
         if( !clientData.audio.length ) {
             throw new Error( "client audio empty" );
         }
-        else if( isBase64( clientData.audio ) ) {
+        else if( !isBase64( clientData.audio ) ) {
             throw new Error( "Type error : audio type should be base64" );
         }
     }

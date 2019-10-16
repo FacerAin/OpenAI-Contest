@@ -16,8 +16,6 @@ store.subscribe( () => {
 })
 
 export default class App extends React.Component {
-
-
     constructor(props) {
         super(props);
         this.state = {
@@ -44,18 +42,3 @@ export default class App extends React.Component {
         )
   }
 }
-/*
-const mapStateProps = (state) => {
-  return {
-    data : state.processdata.data
-  }
-}
-
-const mapDispatchProps = (dispatch) => {
-  return {
-    handleSetDataset: (data) => {dispatch(actions.setDataset(data))}
-  }
-}
-
-*/
-
