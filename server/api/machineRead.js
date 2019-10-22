@@ -16,7 +16,12 @@ const machineRead = async ( searchResults, keywordText ) => {
     }
 
     for( let divideSearchResult of divideSearchResults ) {
-        await apiRequest.multiETRI( divideSearchResult, keywordText );
+        try{
+            await apiRequest.multiETRI( divideSearchResult, keywordText );
+        }
+        catch ( err ) {
+            throw new Error( err.message );
+        }
         ResultArray = ResultArray.concat( divideSearchResult );
     }
     
