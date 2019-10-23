@@ -79,7 +79,7 @@ const simpleETRI = ( apiReqOption, searchResults, index ) => {
             resolve();
         })
         .catch( ( err ) => {
-            console.log( err.message );
+            searchResults[ index ].confidence = 0;
         });
     })
 }
