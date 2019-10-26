@@ -10,6 +10,28 @@ import * as Permissions from 'expo-permissions'
 import { Audio } from 'expo-av';
 import * as FileSystem from 'expo-file-system';
 
+const rs = {
+  android: {
+    extension: '.m4a',
+    outputFormat: Audio.RECORDING_OPTION_ANDROID_OUTPUT_FORMAT_MPEG_4,
+    audioEncoder: Audio.RECORDING_OPTION_ANDROID_AUDIO_ENCODER_AAC,
+    sampleRate: 16000,
+    numberOfChannels: 1,
+    bitRate: 128000,
+  },
+  ios: {
+    extension: '.caf',
+    audioQuality: Audio.RECORDING_OPTION_IOS_AUDIO_QUALITY_MIN,
+    sampleRate: 16000,
+    numberOfChannels: 2,
+    bitRate: 128000,
+    linearPCMBitDepth: 16,
+    linearPCMIsBigEndian: false,
+    linearPCMIsFloat: false,
+  },
+};
+
+
 class Searchbar extends React.Component{
     constructor(props) {
         super(props);
@@ -25,8 +47,9 @@ class Searchbar extends React.Component{
             volume: 1.0,
             rate: 1.0,
         }
-        this.recordingSettings = JSON.parse(JSON.stringify(Audio.RECORDING_OPTIONS_PRESET_LOW_QUALITY))
+        this.recordingSettings= rs
     }
+
     componentDidMount() {
       this._askForPermissions()
     }    
@@ -53,8 +76,6 @@ class Searchbar extends React.Component{
         }
       }
     };
-
-
     async _stopPlaybackAndBeginRecording() {
       this.setState({
         isLoading: true,
@@ -72,7 +93,8 @@ class Searchbar extends React.Component{
         this.recording.setOnRecordingStatusUpdate(null)
         this.recording = null
       }
-  
+
+      console.log(this.recordingSettings)
       const recording = new Audio.Recording()
       await recording.prepareToRecordAsync(this.recordingSettings)
       recording.setOnRecordingStatusUpdate(this._updateScreenForRecordingStatus)
@@ -90,7 +112,6 @@ class Searchbar extends React.Component{
       try {
         await this.recording.stopAndUnloadAsync()
       } catch (error) {
-        // Do nothing -- we are already unloaded.
       }
       const info = await FileSystem.getInfoAsync(this.recording.getURI());
       console.log(`FILE INFO: ${JSON.stringify(info)}`)
@@ -107,6 +128,7 @@ class Searchbar extends React.Component{
       const b64data = await FileSystem.readAsStringAsync(this.recording.getURI(),{
         encoding: FileSystem.EncodingType.Base64,
       })
+      console.log('B64_DATA+++')
       console.log(b64data)
 
       const { sound, status } = await this.recording.createNewLoadedSoundAsync(
@@ -167,6 +189,7 @@ class Searchbar extends React.Component{
         resolve();
       })
     }
+
       sendSearch = async() => {
         console.log('sendSearch')
         Keyboard.dismiss()
@@ -176,7 +199,13 @@ class Searchbar extends React.Component{
         this.props.dispatch(setLoading(false))
         await this.props.dispatch(setData(this.state.dataset))
       }
+
       sendVoiceSearch = async(voicesearch) => {
+        /*
+        Voice 예외 처리 -> 비었을 때 -> 다시 시도해주세요
+        Voice 잘못 입력되었을때 -> Value값에 대입
+        Voice  
+        */
         console.log('sendVoice')
         this.props.dispatch(setLoading(true))
         let resdata = await SendToVoiceApi(voicesearch)

@@ -13,7 +13,7 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Headers","Origin, X-Requested-With, Content-Type, Accept");
     next();
   });
-app.use('/api',require('./api'));   
+app.use('/api',require('./api'));
 
 app.listen(3002,()=>{
     console.log('Server On!');

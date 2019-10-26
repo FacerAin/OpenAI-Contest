@@ -30,7 +30,6 @@ const STT = async ( req, res ) => {
 
     try {
         clientData = req.body.data
-        console.log(req.body.data)
         if( !clientData.audio.length ) {
             throw new Error( "client audio empty" );
         }

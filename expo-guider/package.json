@@ -21,6 +21,7 @@
     "expo-sqlite": "~7.0.0",
     "lottie-react-native": "^3.2.1",
     "net": "^1.0.2",
+    "node-lame": "^1.2.0",
     "nodejs": "0.0.0",
     "os": "^0.1.1",
     "react": "16.8.3",
