@@ -5,48 +5,54 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { LineChart, PieChart } from 'react-native-chart-kit'
 import scoring from '../../util/scoring';
 import { connect } from'react-redux';
-const db = require("../../util/db");
-//const Database = require('../../util/db');
-
-let pastScore = [];
-const chartConfig={
-  decimalPlaces: 2, // optional, defaults to 2dp
-  color: (opacity = 1) => `rgba(78, 183, 172, ${opacity})`,
-  labelColor: (opacity = 1) => `rgba(0, 176, 255, ${opacity})`,
-  style: { 
-    borderRadius: 16
-  }
-} 
+const sqlite = require("../../util/sqlite");
 
 class RateScreen extends React.Component {
     constructor(props) {
-      console.log('Render rate')
+      console.log('Render rate');
       super(props);
       this.state = {
-        score: {},
-        dataset: {},
+        score:  {full: 0, key:0, fix:0, msg:""},
+        dataset: {return_data:{keywordText:""}},
+        pastScore: [0,0,0,0,0],
       }
     }
-    componentDidMount = async () => {
-      console.log("ASd")
-      pastScore = await db.List();
-      console.log("db",pastScore);
-    }
-    static getDerivedStateFromProps= async (nextProps, prevState) =>{
-      if(Object.keys(nextProps.value).length){
-          let tempScore = scoring(nextProps.value.return_data).score;
-          await db.Add(tempScore.full);
-          pastScore = await db.List();
-          console.log("db2",pastScore);
-          return { score: tempScore, dataset: nextProps.value }
-    }
-      return null
-  }
 
-    render() {
+    dbReload = async () => {
+      console.log("dbReload 실행");
+      let temp = await sqlite.select();
+      return(temp.map( elem => elem.score ));
+    }
+
+    /* static getDerivedStateFromProps = async (nextProps, prevState) => {
+      console.log("getderived 들어옴")
+      if( Object.keys(nextProps.value).length){
+        let tempScore = scoring(nextProps.value.return_data).score;
+        await sqlite.insert(tempScore.full);
+        return { score: tempScore, dataset: nextProps.value, pastScore : temp }
+      }
+      return null;
+    } */
+    
+    componentDidMount = async ()=>{
+      let temp = await this.dbReload();
+      this.setState({ pastScore : temp });
+    }
+
+    componentDidUpdate = async (prevProps) => {
+      if (this.props.value.return_data !== prevProps.value.return_data) {
+        let tempScore = scoring(this.props.value.return_data).score;
+        await sqlite.insert(tempScore.full);
+        let temp = await this.dbReload();
+        this.setState({ score: tempScore, dataset: this.props.value, pastScore : temp })
+    
+      }
+    }
+    
+    render = () => {
       return (
         <>
-        {Object.keys(this.state.score).length ? <SafeAreaView style={styles.container}>
+        {this.state.pastScore.length ? <SafeAreaView style={styles.container}>
         <ScrollView style={styles.scrollView} >
         <View style={styles.pieChart}>
         <PieChart
@@ -74,10 +80,16 @@ class RateScreen extends React.Component {
           ]}
           width={Dimensions.get('window').width}
           height={200}
-          chartConfig={chartConfig}
           accessor="score"
           backgroundColor="transparent"
           absolute
+          chartConfig={{
+            decimalPlaces: 2, // optional, defaults to 2dp
+            color: (opacity = 1) => `rgba(78, 183, 172, ${opacity})`,
+            labelColor: (opacity = 1) => `rgba(0, 176, 255, ${opacity})`,
+            style: { 
+              borderRadius: 16
+          }}}
         />
           <Text style={styles.desScoreText}>당신의 점수는 <Text style={styles.desScore}>{this.state.score.full}</Text> 점입니다!</Text>
           <Text style={styles.desText}>{this.state.score.msg}</Text>
@@ -93,13 +105,14 @@ class RateScreen extends React.Component {
             data={{
               labels: [""],
               datasets: [{
-                data: pastScore
+                data: this.state.pastScore,
               }]
             }}
             legend={{
               enabled: true,
               textSize: 50,
             }}
+            
             width={Dimensions.get('window').width * 0.90} // from react-native
             height={220}
             chartConfig={{
@@ -111,11 +124,14 @@ class RateScreen extends React.Component {
               labelColor: (opacity = 0) => `rgba(0, 0, 0, ${opacity})`,
               style: {
                 borderRadius: 16
-              }
+              },
+              
             }}
+            fromZero={true}
             style={{
               marginVertical: 8,
-              borderRadius: 16
+              borderRadius: 16,
+              
             }}
           />
           </View>
