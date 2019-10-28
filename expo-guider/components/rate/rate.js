@@ -7,6 +7,7 @@ import scoring from '../../util/scoring';
 import { connect } from'react-redux';
 const sqlite = require("../../util/sqlite");
 
+
 class RateScreen extends React.Component {
     constructor(props) {
       console.log('Render rate');

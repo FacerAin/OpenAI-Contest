@@ -1,14 +1,26 @@
 const axios = require('axios')
 const filter = require('./filter')
 SendToApi = async(searchdata) => {
+  console.log(searchdata)
     return new Promise((resolve,reject) => {
+      if(searchdata === "/\s\g" || searchdata.length > 30 ){
+        console.log('ererererer')
+        resolve(JSON.stringify({ "return_code" : -1 }));
+      }
+      setTimeout(()=> {
+        try {    
+          throw new Error( "ERROR" ); 
+        } catch (err) {
+            resolve(JSON.stringify({ "return_code" : -1, "error_code" : err.message }));
+            return false;
+        }},1000)
       axios(
         {
           headers: {
             "Accept": "application/json",
             "Content-Type": "application/json",
           },
-          url: 'http://117.123.12.178:3002/api/cliConnection',
+          url: 'http://172.16.204.163:3002/api/cliConnection',
           data: {
             data:{
               text: searchdata.replace(/\s{1,}/g,' ')
@@ -34,7 +46,7 @@ SendToVoiceApi = async(searchdata) => {
           "Accept": "application/json",
           "Content-Type": "application/json",
         },
-        url: 'http://192.168.0.40:3002/api/STT',
+        url: 'http://172.16.204.163:3002/api/STT',
         data: {
           data:{
             audio: searchdata

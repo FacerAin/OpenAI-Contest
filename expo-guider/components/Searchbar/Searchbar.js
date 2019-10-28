@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, TextInput,TouchableOpacity,Keyboard,TouchableHighlight,Text  } from 'react-native';
+import Dialog, { DialogContent,DialogFooter,DialogButton } from 'react-native-popup-dialog';
 import SendToApi from '../../util/datasend'
 import styles from './SearchBarStyles'
 import { connect } from 'react-redux';
@@ -9,7 +10,16 @@ import {setLoading} from '../../action'
 import * as Permissions from 'expo-permissions'
 import { Audio } from 'expo-av';
 import * as FileSystem from 'expo-file-system';
+//import audioencoder from '../../util/audioencoder';
 
+splitFile_Name = (url) => {
+  let OriginalUrl = url;
+  let splitUrlarr = OriginalUrl.split("/");
+  splitUrlarr_len = splitUrlarr.length()
+  let fileName = splitUrlarr[splitUrlarr_len-1]
+  return OriginalUrl.replace(fileName,"")
+
+}
 const rs = {
   android: {
     extension: '.m4a',
@@ -46,6 +56,7 @@ class Searchbar extends React.Component{
             recordingDuration: null, 
             volume: 1.0,
             rate: 1.0,
+            popup_visible: true,
         }
         this.recordingSettings= rs
     }
@@ -125,9 +136,13 @@ class Searchbar extends React.Component{
         playThroughEarpieceAndroid: false,
         staysActiveInBackground: true,
       })
+
+      //await audioencoder(this.recording.getURI())
+
       const b64data = await FileSystem.readAsStringAsync(this.recording.getURI(),{
         encoding: FileSystem.EncodingType.Base64,
       })
+
       console.log('B64_DATA+++')
       console.log(b64data)
 
@@ -178,6 +193,7 @@ class Searchbar extends React.Component{
       return `${this._getMMSSFromMillis(0)}`;
     }
 
+
     updateSearch = search => {
       this.setState({ search });
     }
@@ -195,6 +211,14 @@ class Searchbar extends React.Component{
         Keyboard.dismiss()
         this.props.dispatch(setLoading(true))
         let resdata = await SendToApi(this.state.search)
+        try{
+          if(resdata.return_code === -1){
+            throw new Error()
+          } 
+        } catch(err) {
+          this.setState({ visible: true });
+        }
+
         await this.asyncstate(resdata)
         this.props.dispatch(setLoading(false))
         await this.props.dispatch(setData(this.state.dataset))
@@ -220,6 +244,27 @@ class Searchbar extends React.Component{
       render(){
           return(
           <>
+            <Dialog
+              visible={this.state.popup_visible}
+              onTouchOutside={() => {
+              this.setState({ popup_visible: false });
+              }}
+              footer={
+                <DialogFooter>
+                  <DialogButton
+                    text="OK"
+                    onPress={() => this.setState({ popup_visible: false })}
+                  />
+                </DialogFooter>
+              }
+
+            >
+            <DialogContent>
+              <Text>검색에 문제가 있어요!!!</Text>
+            </DialogContent>
+            </Dialog>
+
+
             <View style={styles.statusBar}/>
             <View style={styles.searchContainer}>
             <View style={styles.searchbar}>

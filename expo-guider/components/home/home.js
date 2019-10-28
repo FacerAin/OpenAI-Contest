@@ -46,6 +46,7 @@ class HomeScreen extends React.Component {
    renderItem = {}
     render() {
         console.log('Render Home!!!')
+        console.log(this.state.dataset)
         return (
             <> 
             <View style={styles.container}>
@@ -71,7 +72,7 @@ class HomeScreen extends React.Component {
                         : null
                 }
                 <ScrollView>
-                {(Object.keys(this.state.dataset).length !== 0) ? this.state.dataset.return_data.searchResults.map((item,index) => {
+                {(Object.keys(this.state.dataset).length !== 0 && this.state.dataset.return_code !== -1) ? this.state.dataset.return_data.searchResults.map((item,index) => {
                     return <SearchCard key={index}
                     title={item.title}
                     description={item.passage}
