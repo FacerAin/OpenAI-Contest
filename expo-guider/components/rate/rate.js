@@ -81,7 +81,6 @@ function Difftext(props){
     )
   }
 
-
 class RateScreen extends React.Component {
     constructor(props) {
       console.log('Render rate');
@@ -224,8 +223,8 @@ class RateScreen extends React.Component {
         </>
     );
   }
-
 }
+
 RateScreen.navigationOptions = {
   title:'검색점수',
   tabBarIcon: 

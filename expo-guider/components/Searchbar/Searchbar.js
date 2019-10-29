@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, TextInput,TouchableOpacity,Keyboard,TouchableHighlight,Text  } from 'react-native';
+import { View, TextInput,TouchableOpacity,Keyboard,TouchableHighlight,Text,Image  } from 'react-native';
 import Dialog, { DialogContent,DialogFooter,DialogButton } from 'react-native-popup-dialog';
 import SendToApi from '../../util/datasend'
 import styles from './SearchBarStyles'
@@ -272,7 +272,7 @@ class Searchbar extends React.Component{
             <View style={styles.searchContainer}>
             <View style={styles.searchbar}>
             <TouchableOpacity style={styles.logo}>
-            <Icon name="arrow-right" size={30} color="#dbe2ef" />
+              <Image style={styles.searchLogo} source={require('../img/logo.png')}/>
             </TouchableOpacity>       
               <TextInput
               style = {styles.searchText}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet,FlatList,TouchableOpacity,SectionList,ScrollView } from 'react-native';
+import { View, Text,TouchableOpacity,ScrollView,Image } from 'react-native';
 import  List  from 'react-native-elements'
 import Icon from 'react-native-vector-icons/FontAwesome';  
 import SearchCard from '../searchcard/searchcard'
@@ -31,7 +31,7 @@ class HomeScreen extends React.Component {
         }
         return null
     }
-    
+
    renderItem = {}
     render() {
         console.log('Render Home!!!')
@@ -50,7 +50,7 @@ class HomeScreen extends React.Component {
                             <View style={styles.ratingtext}>
                                 <Text style={{color: '#fdfcfc'}}>당신의 검색 점수가 궁금 하신가요?</Text>
                             </View>
-                            <TouchableOpacity style={styles.ratingspec} onPressOut={() => this.props.navigation.navigate('Rate')}>
+                            <TouchableOpacity style={styles.ratingspec} onPressOut={() => {this.props.navigation.navigate('Rate')}}>
                                 <Text style={{color: '#fdfcfc'}}>자세히 보기</Text>
                             </TouchableOpacity>
                             <TouchableOpacity onPressOut={this.handleCancel} style={styles.ratingcancel}>
@@ -68,31 +68,10 @@ class HomeScreen extends React.Component {
                     confidence={item.confidence}
                     site={item.site}/>
                 }) : <View style={styles.emptyContainer}>
-                <Text style={styles.empty}>검색을 해주세요!!!!</Text>    
+                <Text style={styles.empty}>검색을 해주세요!!!!</Text>
+                <Image style={styles.HomeLogo} source={require('../img/logo.png')}/>    
             </View>  
-                    /*Object.keys(this.state.dataset).length !== 0 ?
-                <FlatList
-                        data={this.state.dataset.return_data.searchResults}
-                        extraData={this.state.dataset}
-                        key={this.state.dataset.return_data.searchResults.length}
-                        keyExtractor={(item) => item.id}
-                        refreshing = {true}
-                        renderItem={({ item }) => {
-                            return(
-                            <SearchCard
-                            id={item.id}
-                            title={item.title}
-                            description={item.passage}
-                            url={item.url}
-                            confidence={item.confidence}
-                            site={item.site}
-                            />
-                            )
-                        }}      
-                />: <View style={styles.emptyContainer}>
-                <Text style={styles.empty}>검색을 해주세요!!!</Text>    
-            </View>  
-                    */}     
+                    }     
                     </ScrollView>
             </View>
             </>

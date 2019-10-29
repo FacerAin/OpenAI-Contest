@@ -33,14 +33,18 @@ const styles = StyleSheet.create({
       padding:5,
       borderColor: "#ffffd2",
     },
+    searchLogo:{
+      width: 50,
+      height: 50,
+      borderRadius:50/2,
+      backgroundColor: '#ffffff',
+    },
     searchMic:{
       margin: 10,
     },
     searchBtn:{
       marginRight: 10,
     },
-
-
     
     controls: {
       justifyContent: 'center',

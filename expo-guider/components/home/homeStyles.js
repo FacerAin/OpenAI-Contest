@@ -19,7 +19,10 @@ const styles = StyleSheet.create({
         shadowRadius: 2,
         elevation: 1,
     },
-
+    HomeLogo:{
+        width: 200,
+        height: 200,
+    },
     ratingtext:{
         padding: 10,
         height: 50,
