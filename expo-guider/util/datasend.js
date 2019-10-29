@@ -5,17 +5,15 @@ SendToApi = async(searchdata) => {
     return new Promise((resolve,reject) => {
       let isBlank_reg = "/\s\g"
       if(searchdata=== "" || searchdata.length > 30 ){
-        console.log('ererererer')
-        resolve(JSON.stringify({ "return_code" : -1 }));
+        resolve(JSON.stringify({ "return_code" : -1, "error_code": "검색 단어를 확인해 주세요!" }));
       } else{
-        console.log('run axis')
         axios(
           {
             headers: {
               "Accept": "application/json",
               "Content-Type": "application/json",
             },
-            url: 'http://172.16.204.214:3002/api/cliConnection',
+            url: 'http://1.201.142.118:80/api/cliConnection',
             data: {
               data:{
                 text: searchdata.replace(/\s{1,}/g,' ')
@@ -44,13 +42,15 @@ SendToApi = async(searchdata) => {
 
 SendToVoiceApi = async(searchdata) => {
   return new Promise((resolve,reject) => {
+
+
     axios(
       {
         headers: {
           "Accept": "application/json",
           "Content-Type": "application/json",
         },
-        url: 'http://172.16.204.214:3002/api/STT',
+        url: 'http://1.201.142.118:80/api/STT',
         data: {
           data:{
             audio: searchdata
@@ -66,7 +66,18 @@ SendToVoiceApi = async(searchdata) => {
     .catch(error => {
       console.error(error);
     });
+
+    setTimeout(()=> {
+      try {    
+        throw new Error( "ERROR" ); 
+      } catch (err) {
+          resolve(JSON.stringify({ "return_code" : -1, "error_code" : err.message }));
+          return false;
+      }},5000)
+
   })
+
+
 }
 module.exports = SendToVoiceApi;
 module.exports = SendToApi;

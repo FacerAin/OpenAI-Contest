@@ -45,7 +45,9 @@ const styles = StyleSheet.create({
     searchBtn:{
       marginRight: 10,
     },
-    
+    dialogContent:{
+      padding:50,
+    },
     controls: {
       justifyContent: 'center',
       alignItems: 'center',

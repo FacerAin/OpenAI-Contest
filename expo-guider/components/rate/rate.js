@@ -13,12 +13,6 @@ const changeColorErrorWordToRed = (originalText,noNeedMorp,NeedMorp) => {
   if(noNeedMorp.length === 0){
     return [];
   }
-  console.log("originalText")
-  console.log(originalText)
-  console.log("noNeedMorp")
-  console.log(noNeedMorp)
-  console.log("needMorp")
-  console.log(NeedMorp)
   let len = (noNeedMorp.length + NeedMorp.length);
   let result = [];
   let itr1 = 0;
@@ -55,7 +49,6 @@ const changeColorErrorWordToRed = (originalText,noNeedMorp,NeedMorp) => {
       }
     }    
   }
-  console.log(result)
   return result;
 }
 
@@ -97,16 +90,6 @@ class RateScreen extends React.Component {
       let temp = await sqlite.select();
       return(temp.map( elem => elem.score ));
     }
-
-    /* static getDerivedStateFromProps = async (nextProps, prevState) => {
-      console.log("getderived 들어옴")
-      if( Object.keys(nextProps.value).length){
-        let tempScore = scoring(nextProps.value.return_data).score;
-        await sqlite.insert(tempScore.full);
-        return { score: tempScore, dataset: nextProps.value, pastScore : temp }
-      }
-      return null;
-    } */
     
     componentDidMount = async ()=>{
       let temp = await this.dbReload();
@@ -126,8 +109,13 @@ class RateScreen extends React.Component {
     render = () => {
       return (
         <>
-        {this.state.pastScore.length ? <SafeAreaView style={styles.container}>
         <ScrollView style={styles.scrollView} >
+        {this.state.pastScore.length ? 
+        this.state.dataset.return_data.originalText.length ? 
+        
+        
+        <SafeAreaView style={styles.container}>
+        
         <View style={styles.pieChart}>
         <PieChart
           data={[
@@ -181,6 +169,9 @@ class RateScreen extends React.Component {
             <Text style={styles.desTitle}>다음에는 이렇게 검색해보면 어떨까요?</Text>
             <Text style={styles.desKeyword}>"{this.state.dataset.return_data.keywordText}"</Text>           
           </View>
+
+          </View>
+        </SafeAreaView> : null : null}
         <View style={styles.lineChart}>
           <Text style={styles.lineText}>점수 기록</Text>
           <LineChart
@@ -217,9 +208,7 @@ class RateScreen extends React.Component {
             }}
           />
           </View>
-          </View>
           </ScrollView>
-        </SafeAreaView> : null}
         </>
     );
   }

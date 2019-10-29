@@ -19,14 +19,12 @@ class HomeScreen extends React.Component {
         
     }
     handleCancel = () =>{
-        console.log('handlecancel')
         this.setState({ratingstatus: false})
     }
     
     
     static getDerivedStateFromProps(nextProps, prevState) {
         if(nextProps.value !== prevState.dataset){
-            console.log('getDerivedStateFromProps!!!!')
             return {dataset: nextProps.value, ratingstatus: true}
         }
         return null

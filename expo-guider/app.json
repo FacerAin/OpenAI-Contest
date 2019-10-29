@@ -1,19 +1,17 @@
 {
   "expo": {
-    "name": "expo-guider",
-    "slug": "expo-guider",
+    "name": "guider",
+    "slug": "guider",
     "privacy": "public",
     "sdkVersion": "35.0.0",
     "platforms": [
-      "ios",
-      "android",
-      "web"
+      "android"
     ],
-    "version": "1.0.0",
+    "version": "0.9.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/Guider_icon.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/Guider_Splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -27,6 +25,7 @@
       "supportsTablet": true
     },
     "android":{
+      "package": "com.blackcow.guider",
       "permissions":[
         "RECORD_AUDIO"
       ]

@@ -11,9 +11,6 @@ import * as Permissions from 'expo-permissions'
 
 const store = createStore(processApp);
 
-store.subscribe( () => {
-  console.log("State has changed"  + store.getState());
-})
 
 export default class App extends React.Component {
     constructor(props) {
@@ -23,7 +20,6 @@ export default class App extends React.Component {
           dataset: TestDataset,
           fetching: false,
         }
-        console.log('Render App')
     }
 
     render(){

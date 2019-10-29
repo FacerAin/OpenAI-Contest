@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, TextInput,TouchableOpacity,Keyboard,TouchableHighlight,Text,Image  } from 'react-native';
-import Dialog, { DialogContent,DialogFooter,DialogButton } from 'react-native-popup-dialog';
+import Dialog, { DialogContent,DialogFooter,DialogButton,ScaleAnimation,DialogTitle } from 'react-native-popup-dialog';
 import SendToApi from '../../util/datasend'
 import styles from './SearchBarStyles'
 import { connect } from 'react-redux';
@@ -56,7 +56,8 @@ class Searchbar extends React.Component{
             recordingDuration: null, 
             volume: 1.0,
             rate: 1.0,
-            popup_visible: true,
+            popup_visible: false,
+            error_message : '',
         }
         this.recordingSettings= rs
     }
@@ -139,7 +140,7 @@ class Searchbar extends React.Component{
         staysActiveInBackground: true,
       })
 
-      //await audioencoder(this.recording.getURI())
+      
 
       const b64data = await FileSystem.readAsStringAsync(this.recording.getURI(),{
         encoding: FileSystem.EncodingType.Base64,
@@ -163,6 +164,13 @@ class Searchbar extends React.Component{
         isLoading: false,
       });
       await this.sendVoiceSearch(b64data)
+    }
+    onRecordIconColor = () => {
+      if(this.state.isRecording){
+        return "#ff0000"
+      } else{
+        return "#ffffff"
+      }
     }
 
     _onRecordPressed = () => {
@@ -196,9 +204,12 @@ class Searchbar extends React.Component{
     }
 
 
+    //Recording Done=============================
+
     updateSearch = search => {
       this.setState({ search });
     }
+
     asyncstate = (res) => {
       return new Promise((resolve,reject)=>{
         this.setState({
@@ -207,63 +218,54 @@ class Searchbar extends React.Component{
         resolve();
       })
     }
-    //Recording Done=============================
-
-
 
       sendSearch = async() => {
         console.log('sendSearch')
         Keyboard.dismiss()
         this.props.dispatch(setLoading(true))
         let resdata = await SendToApi(this.state.search)
-        try{
-          if(resdata.return_code === -1){
-            throw new Error()
+          if(JSON.parse(resdata).return_code == -1){
+            console.log('errr')
+            this.setState({ popup_visible: true,error_message:JSON.parse(resdata).error_code  });
           } 
-        } catch(err) {
-          this.setState({ popup_visible: true });
-        }
-        console.log(resdata)
         await this.asyncstate(resdata)
         this.props.dispatch(setLoading(false))
         await this.props.dispatch(setData(this.state.dataset))
       }
 
       sendVoiceSearch = async(voicesearch) => {
-        /*
-        Voice 예외 처리 -> 비었을 때 -> 다시 시도해주세요
-        Voice 잘못 입력되었을때 -> Value값에 대입
-        Voice  
-        */
         console.log('sendVoice')
         this.props.dispatch(setLoading(true))
         let resdata = await SendToVoiceApi(voicesearch)
-        console.log(resdata)
         this.props.dispatch(setLoading(false))
-        /*
-        await this.asyncstate(resdata)
-        await this.props.dispatch(setData(this.state.dataset))
-        */
+        console.log(resdata)
+
       }
 
       render(){
           return(
           <>
             <Dialog
+            width = {0.6} 
+            dialogTitle={<DialogTitle title="경고" />}
+            onTouchOutside={() => {
+              this.setState({ visible: false });
+            }}
+            dialogAnimation={new ScaleAnimation({
+              initialValue: 0,
+              useNativeDriver: true,
+            })}
               visible={this.state.popup_visible}
-              onTouchOutside={() => {
-              this.setState({ popup_visible: false });
-              }}
               footer={
                 <DialogFooter>
                   <DialogButton
-                    text="OK"
+                    text="확인"
                     onPress={() => this.setState({ popup_visible: false })}
                   />
                 </DialogFooter>
               }>
-            <DialogContent>
-              <Text>검색에 문제가 있어요!!!</Text>
+            <DialogContent style={styles.dialogContent}>
+              <Text>{this.state.error_message}</Text>
             </DialogContent>
             </Dialog>
 
@@ -282,22 +284,14 @@ class Searchbar extends React.Component{
               onChangeText={this.updateSearch}
               onSubmitEditing = {this.sendSearch}
               />
-            <TouchableOpacity style={styles.searchMic} onPressOut={this.sendVoice}>
-            <Icon name="microphone" size={30} color="#ffffff" />
+            <TouchableOpacity style={styles.searchMic} onPress={this._onRecordPressed} disabled={this.state.isLoading}>
+            <Icon name="microphone" size={30} color={this.state.isRecording ? '#ff0000' : '#ffffff'} />
             </TouchableOpacity>
             <TouchableOpacity style={styles.searchBtn} onPressOut={this.sendSearch}>
             <Icon name="search" size={30} color="#ffffff" />
             </TouchableOpacity>
             </View>
             </View>
-            <TouchableHighlight
-              onPress={this._onRecordPressed}
-              disabled={this.state.isLoading}>
-              <Text>Recording</Text>
-            </TouchableHighlight>
-              <Text>
-                {this.state.isRecording ? 'LIVE' : ''}
-              </Text>
           </>
           )
       }
