@@ -32,21 +32,9 @@ class HomeScreen extends React.Component {
         return null
     }
     
-    /*
-    this.props.isLoading === true
-                            <SearchCard
-                            id={item.id}
-                            title={item.title}
-                            description={item.passage}
-                            url={item.url}
-                            confidence={item.confidence}
-                            site={item.site}
-                            />
-    */
    renderItem = {}
     render() {
         console.log('Render Home!!!')
-        console.log(this.state.dataset)
         return (
             <> 
             <View style={styles.container}>
@@ -77,7 +65,6 @@ class HomeScreen extends React.Component {
                     title={item.title}
                     description={item.passage}
                     url={item.url}
-
                     confidence={item.confidence}
                     site={item.site}/>
                 }) : <View style={styles.emptyContainer}>

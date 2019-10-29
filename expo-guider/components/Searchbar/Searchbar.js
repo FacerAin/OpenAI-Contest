@@ -22,7 +22,7 @@ splitFile_Name = (url) => {
 }
 const rs = {
   android: {
-    extension: '.m4a',
+    extension: '.mp3',
     outputFormat: Audio.RECORDING_OPTION_ANDROID_OUTPUT_FORMAT_MPEG_4,
     audioEncoder: Audio.RECORDING_OPTION_ANDROID_AUDIO_ENCODER_AAC,
     sampleRate: 16000,
@@ -61,6 +61,8 @@ class Searchbar extends React.Component{
         this.recordingSettings= rs
     }
 
+
+    //Recording Start============================
     componentDidMount() {
       this._askForPermissions()
     }    
@@ -205,6 +207,9 @@ class Searchbar extends React.Component{
         resolve();
       })
     }
+    //Recording Done=============================
+
+
 
       sendSearch = async() => {
         console.log('sendSearch')
@@ -216,9 +221,9 @@ class Searchbar extends React.Component{
             throw new Error()
           } 
         } catch(err) {
-          this.setState({ visible: true });
+          this.setState({ popup_visible: true });
         }
-
+        console.log(resdata)
         await this.asyncstate(resdata)
         this.props.dispatch(setLoading(false))
         await this.props.dispatch(setData(this.state.dataset))
@@ -256,9 +261,7 @@ class Searchbar extends React.Component{
                     onPress={() => this.setState({ popup_visible: false })}
                   />
                 </DialogFooter>
-              }
-
-            >
+              }>
             <DialogContent>
               <Text>검색에 문제가 있어요!!!</Text>
             </DialogContent>

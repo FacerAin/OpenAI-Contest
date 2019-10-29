@@ -3,9 +3,33 @@ const filter = require('./filter')
 SendToApi = async(searchdata) => {
   console.log(searchdata)
     return new Promise((resolve,reject) => {
-      if(searchdata === "/\s\g" || searchdata.length > 30 ){
+      let isBlank_reg = "/\s\g"
+      if(searchdata=== "" || searchdata.length > 30 ){
         console.log('ererererer')
         resolve(JSON.stringify({ "return_code" : -1 }));
+      } else{
+        console.log('run axis')
+        axios(
+          {
+            headers: {
+              "Accept": "application/json",
+              "Content-Type": "application/json",
+            },
+            url: 'http://172.16.204.214:3002/api/cliConnection',
+            data: {
+              data:{
+                text: searchdata.replace(/\s{1,}/g,' ')
+              }
+            },
+            method: "POST",
+          }
+        )
+        .then((response)=>{
+          resolve(JSON.stringify(filter(response.data)))
+        })
+        .catch(error => {
+          console.error(error);
+        });
       }
       setTimeout(()=> {
         try {    
@@ -13,28 +37,8 @@ SendToApi = async(searchdata) => {
         } catch (err) {
             resolve(JSON.stringify({ "return_code" : -1, "error_code" : err.message }));
             return false;
-        }},1000)
-      axios(
-        {
-          headers: {
-            "Accept": "application/json",
-            "Content-Type": "application/json",
-          },
-          url: 'http://172.16.204.163:3002/api/cliConnection',
-          data: {
-            data:{
-              text: searchdata.replace(/\s{1,}/g,' ')
-            }
-          },
-          method: "POST",
-        }
-      )
-      .then((response)=>{
-        resolve(JSON.stringify(filter(response.data)))
-      })
-      .catch(error => {
-        console.error(error);
-      });
+        }},10000)
+
     })
 }
 
@@ -46,7 +50,7 @@ SendToVoiceApi = async(searchdata) => {
           "Accept": "application/json",
           "Content-Type": "application/json",
         },
-        url: 'http://172.16.204.163:3002/api/STT',
+        url: 'http://172.16.204.214:3002/api/STT',
         data: {
           data:{
             audio: searchdata
@@ -57,7 +61,6 @@ SendToVoiceApi = async(searchdata) => {
     )
     .then((response)=>{
       console.log('Success Response')
-      console.log(response)
       resolve(JSON.stringify(response.data))
     })
     .catch(error => {

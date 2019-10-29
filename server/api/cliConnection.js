@@ -11,7 +11,7 @@ const cliConnection = async ( req, res ) => {
     let clientData = {},
         analyzeData = {},
         searchData = [];
-        
+        /*
         setTimeout(()=> {
             try {    
                 throw new Error( "TIMEOUT ERROR" );
@@ -20,6 +20,7 @@ const cliConnection = async ( req, res ) => {
                 res.status(504); //Gateway Timeout
                 return false;
             }},10000)
+            */
 
     try {
         clientData = req.body.data;
