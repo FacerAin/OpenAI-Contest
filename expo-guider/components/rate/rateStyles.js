@@ -20,6 +20,10 @@ const styles = StyleSheet.create({
         alignItems: "center",
         margin :10,
     },
+    wordList:{
+        flex: 1,
+        backgroundColor: "#ffffff",
+    },
     lineText: {
         color: "#4b5b68",
         fontSize: 25,
@@ -35,6 +39,9 @@ const styles = StyleSheet.create({
         paddingTop :10,
         paddingBottom :5,
         borderRadius :10,
+    },
+    errorText:{
+        padding: 10,
     },
     desScoreText:{
         textAlign: 'center',
