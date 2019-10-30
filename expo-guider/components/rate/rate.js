@@ -7,13 +7,80 @@ import scoring from '../../util/scoring';
 import { connect } from'react-redux';
 const sqlite = require("../../util/sqlite");
 
+const changeColorErrorWordToRed = (originalText,noNeedMorp,NeedMorp) => {
+
+
+  if(noNeedMorp.length === 0){
+    return [];
+  }
+  let len = (noNeedMorp.length + NeedMorp.length);
+  let result = [];
+  let itr1 = 0;
+  let itr2 = 0;
+
+  for(let i = 0; i < len ; i++){
+    if(itr1<noNeedMorp.length && itr2<NeedMorp.length){
+      if(noNeedMorp[itr1][0].id < NeedMorp[itr2][0].id) {
+        noNeedMorp[itr1].forEach(elem => {
+        result.push([elem.lemma,"red"])
+        });
+        itr1 += 1;
+      } else {
+        NeedMorp[itr2].forEach(elem => {
+        result.push([elem.lemma,"black"])
+        });
+        itr2 += 1;
+      }
+    } else {
+      if(itr1 == noNeedMorp.length){
+        for(let j = itr2; j < NeedMorp.length ; j++){
+          NeedMorp[j].forEach(elem => {
+            result.push([elem.lemma,"black"])
+            itr2 += 1;
+            });
+        }
+      } else {
+        for(let j = itr1; j < noNeedMorp.length ; j++){
+          noNeedMorp[j].forEach(elem => {
+            result.push([elem.lemma,"red"])
+            itr2 += 1;
+            });
+        }
+      }
+    }    
+  }
+  return result;
+}
+
+function fontstyle(option) {
+  if (option == 'red') {
+    return {
+      color: 'red',
+      backgroundColor : "#f4f2bd",
+      fontSize: 30
+    }
+  } else {
+    return {
+      color: 'black',
+      backgroundColor : "#f4f2bd",
+      fontSize: 30
+    }
+  }
+
+}
+function Difftext(props){
+    return(
+      <Text style={fontstyle(props.color)}>{props.text}</Text>
+    )
+  }
+
 class RateScreen extends React.Component {
     constructor(props) {
       console.log('Render rate');
       super(props);
       this.state = {
         score:  {full: 0, key:0, fix:0, msg:""},
-        dataset: {return_data:{keywordText:""}},
+        dataset: {return_data:{originalText:"", keywordText:"", morps:{noNeedMorp:[],needMorp:[]}}},
         pastScore: [0,0,0,0,0],
       }
     }
@@ -23,16 +90,6 @@ class RateScreen extends React.Component {
       let temp = await sqlite.select();
       return(temp.map( elem => elem.score ));
     }
-
-    /* static getDerivedStateFromProps = async (nextProps, prevState) => {
-      console.log("getderived 들어옴")
-      if( Object.keys(nextProps.value).length){
-        let tempScore = scoring(nextProps.value.return_data).score;
-        await sqlite.insert(tempScore.full);
-        return { score: tempScore, dataset: nextProps.value, pastScore : temp }
-      }
-      return null;
-    } */
     
     componentDidMount = async ()=>{
       let temp = await this.dbReload();
@@ -52,8 +109,13 @@ class RateScreen extends React.Component {
     render = () => {
       return (
         <>
-        {this.state.pastScore.length ? <SafeAreaView style={styles.container}>
         <ScrollView style={styles.scrollView} >
+        {this.state.pastScore.length ? 
+        this.state.dataset.return_data.originalText.length ? 
+        
+        
+        <SafeAreaView style={styles.container}>
+        
         <View style={styles.pieChart}>
         <PieChart
           data={[
@@ -96,9 +158,20 @@ class RateScreen extends React.Component {
         </View>
         <View>
           <View style={styles.desContainer}>
+          <Text style={styles.desTitle}>바뀐 부분은 빨간색</Text>
+            <View>
+            {changeColorErrorWordToRed(this.state.dataset.return_data.originalText,this.state.dataset.return_data.morps.noNeedMorp,this.state.dataset.return_data.morps.needMorp).map(item => {
+                return <Difftext color={item[1]} text={item[0]}/>
+              })}
+            </View>
+          </View>
+          <View style={styles.desContainer}>
             <Text style={styles.desTitle}>다음에는 이렇게 검색해보면 어떨까요?</Text>
             <Text style={styles.desKeyword}>"{this.state.dataset.return_data.keywordText}"</Text>           
           </View>
+
+          </View>
+        </SafeAreaView> : null : null}
         <View style={styles.lineChart}>
           <Text style={styles.lineText}>점수 기록</Text>
           <LineChart
@@ -110,7 +183,7 @@ class RateScreen extends React.Component {
             }}
             legend={{
               enabled: true,
-              textSize: 50,
+              textSize: 50, 
             }}
             
             width={Dimensions.get('window').width * 0.90} // from react-native
@@ -135,14 +208,12 @@ class RateScreen extends React.Component {
             }}
           />
           </View>
-          </View>
           </ScrollView>
-        </SafeAreaView> : null}
         </>
     );
   }
-
 }
+
 RateScreen.navigationOptions = {
   title:'검색점수',
   tabBarIcon: 

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { View, TextInput,TouchableOpacity,Keyboard,TouchableHighlight,Text  } from 'react-native';
+import { View, TextInput,TouchableOpacity,Keyboard,TouchableHighlight,Text,Image  } from 'react-native';
+import Dialog, { DialogContent,DialogFooter,DialogButton,ScaleAnimation,DialogTitle } from 'react-native-popup-dialog';
 import SendToApi from '../../util/datasend'
 import styles from './SearchBarStyles'
 import { connect } from 'react-redux';
@@ -9,10 +10,19 @@ import {setLoading} from '../../action'
 import * as Permissions from 'expo-permissions'
 import { Audio } from 'expo-av';
 import * as FileSystem from 'expo-file-system';
+//import audioencoder from '../../util/audioencoder';
 
+splitFile_Name = (url) => {
+  let OriginalUrl = url;
+  let splitUrlarr = OriginalUrl.split("/");
+  splitUrlarr_len = splitUrlarr.length()
+  let fileName = splitUrlarr[splitUrlarr_len-1]
+  return OriginalUrl.replace(fileName,"")
+
+}
 const rs = {
   android: {
-    extension: '.m4a',
+    extension: '.mp3',
     outputFormat: Audio.RECORDING_OPTION_ANDROID_OUTPUT_FORMAT_MPEG_4,
     audioEncoder: Audio.RECORDING_OPTION_ANDROID_AUDIO_ENCODER_AAC,
     sampleRate: 16000,
@@ -46,10 +56,14 @@ class Searchbar extends React.Component{
             recordingDuration: null, 
             volume: 1.0,
             rate: 1.0,
+            popup_visible: false,
+            error_message : '',
         }
         this.recordingSettings= rs
     }
 
+
+    //Recording Start============================
     componentDidMount() {
       this._askForPermissions()
     }    
@@ -125,9 +139,13 @@ class Searchbar extends React.Component{
         playThroughEarpieceAndroid: false,
         staysActiveInBackground: true,
       })
+
+      
+
       const b64data = await FileSystem.readAsStringAsync(this.recording.getURI(),{
         encoding: FileSystem.EncodingType.Base64,
       })
+
       console.log('B64_DATA+++')
       console.log(b64data)
 
@@ -146,6 +164,13 @@ class Searchbar extends React.Component{
         isLoading: false,
       });
       await this.sendVoiceSearch(b64data)
+    }
+    onRecordIconColor = () => {
+      if(this.state.isRecording){
+        return "#ff0000"
+      } else{
+        return "#ffffff"
+      }
     }
 
     _onRecordPressed = () => {
@@ -178,9 +203,13 @@ class Searchbar extends React.Component{
       return `${this._getMMSSFromMillis(0)}`;
     }
 
+
+    //Recording Done=============================
+
     updateSearch = search => {
       this.setState({ search });
     }
+
     asyncstate = (res) => {
       return new Promise((resolve,reject)=>{
         this.setState({
@@ -195,36 +224,57 @@ class Searchbar extends React.Component{
         Keyboard.dismiss()
         this.props.dispatch(setLoading(true))
         let resdata = await SendToApi(this.state.search)
+          if(JSON.parse(resdata).return_code == -1){
+            console.log('errr')
+            this.setState({ popup_visible: true,error_message:JSON.parse(resdata).error_code  });
+          } 
         await this.asyncstate(resdata)
         this.props.dispatch(setLoading(false))
         await this.props.dispatch(setData(this.state.dataset))
       }
 
       sendVoiceSearch = async(voicesearch) => {
-        /*
-        Voice 예외 처리 -> 비었을 때 -> 다시 시도해주세요
-        Voice 잘못 입력되었을때 -> Value값에 대입
-        Voice  
-        */
         console.log('sendVoice')
         this.props.dispatch(setLoading(true))
         let resdata = await SendToVoiceApi(voicesearch)
-        console.log(resdata)
         this.props.dispatch(setLoading(false))
-        /*
-        await this.asyncstate(resdata)
-        await this.props.dispatch(setData(this.state.dataset))
-        */
+        console.log(resdata)
+
       }
 
       render(){
           return(
           <>
+            <Dialog
+            width = {0.6} 
+            dialogTitle={<DialogTitle title="경고" />}
+            onTouchOutside={() => {
+              this.setState({ visible: false });
+            }}
+            dialogAnimation={new ScaleAnimation({
+              initialValue: 0,
+              useNativeDriver: true,
+            })}
+              visible={this.state.popup_visible}
+              footer={
+                <DialogFooter>
+                  <DialogButton
+                    text="확인"
+                    onPress={() => this.setState({ popup_visible: false })}
+                  />
+                </DialogFooter>
+              }>
+            <DialogContent style={styles.dialogContent}>
+              <Text>{this.state.error_message}</Text>
+            </DialogContent>
+            </Dialog>
+
+
             <View style={styles.statusBar}/>
             <View style={styles.searchContainer}>
             <View style={styles.searchbar}>
             <TouchableOpacity style={styles.logo}>
-            <Icon name="arrow-right" size={30} color="#dbe2ef" />
+              <Image style={styles.searchLogo} source={require('../img/logo.png')}/>
             </TouchableOpacity>       
               <TextInput
               style = {styles.searchText}
@@ -234,22 +284,14 @@ class Searchbar extends React.Component{
               onChangeText={this.updateSearch}
               onSubmitEditing = {this.sendSearch}
               />
-            <TouchableOpacity style={styles.searchMic} onPressOut={this.sendVoice}>
-            <Icon name="microphone" size={30} color="#ffffff" />
+            <TouchableOpacity style={styles.searchMic} onPress={this._onRecordPressed} disabled={this.state.isLoading}>
+            <Icon name="microphone" size={30} color={this.state.isRecording ? '#ff0000' : '#ffffff'} />
             </TouchableOpacity>
             <TouchableOpacity style={styles.searchBtn} onPressOut={this.sendSearch}>
             <Icon name="search" size={30} color="#ffffff" />
             </TouchableOpacity>
             </View>
             </View>
-            <TouchableHighlight
-              onPress={this._onRecordPressed}
-              disabled={this.state.isLoading}>
-              <Text>Recording</Text>
-            </TouchableHighlight>
-              <Text>
-                {this.state.isRecording ? 'LIVE' : ''}
-              </Text>
           </>
           )
       }

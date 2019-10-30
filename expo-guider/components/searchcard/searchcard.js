@@ -19,7 +19,6 @@ export default class SearchCard extends React.Component {
         }
     }
     render(){
-        console.log('Render card')
         switch(this.props.site) {
             case 'naver.com':
                 return (
