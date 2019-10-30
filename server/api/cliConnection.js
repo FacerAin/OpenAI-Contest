@@ -16,7 +16,7 @@ const cliConnection = async ( req, res ) => {
         clientData = req.body.data;
         //clientData = req.body.data;
         if( !clientData.text.replace( /\s/g, '' ).length ) {
-            throw new Error( "client text empty" );q
+            throw new Error( "client text empty" );
         }
     }
     catch ( err ) {
