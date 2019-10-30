@@ -66,7 +66,7 @@ class HomeScreen extends React.Component {
                     confidence={item.confidence}
                     site={item.site}/>
                 }) : <View style={styles.emptyContainer}>
-                <Text style={styles.empty}>검색을 해주세요!!!!</Text>
+                <Text style={styles.empty}>검색을 해주세요.</Text>
                 <Image style={styles.HomeLogo} source={require('../img/logo.png')}/>    
             </View>  
                     }     

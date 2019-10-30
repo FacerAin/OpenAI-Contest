@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "guider",
+    "name": "길잡이",
     "slug": "guider",
     "privacy": "public",
     "sdkVersion": "35.0.0",
@@ -24,11 +24,12 @@
     "ios": {
       "supportsTablet": true
     },
-    "android":{
+    "android": {
       "package": "com.blackcow.guider",
-      "permissions":[
+      "permissions": [
         "RECORD_AUDIO"
       ]
-    }
+    },
+    "description": ""
   }
 }

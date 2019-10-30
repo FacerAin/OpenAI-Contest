@@ -54,12 +54,14 @@ const styles = StyleSheet.create({
     },
 
     emptyContainer: {
+        paddingTop: 30,
         justifyContent: 'center',
         alignItems: 'center',
         flex: 1
     },
 
     empty: {
+        paddingBottom: 20,
         fontSize: 30,
         fontWeight: 'bold',
     },
