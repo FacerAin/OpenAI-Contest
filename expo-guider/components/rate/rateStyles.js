@@ -42,6 +42,11 @@ const styles = StyleSheet.create({
     },
     errorText:{
         padding: 10,
+        textAlign: "center",
+        fontWeight: "bold",
+    },
+    textContainer:{
+        margin: 30,
     },
     desScoreText:{
         textAlign: 'center',

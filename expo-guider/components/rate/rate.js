@@ -56,15 +56,15 @@ function fontstyle(option) {
   if (option == 'red') {
     return {
       color: 'red',
-      backgroundColor : "#f4f2bd",
-      fontSize: 30,
+      //backgroundColor : "#f4f2bd",
+      fontSize: 25,
       padding: 30,
     }
   } else {
     return {
       color: 'black',
-      backgroundColor : "#f4f2bd",
-      fontSize: 30,
+      //backgroundColor : "#f4f2bd",
+      fontSize: 25,
       padding : 30,
     }
   }
@@ -72,7 +72,10 @@ function fontstyle(option) {
 }
 function Difftext(props){
     return(
-      <Text style={fontstyle(props.color)}>{props.text }</Text>
+      <>
+      <Text style={fontstyle(props.color)}>{props.text}</Text>
+      <Text>{"  "}</Text>
+      </>
     )
   }
 
@@ -161,7 +164,6 @@ class RateScreen extends React.Component {
         <View>
           <View style={styles.desContainer}>
           <Text style={styles.desTitle}>빨간색은 불필요해요</Text>
-
               <Text style={styles.errorText}>
             {changeColorErrorWordToRed(this.state.dataset.return_data.originalText,this.state.dataset.return_data.morps.noNeedMorp,this.state.dataset.return_data.morps.needMorp).map(item => {
                 return <Difftext color={item[1]} text={item[0]}/>
