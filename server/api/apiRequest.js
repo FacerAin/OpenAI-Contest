@@ -90,7 +90,7 @@ const makeOption = async(searchResults, keywordText, index) => {
     apiReqJson.argument = { "passage" : searchResults[ index ].passage, "question" : keywordText };
     apiReqJson.access_key = process.env[ "ETRI_API_KEY_" + index ];
     try { 
-        await simpleETRI( { uri : URL.ETRI + "MRCServlet", body : JSON.stringify( apiReqJson ) }, searchResults, index )
+        await simpleETRI( { uri : URL.ETRI + "MRCServlet", body : JSON.stringify( apiReqJson ) }, searchResults, index );
     }
     catch ( err ) {
         throw new Error( err.message );
