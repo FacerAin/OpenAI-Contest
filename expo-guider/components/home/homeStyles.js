@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
     HomeLogo:{
         width: 200,
         height: 200,
+        opacity: 0.5,
     },
     ratingtext:{
         padding: 10,

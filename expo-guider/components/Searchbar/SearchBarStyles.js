@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     searchLogo:{
       width: 50,
       height: 50,
-      borderRadius:50/2,
+      borderRadius:50/3,
       backgroundColor: '#ffffff',
     },
     searchMic:{
