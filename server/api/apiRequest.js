@@ -131,7 +131,7 @@ const DOCVECAPI = (searchResults, keywordText, index) => {
           if (body.result == "-1") {
             throw new Error(body.data + " index : " + index);
           }
-          searchResults[index].confidence = Number(JSON.parse(body).result);
+          searchResults[index].confidence = Number(body.result);
           resolve();
         })
         .catch(err => {

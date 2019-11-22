@@ -34,7 +34,7 @@ def parsetoken(sentence):
             model["/".join(tag)]
             lst.append("/".join(tag))
         except:
-            print("not", tag)
+            null
    # resdata = dict(zip(range(1, len(lst) + 1), lst))
     return lst
 
