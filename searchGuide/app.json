@@ -1,0 +1,36 @@
+{
+  "expo": {
+    "name": "길잡이",
+    "slug": "searchGuide",
+    "privacy": "public",
+    "sdkVersion": "35.0.0",
+    "androidStatusBar": {
+      "backgroundColor": "#226557"
+    },
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "com.blackcow.bluejoy"
+    }
+  }
+}

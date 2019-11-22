@@ -12,14 +12,15 @@ const cliConnection = async ( req, res ) => {
         analyzeData = {},
         searchData = [];
 
-        setTimeout(()=> {
-            try {    
-                throw new Error( "TIMEOUT ERROR" );
-            } catch (err) {
-                res.json( { "return_code" : -1, "error_code" : err.message } );
-                res.status(504); //Gateway Timeout
-                return false;
-            }},10000)
+    setTimeout( ( ) => {
+        try {    
+            throw new Error( "TIMEOUT ERROR" );
+        } catch ( err ) {
+            res.json( { "return_code" : -1, "error_code" : err.message } );
+            res.status( 504 ); //Gateway Timeout
+            return false;
+        }
+    }, 10000 );
 
 
     try {

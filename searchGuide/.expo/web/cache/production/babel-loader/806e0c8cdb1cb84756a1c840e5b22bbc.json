@@ -1,0 +1,1 @@
+{"ast":null,"code":"Object.defineProperty(exports,\"__esModule\",{value:true});exports.default=void 0;var _default={};exports.default=_default;","map":{"version":3,"sources":["../src/NativeModulesProxy.web.ts"],"names":[],"mappings":"6FAAe,E","sourcesContent":["export default {};\n"],"sourceRoot":""},"metadata":{},"sourceType":"script"}

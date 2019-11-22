@@ -1,0 +1,97 @@
+{
+  "background_color": "#ffffff",
+  "description": "A Neat Expo App",
+  "dir": "auto",
+  "display": "standalone",
+  "lang": "en",
+  "name": "길잡이",
+  "orientation": "portrait",
+  "prefer_related_applications": true,
+  "related_applications": [
+    {
+      "platform": "play",
+      "url": "http://play.google.com/store/apps/details?id=com.blackcow.bluejoy",
+      "id": "com.blackcow.bluejoy"
+    }
+  ],
+  "short_name": "길잡이",
+  "start_url": ".",
+  "theme_color": "#4630EB",
+  "icons": [
+    {
+      "src": "/apple/splash/icon_1125x2436.06c55e1a313994117d2cba90ada18f93.png",
+      "sizes": "1125x2436",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple/splash/icon_1136x640.af0801f70e0d3be43842630bd67ab469.png",
+      "sizes": "1136x640",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple/splash/icon_1242x2208.ac026fc04b656d0f6152a9e6cdd29a83.png",
+      "sizes": "1242x2208",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple/splash/icon_1242x2688.1daa208c0af884938508a6515bf66311.png",
+      "sizes": "1242x2688",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple/splash/icon_1334x750.95134c8d88093ed687dbd90654d7b3f8.png",
+      "sizes": "1334x750",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple/splash/icon_1792x828.82f4dc5c26b7967633fda42629f39d86.png",
+      "sizes": "1792x828",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple/icons/icon_180x180.5b430a4f8bb0ea0e4f870974d977a400.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple/icons/icon_192x192.fe9e90f565e9c529716ca0b7dd0f8990.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple/splash/icon_2208x1242.55144606a6b4bd3e51b61fa90d74394f.png",
+      "sizes": "2208x1242",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple/splash/icon_2436x1125.1ef05e93d98cb8bbacbb68fad46ca706.png",
+      "sizes": "2436x1125",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple/splash/icon_2688x1242.11269499d9c3c5ccab3baa8d17634b35.png",
+      "sizes": "2688x1242",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple/icons/icon_512x512.cd405482fed247b410cad607ba14b282.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple/splash/icon_640x1136.7e3a51ecf5fbd46f3049423258216634.png",
+      "sizes": "640x1136",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple/splash/icon_750x1334.641afc06fa8aa7620d14945ccfde6b1f.png",
+      "sizes": "750x1334",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple/splash/icon_828x1792.ba07666ef195efbe64003e00035008b2.png",
+      "sizes": "828x1792",
+      "type": "image/png"
+    }
+  ]
+}
