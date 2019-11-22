@@ -34,7 +34,11 @@ apiRequest.ETRI = async ( query, argument ) => {
     return new Promise( ( resolve, reject ) => { 
         let apiReqJson = apiRequestJsonFrame;
         apiReqJson.argument = argument;
-        let apiReqOption = { uri : URL.ETRI + query, body : JSON.stringify( apiReqJson ) };
+        let apiReqOption = {             headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+          },uri : URL.ETRI + query, body : JSON.stringify( apiReqJson ) };
+          
         
         rp.post( apiReqOption )
         .then( ( body ) => {
@@ -100,7 +104,8 @@ const makeOption = async(searchResults, keywordText, index) => {
 apiRequest.multiETRI = async ( searchResults, keywordText ) => {
     try {
         const Promises = await searchResults.map((searchResult, index)=>{
-            return makeOption( searchResults, keywordText, index );
+            //return makeOption( searchResults, keywordText, index );
+            return DOCVECAPI( searchResults, keywordText, index );
         });
         await Promise.all( Promises );
     }
@@ -108,6 +113,34 @@ apiRequest.multiETRI = async ( searchResults, keywordText ) => {
         throw new Error( err.message );
     }
 }
+/*---------------- Adding code for local processing of sentence machine read-----*/
 
+const DOCVECAPI = (searchResults, keywordText, index) => {
+    return new Promise((resolve, reject) => {
+      apiReqOption = {
+        method: "POST",
+        uri: "http://127.0.0.1:5000/analyze",
+        body: {
+          sentence1: searchResults[index].passage,
+          sentence2: keywordText
+        },
+        json: true
+      };
+      rp.post(apiReqOption)
+        .then(body => {
+          if (body.result == "-1") {
+            throw new Error(body.data + " index : " + index);
+          }
+          searchResults[index].confidence = Number(JSON.parse(body).result);
+          resolve();
+        })
+        .catch(err => {
+          searchResults[index].confidence = 0;
+          resolve();
+        });
+    });
+  };
+
+  
 
 module.exports = apiRequest;
