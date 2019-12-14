@@ -1,2 +1,1 @@
-# OpenAI-Contest
-http://aiopen.etri.re.kr/
+# 정보 취약 계층을 위한 검색 도우미 길잡이
